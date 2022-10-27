@@ -1,13 +1,13 @@
-import React, { useState, useEffect } from 'react';
+import { Menu } from '@components';
+import { navLinks } from '@config';
+import { usePrefersReducedMotion, useScrollDirection } from '@hooks';
+import { loaderDelay } from '@utils';
 import { Link } from 'gatsby';
 import PropTypes from 'prop-types';
+import React, { useEffect, useState } from 'react';
 import { CSSTransition, TransitionGroup } from 'react-transition-group';
 import styled, { css } from 'styled-components';
-import { navLinks } from '@config';
-import { loaderDelay } from '@utils';
-import { useScrollDirection, usePrefersReducedMotion } from '@hooks';
-import { Menu } from '@components';
-import { IconLogo } from '@components/icons';
+import logo from '../images/mn-logo.png';
 
 const StyledHeader = styled.header`
   ${({ theme }) => theme.mixins.flexBetween};
@@ -34,8 +34,8 @@ const StyledHeader = styled.header`
   @media (prefers-reduced-motion: no-preference) {
     ${props =>
     props.scrollDirection === 'up' &&
-      !props.scrolledToTop &&
-      css`
+    !props.scrolledToTop &&
+    css`
         height: var(--nav-scroll-height);
         transform: translateY(0px);
         background-color: rgba(10, 25, 47, 0.85);
@@ -44,8 +44,8 @@ const StyledHeader = styled.header`
 
     ${props =>
     props.scrollDirection === 'down' &&
-      !props.scrolledToTop &&
-      css`
+    !props.scrolledToTop &&
+    css`
         height: var(--nav-scroll-height);
         transform: translateY(calc(var(--nav-scroll-height) * -1));
         box-shadow: 0 10px 30px -10px var(--navy-shadow);
@@ -162,11 +162,13 @@ const Nav = ({ isHome }) => {
     <div className="logo" tabIndex="-1">
       {isHome ? (
         <a href="/" aria-label="home">
-          <IconLogo />
+          {/* <IconLogo /> */}
+          <img src={logo} alt="Mustaque Nadim Logo" />
         </a>
       ) : (
         <Link to="/" aria-label="home">
-          <IconLogo />
+          {/* <IconLogo /> */}
+          <img src={logo} alt="Mustaque Nadim Logo" />
         </Link>
       )}
     </div>

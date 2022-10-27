@@ -5,9 +5,9 @@ module.exports = {
     title: 'Mustaque Nadim',
     description:
       'Mustaque Nadim is a passionate programmer from Bangladesh, skilled in building web applications using MERN (MongoDB, ExpressJS, ReactJS, NodeJS) technologies.',
-    siteUrl: 'https://brittanychiang.com', // No trailing slash allowed!
+    siteUrl: 'https://mustaquenadim.com', // No trailing slash allowed!
     image: '/og.png', // Path to your image you placed in the 'static' folder
-    twitterUsername: '@bchiang7',
+    twitterUsername: '@developernadim',
   },
   plugins: [
     `gatsby-plugin-react-helmet`,
