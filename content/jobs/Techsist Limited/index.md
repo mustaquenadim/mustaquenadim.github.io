@@ -1,5 +1,5 @@
 ---
-date: '2022-02-01'
+date: '2021-11-26'
 title: 'Frontend Developer Intern'
 company: 'Techsist Limited'
 location: 'Baridhara DOHS, Dhaka, Bangladesh'
