@@ -72,7 +72,7 @@ const Hero = () => {
   const five = (
     <a
       className="email-link"
-      href="/resume.pdf"
+      href="/Mustaque-Nadim-Software-Engineer-Resume.pdf"
       target="_blank"
       rel="noreferrer"
     >
