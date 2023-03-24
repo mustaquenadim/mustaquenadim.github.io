@@ -59,13 +59,13 @@ const Hero = () => {
   }, []);
 
   const one = <h1>Hi, my name is</h1>;
-  const two = <h2 className="big-heading">Mustaque Nadim.</h2>;
-  const three = <h3 className="big-heading">Software Engineer</h3>;
+  const two = <h2 className="big-heading">Mustaque Nadim</h2>;
+  const three = <h3 className="big-heading">Full Stack Developer</h3>;
   const four = (
     <>
       <p>
-        I’m a passionate programmer from Bangladesh, experienced in building large scale web
-        application using MERN technologies.
+        I’m a passionate programmer from Bangladesh with entrepreneurial spirit, experienced in
+        building large scale web application using MERN technologies.
       </p>
     </>
   );

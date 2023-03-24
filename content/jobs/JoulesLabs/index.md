@@ -3,7 +3,7 @@ date: '2022-02-01'
 title: 'Junior Software Engineer'
 company: 'JoulesLabs'
 location: 'Mirpur DOHS, Dhaka, Bangladesh'
-range: 'February - August 2022'
+range: 'February - January 2022'
 url: 'https://jouleslabs.com/'
 ---
 

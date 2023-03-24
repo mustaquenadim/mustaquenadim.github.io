@@ -3,7 +3,7 @@ date: '3'
 title: 'Company Portfolio Website'
 cover: './techsist.png'
 external: 'https://techsistltd.com/'
-cta: 'https://www.newline.co/courses/build-a-spotify-connected-app'
+cta: ''
 tech:
   - React
   - SASS
