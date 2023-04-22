@@ -3,7 +3,7 @@ date: '2021-11-26'
 title: 'Frontend Developer Intern'
 company: 'Techsist Limited'
 location: 'Baridhara DOHS, Dhaka, Bangladesh'
-range: 'November 2021 - January 2022'
+range: 'October 2021 - January 2022'
 url: 'https://techsistltd.com/'
 ---
 

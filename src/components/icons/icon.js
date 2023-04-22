@@ -16,6 +16,7 @@ import {
   IconStar,
   IconTwitter,
 } from '@components/icons';
+import IconArticle from './article';
 
 const Icon = ({ name }) => {
   switch (name) {
@@ -29,6 +30,8 @@ const Icon = ({ name }) => {
       return <IconExternal />;
     case 'Folder':
       return <IconFolder />;
+    case 'Article':
+      return <IconArticle />;
     case 'Fork':
       return <IconFork />;
     case 'GitHub':
