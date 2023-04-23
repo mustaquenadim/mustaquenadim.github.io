@@ -289,7 +289,9 @@ const Blogs = () => {
 
   return (
     <StyledProjectsSection id="blogs">
-      <h2 ref={revealTitle}>Recently Published Blogs</h2>
+      <h2 className="numbered-heading" ref={revealTitle}>
+        Recently Published Blogs
+      </h2>
 
       {/* <Link className="inline-link archive-link" to="/archive" ref={revealArchiveLink}>
         view the archive

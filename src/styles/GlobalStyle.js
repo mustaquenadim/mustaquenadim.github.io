@@ -3,6 +3,7 @@ import fonts from './fonts';
 import variables from './variables';
 import TransitionStyles from './TransitionStyles';
 import PrismStyles from './PrismStyles';
+import PreloaderStyles from './PreloaderStyles';
 
 const GlobalStyle = createGlobalStyle`
   ${fonts};
@@ -444,6 +445,8 @@ const GlobalStyle = createGlobalStyle`
   ${TransitionStyles};
 
   ${PrismStyles};
+
+  ${PreloaderStyles};
 `;
 
 export default GlobalStyle;

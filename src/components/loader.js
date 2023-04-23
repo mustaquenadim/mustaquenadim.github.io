@@ -3,38 +3,8 @@ import { Helmet } from 'react-helmet';
 import PropTypes from 'prop-types';
 import anime from 'animejs';
 import styled from 'styled-components';
-import { IconLoader } from '@components/icons';
 
-const StyledLoader = styled.div`
-  ${({ theme }) => theme.mixins.flexCenter};
-  position: fixed;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  width: 100%;
-  height: 100%;
-  background-color: var(--dark-navy);
-  z-index: 99;
-
-  .logo-wrapper {
-    width: max-content;
-    max-width: 100px;
-    transition: var(--transition);
-    opacity: ${props => (props.isMounted ? 1 : 0)};
-    svg {
-      display: block;
-      width: 100%;
-      height: 100%;
-      margin: 0 auto;
-      fill: none;
-      user-select: none;
-      #B {
-        opacity: 0;
-      }
-    }
-  }
-`;
+const StyledLoader = styled.div``;
 
 const Loader = ({ finishLoading }) => {
   const [isMounted, setIsMounted] = useState(false);
@@ -84,9 +54,21 @@ const Loader = ({ finishLoading }) => {
   return (
     <StyledLoader className="loader" isMounted={isMounted}>
       <Helmet bodyAttributes={{ class: `hidden` }} />
-
-      <div className="logo-wrapper">
-        <IconLoader />
+      <div className="preloader">
+        <svg viewBox="0 0 800 600">
+          <symbol id="s-text">
+            <text textAnchor="middle" x="50%" y="50%" className="text--line">
+              Mustaque Nadim
+            </text>
+          </symbol>
+          <g className="g-ants">
+            <use xlinkHref="#s-text" className="text-copy"></use>
+            <use xlinkHref="#s-text" className="text-copy"></use>
+            <use xlinkHref="#s-text" className="text-copy"></use>
+            <use xlinkHref="#s-text" className="text-copy"></use>
+            <use xlinkHref="#s-text" className="text-copy"></use>
+          </g>
+        </svg>
       </div>
     </StyledLoader>
   );
