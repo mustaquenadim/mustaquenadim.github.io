@@ -16,9 +16,9 @@ OpenAI, an American artificial intelligence (AI) research company released an AI
 
 However, it is not accessible to free users. It is available only via API and ChatGPT premium users for 20$. But today I'll guide you how you can use GPT-4 AI language model for free. Let's jump into the guide.
 
-## 1. [ForeFront Chat](https://www.forefront.ai/)
+## 1. [ForeFront](https://www.forefront.ai/)
 
-![Forefront](./forefront-chat.png)
+![Forefront](./forefront.png)
 
 Forefront Chat is a new tool launched by Forefront AI that offers free access to GPT-4, but recently you can only send 5 messages every 3 hours. It provides more people with the opportunity to try out this cutting-edge technology. To access GPT-4, all you need to do is sign up for free on the Forefront Chat website. Apart from GPT-4, users can also try image generation, custom personas, shareable chats, and more on the platform.
 
