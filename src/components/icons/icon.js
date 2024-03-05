@@ -1,9 +1,10 @@
-import React from 'react';
-import PropTypes from 'prop-types';
 import {
   IconAppStore,
+  IconArticle,
   IconBookmark,
   IconCodepen,
+  IconDesign,
+  IconEcommerce,
   IconExternal,
   IconFolder,
   IconFork,
@@ -12,11 +13,16 @@ import {
   IconLinkedin,
   IconLoader,
   IconLogo,
+  IconMobile,
+  IconOptimization,
   IconPlayStore,
+  IconPlugin,
   IconStar,
   IconTwitter,
+  IconWebsite,
 } from '@components/icons';
-import IconArticle from './article';
+import PropTypes from 'prop-types';
+import React from 'react';
 
 const Icon = ({ name }) => {
   switch (name) {
@@ -26,6 +32,8 @@ const Icon = ({ name }) => {
       return <IconBookmark />;
     case 'Codepen':
       return <IconCodepen />;
+    case 'Ecommerce':
+      return <IconEcommerce />;
     case 'External':
       return <IconExternal />;
     case 'Folder':
@@ -48,8 +56,18 @@ const Icon = ({ name }) => {
       return <IconPlayStore />;
     case 'Star':
       return <IconStar />;
+    case 'Mobile':
+      return <IconMobile />;
     case 'Twitter':
       return <IconTwitter />;
+    case 'Website':
+      return <IconWebsite />;
+    case 'Plugin':
+      return <IconPlugin />;
+    case 'Optimization':
+      return <IconOptimization />;
+    case 'Design':
+      return <IconDesign />;
     default:
       return <IconExternal />;
   }
