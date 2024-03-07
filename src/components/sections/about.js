@@ -4,6 +4,7 @@ import sr from '@utils/sr';
 import { StaticImage } from 'gatsby-plugin-image';
 import React, { useEffect, useRef } from 'react';
 import styled from 'styled-components';
+import Skills from './skills';
 
 const StyledAboutSection = styled.section`
   max-width: 900px;
@@ -177,6 +178,7 @@ const About = () => {
           </div>
         </StyledPic>
       </div>
+      <Skills />
     </StyledAboutSection>
   );
 };

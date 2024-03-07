@@ -5,6 +5,11 @@ import styled from 'styled-components';
 import Blogs from '../components/sections/blogs';
 import Services from '../components/sections/services';
 
+import 'swiper/css';
+import 'swiper/css/navigation';
+import 'swiper/css/pagination';
+import 'swiper/css/scrollbar';
+
 const StyledMainContainer = styled.main`
   counter-reset: section;
 `;
