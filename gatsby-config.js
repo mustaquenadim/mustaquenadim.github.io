@@ -8,7 +8,7 @@ module.exports = {
       'Mustaque Nadim is a passionate programmer from Bangladesh, skilled in building web applications using MERN (MongoDB, ExpressJS, ReactJS, NodeJS) technologies.',
     siteUrl: 'https://mustaquenadim.com', // No trailing slash allowed!
     image: '/og.png', // Path to your image you placed in the 'static' folder
-    twitterUsername: '@MNadimOfficial',
+    twitterUsername: '@_mustaquenadim_',
   },
   plugins: [
     `gatsby-plugin-react-helmet`,
@@ -150,16 +150,10 @@ module.exports = {
         ],
       },
     },
-    // {
-    //   resolve: `gatsby-plugin-google-analytics`,
-    //   options: {
-    //     trackingId: 'UA-45666519-2',
-    //   },
-    // },
     {
-      resolve: "gatsby-plugin-google-tagmanager",
+      resolve: 'gatsby-plugin-google-tagmanager',
       options: {
-        id: "GTM-NCKQ6SB",
+        id: 'GTM-NCKQ6SB',
         includeInDevelopment: false,
       },
     },

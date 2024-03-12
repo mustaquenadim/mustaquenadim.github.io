@@ -6,10 +6,10 @@ module.exports = {
       name: 'GitHub',
       url: 'https://github.com/mustaquenadim',
     },
-    // {
-    //   name: 'Instagram',
-    //   url: 'https://www.instagram.com/mustaquenadim',
-    // },
+    {
+      name: 'Instagram',
+      url: 'https://www.instagram.com/mustaquenadim',
+    },
     {
       name: 'Twitter',
       url: 'https://twitter.com/mmustaquenadim',
@@ -18,10 +18,10 @@ module.exports = {
       name: 'Linkedin',
       url: 'https://www.linkedin.com/in/mustaquenadim',
     },
-    // {
-    //   name: 'Codepen',
-    //   url: 'https://codepen.io/mustaquenadim',
-    // },
+    {
+      name: 'Codepen',
+      url: 'https://codepen.io/mustaquenadim',
+    },
   ],
 
   navLinks: [
@@ -48,6 +48,10 @@ module.exports = {
     {
       name: 'Contact',
       url: '/#contact',
+    },
+    {
+      name: 'Pensieve',
+      url: '/pensieve',
     },
   ],
 
