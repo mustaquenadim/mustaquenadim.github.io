@@ -1,6 +1,7 @@
 import { usePrefersReducedMotion } from '@hooks';
 import { loaderDelay, navDelay } from '@utils';
 import React, { useEffect, useState } from 'react';
+import TextTransition, { presets } from 'react-text-transition';
 import { CSSTransition, TransitionGroup } from 'react-transition-group';
 import styled from 'styled-components';
 // import { email } from '@config';
@@ -45,7 +46,10 @@ const StyledHeroSection = styled.section`
   }
 `;
 
+const TEXTS = ['Frontend Engineer', 'Product Enthusiast', 'Instructor', 'Content Creator'];
+
 const Hero = () => {
+  const [index, setIndex] = React.useState(0);
   const [isMounted, setIsMounted] = useState(false);
   const prefersReducedMotion = usePrefersReducedMotion();
 
@@ -58,9 +62,22 @@ const Hero = () => {
     return () => clearTimeout(timeout);
   }, []);
 
+  React.useEffect(() => {
+    const intervalId = setInterval(
+      () => setIndex(index => index + 1),
+      3000, // every 3 seconds
+    );
+    return () => clearTimeout(intervalId);
+  }, []);
+
   const one = <h1>Hi, my name is</h1>;
   const two = <h2 className="big-heading">Mustaque Nadim</h2>;
-  const three = <h3 className="big-heading">Full Stack Developer</h3>;
+  // const three = <h3 className="big-heading">Full Stack Developer</h3>;
+  const three = (
+    <h3 className="big-heading">
+      <TextTransition springConfig={presets.wobbly}>{TEXTS[index % TEXTS.length]}</TextTransition>
+    </h3>
+  );
   const four = (
     <>
       <p>

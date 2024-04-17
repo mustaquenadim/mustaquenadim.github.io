@@ -1,5 +1,5 @@
 module.exports = {
-  email: 'mail.mustaquenadim@gmail.com',
+  email: 'hello@mustaquenadim.com',
 
   socialMedia: [
     {
@@ -12,7 +12,7 @@ module.exports = {
     },
     {
       name: 'Twitter',
-      url: 'https://twitter.com/mmustaquenadim',
+      url: 'https://twitter.com/_mustaquenadim_',
     },
     {
       name: 'Linkedin',
