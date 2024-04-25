@@ -121,7 +121,10 @@ const Footer = () => {
             </div>
           )}
         </a>
-        <div>Revised by Mustaque Nadim</div>
+        <div>
+          Revised by{' '}
+          <a href="https://github.com/mustaquenadim/mustaquenadim.github.io">Mustaque Nadim</a>
+        </div>
       </StyledCredit>
     </StyledFooter>
   );
