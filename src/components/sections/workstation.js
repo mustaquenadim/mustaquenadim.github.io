@@ -4,28 +4,36 @@ import sr from '@utils/sr';
 import { StaticImage } from 'gatsby-plugin-image';
 import React, { useEffect, useRef } from 'react';
 import styled from 'styled-components';
-import Skills from './skills';
-import Workstation from './workstation';
 
 const StyledAboutSection = styled.section`
   max-width: 900px;
+
+  h2 {
+    text-align: center;
+    font-size: clamp(24px, 5vw, var(--fz-heading));
+  }
 
   .inner {
     display: grid;
     grid-template-columns: 3fr 2fr;
     grid-gap: 50px;
+    margin-top: 48px;
 
     @media (max-width: 768px) {
       display: block;
     }
+
+    .other-devices {
+      margin-top: 24px;
+    }
   }
 `;
-
 const StyledText = styled.div`
-  ul.skills-list {
-    display: grid;
-    grid-template-columns: repeat(2, minmax(140px, 200px));
-    grid-gap: 0 10px;
+  h3:not(:first-child) {
+    margin-top: 24px;
+  }
+
+  ul.specs-list {
     padding: 0;
     margin: 20px 0 0 0;
     overflow: hidden;
@@ -35,21 +43,20 @@ const StyledText = styled.div`
       position: relative;
       margin-bottom: 10px;
       padding-left: 20px;
-      font-family: var(--font-mono);
-      font-size: var(--fz-xs);
+      // font-family: var(--font-mono);
+      font-size: var(--fz-lg);
 
       &:before {
         content: '▹';
         position: absolute;
         left: 0;
         color: var(--green);
-        font-size: var(--fz-sm);
-        line-height: 12px;
+        font-size: var(--fz-lg);
+        line-height: 24px;
       }
     }
   }
 `;
-
 const StyledPic = styled.div`
   position: relative;
   max-width: 300px;
@@ -117,7 +124,7 @@ const StyledPic = styled.div`
   }
 `;
 
-const About = () => {
+const Workstation = () => {
   const revealContainer = useRef(null);
   const prefersReducedMotion = usePrefersReducedMotion();
 
@@ -129,42 +136,88 @@ const About = () => {
     sr.reveal(revealContainer.current, srConfig());
   }, []);
 
-  const skills = [
-    'JavaScript (ES6+)',
-    'TypeScript',
-    'React',
-    'Node.js',
-    'React Native',
-    'Data Structures & Algorithms',
-  ];
+  const workstation = {
+    device: 'Laptop',
+    brand: 'HP',
+    model: '15s-eq3234AU',
+    specification: [
+      {
+        hardware: 'Processor',
+        info: 'AMD Ryzen 5 5625U (16MB L3 Cache, 2.3GHz, up to 4.3GHz)',
+      },
+      {
+        hardware: 'RAM',
+        info: '16GB DDR4',
+      },
+      {
+        hardware: 'Storage',
+        info: '512GB SSD',
+      },
+      {
+        hardware: 'Display',
+        info: '15" FHD (1920 x 1080)',
+      },
+      {
+        hardware: 'Graphics',
+        info: 'AMD Radeon Graphics (Shared)',
+      },
+      {
+        hardware: 'Operating System',
+        info: 'Windows 11 Pro',
+      },
+    ],
+    'peripheral-device': [
+      {
+        hardware: 'Monitor',
+        info: 'HP V194 18.5-inch Monitor',
+      },
+      {
+        hardware: 'Mouse',
+        info: 'A4TECH G3-300N V-Track Wireless Mouse',
+      },
+      {
+        hardware: 'Graphic Tablet',
+        info: 'VEIKK A50',
+      },
+      {
+        hardware: 'Microphone',
+        info: 'Boya BY-M1',
+      },
+    ],
+  };
 
   return (
-    <StyledAboutSection id="about" ref={revealContainer}>
-      <h2 className="numbered-heading">About Me</h2>
+    <StyledAboutSection id="workstation" ref={revealContainer}>
+      <h2>My Workstation</h2>
 
       <div className="inner">
         <StyledText>
           <div>
+            <h3>Device: {workstation.device}</h3>
             <p>
-              Hello! My name is Mustaque Nadim and I enjoy building solutions for mankind. I've
-              started my programming journey since 2017 when I was only 17 years old. At that time,
-              I've started learning C programming language. After that, I've learnt C++, Python,
-              HTML, CSS, JavaScript, React, Node, MongoDB and many more. But now I'm only working on
-              JavaScript.
+              {workstation.brand} {workstation.model}
             </p>
-
-            <p>
-              So far, and I’ve got opportunity of working at{' '}
-              <a href="https://jouleslabs.com/">JoulesLabs</a> and{' '}
-              <a href="https://techsistltd.com/">Techsist Limited</a>. Besides, I'm working with a
-              software company as a part-time developer.
-            </p>
-
-            <p>Here are a few technologies I’ve been working with recently:</p>
           </div>
 
-          <ul className="skills-list">
-            {skills && skills.map((skill, i) => <li key={i}>{skill}</li>)}
+          <ul className="specs-list">
+            {workstation &&
+              workstation.specification.map(({ hardware, info }, i) => (
+                <li key={i}>
+                  <strong>{hardware}:</strong> {info}
+                </li>
+              ))}
+          </ul>
+
+          <div className="other-devices">
+            <h3>Peripheral Devices</h3>
+          </div>
+          <ul className="specs-list">
+            {workstation &&
+              workstation?.['peripheral-device'].map(({ hardware, info }, i) => (
+                <li key={i}>
+                  <strong>{hardware}:</strong> {info}
+                </li>
+              ))}
           </ul>
         </StyledText>
 
@@ -172,7 +225,7 @@ const About = () => {
           <div className="wrapper">
             <StaticImage
               className="img"
-              src="../../images/me.jpg"
+              src="../../images/workstation.jpg"
               width={500}
               quality={95}
               formats={['AUTO', 'WEBP', 'AVIF']}
@@ -181,10 +234,8 @@ const About = () => {
           </div>
         </StyledPic>
       </div>
-      <Skills />
-      <Workstation />
     </StyledAboutSection>
   );
 };
 
-export default About;
+export default Workstation;
