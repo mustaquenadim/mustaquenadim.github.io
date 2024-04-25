@@ -39,6 +39,12 @@ const StyledContactSection = styled.section`
     ${({ theme }) => theme.mixins.bigButton};
     margin-top: 50px;
   }
+
+  .small-text {
+    font-size: 16px;
+    margin-top: 8px;
+    color: var(--slate);
+  }
 `;
 
 const Contact = () => {
@@ -67,6 +73,9 @@ const Contact = () => {
       <a className="email-link" href={`mailto:${email}`}>
         Say Hello
       </a>
+      <div className="small-text">
+        Replies within <b>an hour</b>
+      </div>
     </StyledContactSection>
   );
 };
