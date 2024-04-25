@@ -199,7 +199,21 @@ const Skills = () => {
       <Swiper
         modules={[Autoplay, A11y]}
         spaceBetween={50}
-        slidesPerView={7}
+        slidesPerView={3}
+        breakpoints={{
+          640: {
+            slidesPerView: 4,
+            spaceBetween: 20,
+          },
+          768: {
+            slidesPerView: 5,
+            spaceBetween: 40,
+          },
+          1024: {
+            slidesPerView: 7,
+            spaceBetween: 50,
+          },
+        }}
         loop={true}
         autoplay={{
           delay: 3000,
