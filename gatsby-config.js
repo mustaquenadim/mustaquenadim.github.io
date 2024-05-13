@@ -8,7 +8,6 @@ module.exports = {
       'Mujtaba Rehman is a 3rd year Computer Science student at the University of Waterloo, with a focus on web development and software engineering.',
     siteUrl: 'https://rehmanmujtaba.me', // No trailing slash allowed!
     image: '/og.png', // Path to your image you placed in the 'static' folder
-    twitterUsername: '@_mustaquenadim_',
   },
   plugins: [
     `gatsby-plugin-react-helmet`,
