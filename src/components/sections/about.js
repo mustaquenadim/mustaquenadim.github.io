@@ -5,7 +5,6 @@ import { StaticImage } from 'gatsby-plugin-image';
 import React, { useEffect, useRef } from 'react';
 import styled from 'styled-components';
 import Skills from './skills';
-import Workstation from './workstation';
 
 const StyledAboutSection = styled.section`
   max-width: 900px;
@@ -129,14 +128,7 @@ const About = () => {
     sr.reveal(revealContainer.current, srConfig());
   }, []);
 
-  const skills = [
-    'JavaScript (ES6+)',
-    'TypeScript',
-    'React',
-    'Node.js',
-    'React Native',
-    'Data Structures & Algorithms',
-  ];
+  const skills = ['Python', 'TypeScript', 'React', 'Node.js', 'Next.js', 'Spring Boot'];
 
   return (
     <StyledAboutSection id="about" ref={revealContainer}>
@@ -146,18 +138,22 @@ const About = () => {
         <StyledText>
           <div>
             <p>
-              Hello! My name is Mujtaba Rehman and I enjoy building solutions for mankind. I've
-              started my programming journey since 2017 when I was only 17 years old. At that time,
-              I've started learning C programming language. After that, I've learnt C++, Python,
-              HTML, CSS, JavaScript, React, Node, MongoDB and many more. But now I'm only working on
-              JavaScript.
+              Hello! My name is Mujtaba Rehman and I enjoy solving difficult problems. I'm a CS
+              student at the University of Waterloo who is graduating in 2026. My main focus is on
+              front-end and back-end web development. I'm most experienced with JavaScript,
+              TypeScript, React, Next.js and Node.js. But I'm always looking for excuses to learn
+              new technologies.
+            </p>
+            <p>
+              In my free time I like solving Rubix's cubes 🧩 (23 seconds PB), watching anime 📺,
+              following Formula 1 🏎️, and playing volleyball 🏐.
             </p>
 
             <p>
-              So far, and I’ve got opportunity of working at{' '}
-              <a href="https://jouleslabs.com/">JoulesLabs</a> and{' '}
-              <a href="https://techsistltd.com/">Techsist Limited</a>. Besides, I'm working with a
-              software company as a part-time developer.
+              This summer I had the pleasure of working at{' '}
+              <a href="https://flodraulic.com/">Flodraulic</a> as a Software Developer Intern. Right
+              now I'm looking for a Fall 2024 internship, so if you're looking for a developer, feel
+              free to reach out!
             </p>
 
             <p>Here are a few technologies I’ve been working with recently:</p>
@@ -182,7 +178,6 @@ const About = () => {
         </StyledPic>
       </div>
       <Skills />
-      <Workstation />
     </StyledAboutSection>
   );
 };

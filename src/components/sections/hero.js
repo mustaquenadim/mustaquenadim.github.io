@@ -82,12 +82,7 @@ const Hero = () => {
     <>
       <p>
         I’m a 3rd year Computer Science student at the University of Waterloo, with a focus on
-        software development using new web technologies. I am passionate about building scalable
-        software, creating effective solutions, and learning new technologies.
-      </p>
-      <p>
-        In my free time I like solving Rubix's cubes 🧩 (23 seconds PB), watching anime 📺,
-        following Formula 1 🏎️, and playing volleyball 🏐.
+        software development using new web technologies.
       </p>
     </>
   );

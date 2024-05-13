@@ -191,7 +191,6 @@ const Skills = () => {
     'node-js',
     'postgresql',
     'docker',
-    'vs-code',
   ];
 
   return (
