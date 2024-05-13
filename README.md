@@ -1,6 +1,3 @@
-<div align="center">
-  <img alt="Logo" src="https://raw.githubusercontent.com/mustaquenadim/me/master/src/images/mn-logo.png" width="100" />
-</div>
-<h1 align="center">
-  Mustaque Nadim
-</h1>
+This is my portfolio site.
+
+This site was inspired by [Brittany Chiang](https://github.com/bchiang7). I used [Mustaque Nadim's](https://github.com/mustaquenadim) fork as a starting point because it is deployable on GitHub Pages.
