@@ -1,10 +1,10 @@
 module.exports = {
-  email: 'hello@mustaquenadim.com',
+  email: 'rehmanmujtaba@outlook.com',
 
   socialMedia: [
     {
       name: 'GitHub',
-      url: 'https://github.com/rehmanmujtaba',
+      url: 'https://github.com/mustaquenadim',
     },
     {
       name: 'Linkedin',
@@ -21,21 +21,13 @@ module.exports = {
       name: 'Experience',
       url: '/#jobs',
     },
-    {
-      name: 'Work',
-      url: '/#projects',
-    },
-    {
-      name: 'Blogs',
-      url: '/#blogs',
-    },
+    // {
+    //   name: 'Projects',
+    //   url: '/#projects',
+    // },
     {
       name: 'Contact',
       url: '/#contact',
-    },
-    {
-      name: 'Pensieve',
-      url: '/pensieve',
     },
   ],
 
