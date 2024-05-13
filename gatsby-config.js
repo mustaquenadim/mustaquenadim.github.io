@@ -3,10 +3,10 @@ const config = require('./src/config');
 module.exports = {
   pathPrefix: '/',
   siteMetadata: {
-    title: 'Mustaque Nadim',
+    title: 'Mujtaba Rehman',
     description:
-      'Mustaque Nadim is a passionate programmer from Bangladesh, skilled in building web applications using MERN (MongoDB, ExpressJS, ReactJS, NodeJS) technologies.',
-    siteUrl: 'https://mustaquenadim.com', // No trailing slash allowed!
+      'Mujtaba Rehman is a 3rd year Computer Science student at the University of Waterloo, with a focus on web development and software engineering.',
+    siteUrl: 'https://rehmanmujtaba.me', // No trailing slash allowed!
     image: '/og.png', // Path to your image you placed in the 'static' folder
     twitterUsername: '@_mustaquenadim_',
   },

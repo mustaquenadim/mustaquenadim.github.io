@@ -123,7 +123,7 @@ const Footer = () => {
         </a>
         <div>
           Revised by{' '}
-          <a href="https://github.com/mustaquenadim/mustaquenadim.github.io">Mustaque Nadim</a>
+          <a href="https://github.com/mustaquenadim/mustaquenadim.github.io">Mujtaba Rehman</a>
         </div>
       </StyledCredit>
     </StyledFooter>

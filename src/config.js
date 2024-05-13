@@ -4,23 +4,11 @@ module.exports = {
   socialMedia: [
     {
       name: 'GitHub',
-      url: 'https://github.com/mustaquenadim',
-    },
-    {
-      name: 'Instagram',
-      url: 'https://www.instagram.com/mustaquenadim',
-    },
-    {
-      name: 'Twitter',
-      url: 'https://twitter.com/_mustaquenadim_',
+      url: 'https://github.com/rehmanmujtaba',
     },
     {
       name: 'Linkedin',
-      url: 'https://www.linkedin.com/in/mustaquenadim',
-    },
-    {
-      name: 'Codepen',
-      url: 'https://codepen.io/mustaquenadim',
+      url: 'https://www.linkedin.com/in/rehmanmujtaba',
     },
   ],
 
@@ -28,10 +16,6 @@ module.exports = {
     {
       name: 'About',
       url: '/#about',
-    },
-    {
-      name: 'Services',
-      url: '/#services',
     },
     {
       name: 'Experience',

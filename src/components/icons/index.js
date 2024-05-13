@@ -18,5 +18,4 @@ export { default as IconOptimization } from './optimization';
 export { default as IconPlayStore } from './playstore';
 export { default as IconPlugin } from './plugin';
 export { default as IconStar } from './star';
-export { default as IconTwitter } from './twitter';
 export { default as IconWebsite } from './website';

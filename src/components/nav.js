@@ -163,12 +163,12 @@ const Nav = ({ isHome }) => {
       {isHome ? (
         <a href="/" aria-label="home">
           {/* <IconLogo /> */}
-          <img src={logo} alt="Mustaque Nadim Logo" />
+          <img src={logo} alt="Mujtaba Rehman Logo" />
         </a>
       ) : (
         <Link to="/" aria-label="home">
           {/* <IconLogo /> */}
-          <img src={logo} alt="Mustaque Nadim Logo" />
+          <img src={logo} alt="Mujtaba Rehman Logo" />
         </Link>
       )}
     </div>

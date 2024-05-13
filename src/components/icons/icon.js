@@ -18,7 +18,6 @@ import {
   IconPlayStore,
   IconPlugin,
   IconStar,
-  IconTwitter,
   IconWebsite,
 } from '@components/icons';
 import PropTypes from 'prop-types';
@@ -58,8 +57,6 @@ const Icon = ({ name }) => {
       return <IconStar />;
     case 'Mobile':
       return <IconMobile />;
-    case 'Twitter':
-      return <IconTwitter />;
     case 'Website':
       return <IconWebsite />;
     case 'Plugin':

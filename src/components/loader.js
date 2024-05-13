@@ -58,7 +58,7 @@ const Loader = ({ finishLoading }) => {
         <svg viewBox="0 0 800 600">
           <symbol id="s-text">
             <text textAnchor="middle" x="50%" y="50%" className="text--line">
-              Mustaque Nadim
+              Mujtaba Rehman
             </text>
           </symbol>
           <g className="g-ants">

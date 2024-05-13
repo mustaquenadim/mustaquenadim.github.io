@@ -46,7 +46,7 @@ const StyledHeroSection = styled.section`
   }
 `;
 
-const TEXTS = ['Frontend Engineer', 'Product Enthusiast', 'Instructor', 'Content Creator'];
+const TEXTS = ['CS Student', 'Web Developer', 'Problem Solver', 'Software Engineer'];
 
 const Hero = () => {
   const [index, setIndex] = React.useState(0);
@@ -71,7 +71,7 @@ const Hero = () => {
   }, []);
 
   const one = <h1>Hi, my name is</h1>;
-  const two = <h2 className="big-heading">Mustaque Nadim</h2>;
+  const two = <h2 className="big-heading">Mujtaba Rehman</h2>;
   // const three = <h3 className="big-heading">Full Stack Developer</h3>;
   const three = (
     <h3 className="big-heading">
@@ -81,8 +81,13 @@ const Hero = () => {
   const four = (
     <>
       <p>
-        I’m a passionate programmer from Bangladesh with entrepreneurial spirit, experienced in
-        building large scale web application using MERN technologies.
+        I’m a 3rd year Computer Science student at the University of Waterloo, with a focus on
+        software development using new web technologies. I am passionate about building scalable
+        software, creating effective solutions, and learning new technologies.
+      </p>
+      <p>
+        In my free time I like solving Rubix's cubes 🧩 (23 seconds PB), watching anime 📺,
+        following Formula 1 🏎️, and playing volleyball 🏐.
       </p>
     </>
   );
@@ -91,8 +96,7 @@ const Hero = () => {
       className="email-link"
       href="/Mustaque-Nadim-Software-Engineer-Resume.pdf"
       target="_blank"
-      rel="noreferrer"
-    >
+      rel="noreferrer">
       Hire me
     </a>
   );

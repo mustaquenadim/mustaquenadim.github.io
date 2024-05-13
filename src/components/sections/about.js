@@ -146,7 +146,7 @@ const About = () => {
         <StyledText>
           <div>
             <p>
-              Hello! My name is Mustaque Nadim and I enjoy building solutions for mankind. I've
+              Hello! My name is Mujtaba Rehman and I enjoy building solutions for mankind. I've
               started my programming journey since 2017 when I was only 17 years old. At that time,
               I've started learning C programming language. After that, I've learnt C++, Python,
               HTML, CSS, JavaScript, React, Node, MongoDB and many more. But now I'm only working on
