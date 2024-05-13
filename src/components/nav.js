@@ -7,7 +7,7 @@ import PropTypes from 'prop-types';
 import React, { useEffect, useState } from 'react';
 import { CSSTransition, TransitionGroup } from 'react-transition-group';
 import styled, { css } from 'styled-components';
-import logo from '../images/mn-logo.png';
+import logo from '../images/android-chrome-512x512.png';
 
 const StyledHeader = styled.header`
   ${({ theme }) => theme.mixins.flexBetween};
@@ -162,12 +162,10 @@ const Nav = ({ isHome }) => {
     <div className="logo" tabIndex="-1">
       {isHome ? (
         <a href="/" aria-label="home">
-          {/* <IconLogo /> */}
           <img src={logo} alt="Mujtaba Rehman Logo" />
         </a>
       ) : (
         <Link to="/" aria-label="home">
-          {/* <IconLogo /> */}
           <img src={logo} alt="Mujtaba Rehman Logo" />
         </Link>
       )}
