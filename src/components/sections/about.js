@@ -132,10 +132,10 @@ const About = () => {
   const skills = [
     'JavaScript (ES6+)',
     'TypeScript',
-    'React',
+    'Next.js',
     'Node.js',
+    'Express.js',
     'React Native',
-    'Data Structures & Algorithms',
   ];
 
   return (
@@ -146,26 +146,41 @@ const About = () => {
         <StyledText>
           <div>
             <p>
-              Hello! My name is Mustaque Nadim and I enjoy building solutions for mankind. I've
-              started my programming journey since 2017 when I was only 17 years old. At that time,
-              I've started learning C programming language. After that, I've learnt C++, Python,
-              HTML, CSS, JavaScript, React, Node, MongoDB and many more. But now I'm only working on
-              JavaScript.
+              A warrior's weapon is his sword. A writer's weapon is his pen. And my weapon is
+              programming. Over the past 7 years, programming has evolved from being my spare-time
+              friend to a daily life habit.
             </p>
 
             <p>
-              So far, and I’ve got opportunity of working at{' '}
+              Throughout this journey, I've had the opportunity to work at{' '}
+              <a href="https://bengalsoftware.com/">Bengal Software</a>,{' '}
               <a href="https://jouleslabs.com/">JoulesLabs</a> and{' '}
-              <a href="https://techsistltd.com/">Techsist Limited</a>. Besides, I'm working with a
-              software company as a part-time developer.
+              <a href="https://techsistltd.com/">Techsist Limited</a>. Additionally, to share my
+              programming knowledge and experience, I founded{' '}
+              <a href="https://academy.mustaquenadim.com/">Mustaque Nadim Academy</a> and Passionate
+              Programmer Community. I firmly believe that{' '}
+              <b>
+                &quot;Knowledge grows exponentially. The more we know, the greater our ability to
+                learn, and the faster we expand our knowledge base.&quot;
+              </b>{' '}
+              - Dan Brown.
             </p>
 
-            <p>Here are a few technologies I’ve been working with recently:</p>
+            <p>
+              My expertise is not limited to specific tools or technologies; I can learn and adapt
+              to any. Here are a few technologies I’ve been working with recently:
+            </p>
           </div>
 
           <ul className="skills-list">
             {skills && skills.map((skill, i) => <li key={i}>{skill}</li>)}
           </ul>
+
+          <p>
+            Furthermore, I have demonstrated proficiency in using a variety of artificial
+            intelligence (AI) tools like <a href="https://www.locofy.ai/">Locofy</a> to speed up the
+            software development process.
+          </p>
         </StyledText>
 
         <StyledPic>
