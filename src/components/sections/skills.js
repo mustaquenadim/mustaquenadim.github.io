@@ -3,9 +3,8 @@ import { usePrefersReducedMotion } from '@hooks';
 import sr from '@utils/sr';
 import { StaticImage } from 'gatsby-plugin-image';
 import React, { useEffect, useRef } from 'react';
+import Marquee from 'react-fast-marquee';
 import styled from 'styled-components';
-import { A11y, Autoplay } from 'swiper/modules';
-import { Swiper, SwiperSlide } from 'swiper/react';
 
 const StyledSkillsSection = styled.div`
   margin-top: 2rem;
@@ -15,6 +14,7 @@ const StyledSkillsSection = styled.div`
     display: block;
     position: relative;
     width: 100%;
+    margin: 0 32px;
 
     &:hover,
     &:focus {
@@ -196,37 +196,13 @@ const Skills = () => {
 
   return (
     <StyledSkillsSection>
-      <Swiper
-        modules={[Autoplay, A11y]}
-        spaceBetween={50}
-        slidesPerView={3}
-        breakpoints={{
-          640: {
-            slidesPerView: 4,
-            spaceBetween: 20,
-          },
-          768: {
-            slidesPerView: 5,
-            spaceBetween: 40,
-          },
-          1024: {
-            slidesPerView: 7,
-            spaceBetween: 50,
-          },
-        }}
-        loop={true}
-        autoplay={{
-          delay: 3000,
-          disableOnInteraction: false,
-        }}
-        grabCursor={true}
-      >
+      <Marquee autoFill="true" pauseOnHover="true" gradient="true" gradientColor="#0a192f">
         {skills.map((skill, index) => (
-          <SwiperSlide key={index}>
-            <div className="wrapper">{imageSelector(skill)}</div>
-          </SwiperSlide>
+          <div key={index} className="wrapper">
+            {imageSelector(skill)}
+          </div>
         ))}
-      </Swiper>
+      </Marquee>
     </StyledSkillsSection>
   );
 };
