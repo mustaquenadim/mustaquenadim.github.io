@@ -1,0 +1,5 @@
+{
+    "componentChunkName": "component---src-templates-tag-js",
+    "path": "/pensieve/tags/web-development/",
+    "result": {"data":{"allMarkdownRemark":{"totalCount":2,"edges":[{"node":{"frontmatter":{"title":"How to Disable Right-Click in a React Application","description":"Disable Right-Click in a React Application","date":"2024-04-18T00:00:00.000Z","slug":"/pensieve/disable-right-click-in-a-react-app","tags":["React","Web Development"]}}},{"node":{"frontmatter":{"title":"Understanding Inline, Inline-Block, and Block Elements in HTML","description":"Unlock the secrets of inline, inline-block, and block elements in HTML","date":"2023-07-02T00:00:00.000Z","slug":"/pensieve/understanding-inline-inline-block-and-block-elements-in-html","tags":["HTML","Web Development"]}}}]}},"pageContext":{"tag":"Web Development"}},
+    "staticQueryHashes": ["1994492073","2009693873","2031412112","3825832676"]}

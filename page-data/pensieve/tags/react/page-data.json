@@ -1,0 +1,5 @@
+{
+    "componentChunkName": "component---src-templates-tag-js",
+    "path": "/pensieve/tags/react/",
+    "result": {"data":{"allMarkdownRemark":{"totalCount":1,"edges":[{"node":{"frontmatter":{"title":"How to Disable Right-Click in a React Application","description":"Disable Right-Click in a React Application","date":"2024-04-18T00:00:00.000Z","slug":"/pensieve/disable-right-click-in-a-react-app","tags":["React","Web Development"]}}}]}},"pageContext":{"tag":"React"}},
+    "staticQueryHashes": ["1994492073","2009693873","2031412112","3825832676"]}

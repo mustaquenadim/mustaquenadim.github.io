@@ -1,0 +1,5 @@
+{
+    "componentChunkName": "component---src-templates-tag-js",
+    "path": "/pensieve/tags/free/",
+    "result": {"data":{"allMarkdownRemark":{"totalCount":1,"edges":[{"node":{"frontmatter":{"title":"How to use ChatGPT-4 for free","description":"ChatGPT-4 is completely free in other sites","date":"2023-04-29T00:00:00.000Z","slug":"/pensieve/how-to-use-chatgpt-4-for-free","tags":["AI","Tools","ChatGPT","Free","How to"]}}}]}},"pageContext":{"tag":"Free"}},
+    "staticQueryHashes": ["1994492073","2009693873","2031412112","3825832676"]}
