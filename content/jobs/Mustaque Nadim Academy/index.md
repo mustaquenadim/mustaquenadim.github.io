@@ -1,5 +1,5 @@
 ---
-date: '2022-03-01'
+date: '2023-01-12'
 title: 'Instructor'
 company: 'Mustaque Nadim Academy'
 location: 'Virtual'
