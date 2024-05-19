@@ -14,4 +14,4 @@ tech:
 
 [ReviewXpo](https://www.reviewxpo.com/shopify-reviews-app)
 
-A customer feedback SAAS app for shopify merchants which makes product review collection easier and build social proof. It is easy to setup and appear in google searches. Available on [Shopify App Store](https://apps.shopify.com/categories/store-design-social-proof).
+A customer feedback SAAS app for shopify merchants which makes product review collection easier and build social proof. It is easy to setup and appear in google searches. Available on [Shopify App Store](https://apps.shopify.com/products-review-app).
