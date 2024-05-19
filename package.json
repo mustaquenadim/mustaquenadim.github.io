@@ -5,7 +5,7 @@
   "author": "Mustaque Nadim <mustaquenadim2000@gmail.com>",
   "repository": {
     "type": "git",
-    "url": "https://github.com/mustaquenadim"
+    "url": "git+https://github.com/mustaquenadim/mustaquenadim.github.io.git"
   },
   "keywords": [
     "gatsby"
