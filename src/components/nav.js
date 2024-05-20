@@ -64,6 +64,22 @@ const StyledNav = styled.nav`
 
   .logo {
     ${({ theme }) => theme.mixins.flexCenter};
+    border-radius: 6px;
+    overflow: hidden;
+
+    .sliding-line {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(45deg, transparent, transparent, #fff, transparent, transparent);
+      background-size: 1000% 500%;
+      animation: slide 10s ease infinite;
+      -moz-animation: slide 10s ease infinite;
+      -webkit-animation: slide 10s ease infinite;
+      -webkit-text-fill-color: transparent;
+    }
 
     a {
       color: var(--green);
@@ -82,6 +98,18 @@ const StyledNav = styled.nav`
         transition: var(--transition);
         user-select: none;
       }
+    }
+  }
+
+  @keyframes slide {
+    0% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+    100% {
+      background-position: 0% 50%;
     }
   }
 `;
@@ -162,13 +190,13 @@ const Nav = ({ isHome }) => {
     <div className="logo" tabIndex="-1">
       {isHome ? (
         <a href="/" aria-label="home">
-          {/* <IconLogo /> */}
           <img src={logo} alt="Mustaque Nadim Logo" />
+          <div className="sliding-line"></div>
         </a>
       ) : (
         <Link to="/" aria-label="home">
-          {/* <IconLogo /> */}
           <img src={logo} alt="Mustaque Nadim Logo" />
+          <div className="sliding-line"></div>
         </Link>
       )}
     </div>
