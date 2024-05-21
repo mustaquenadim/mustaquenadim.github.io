@@ -50,7 +50,7 @@ module.exports = {
       url: '/#contact',
     },
     {
-      name: 'Pensieve',
+      name: 'Posts',
       url: '/pensieve',
     },
   ],
