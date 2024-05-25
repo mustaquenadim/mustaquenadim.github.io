@@ -1,15 +1,13 @@
 ---
-title: How to use ChatGPT-4 for free
+title: How to use ChatGPT Plus GPT-4 Model for free
 description: ChatGPT-4 is completely free in other sites
-date: 2023-04-29
-draft: true
-slug: /pensieve/how-to-use-chatgpt-4-for-free
+date: 2024-05-25
+draft: false
+slug: /pensieve/how-to-use-gpt-4-model-for-free
 tags:
   - AI
   - Tools
-  - ChatGPT
   - Free
-  - How to
 ---
 
 OpenAI, an American artificial intelligence (AI) research company released an AI chatbot named ChatGPT on November 2022. After releasing ChatGPT, it crossed over a million user within 5 days. And reached 100 million users within 2 months. On March 14, 2023 OpenAI released GPT-4 (latest) which is a families of large language models (LLMs) comes with improved features and capabilities, including multimodal capabilities for interpreting both text and image inputs, exceptional performance in reasoning tests, and support for over 26 different languages.
@@ -28,11 +26,11 @@ Forefront Chat is a new tool launched by Forefront AI that offers free access to
 
 Ora is a web platform that allows you to build LLM apps in a shareable chat interface. The developer is now providing users with the opportunity to explore [ChatGPT 4](https://ora.ai/openai/gpt4) for free, but has limited the usage to 1 message per day due to high demand.
 
-## 3. [Bing](https://www.bing.com/new)
+## 3. [Microsoft Copilot](https://copilot.microsoft.com/)
 
-![Bing Chat](./bing-chat.png)
+![Microsoft Copilot](./bing-chat.png)
 
-Microsoft Bing Chat is another option to access GPT-4 for free. You can send unlimited messages for free. Bing AI has announced that it is already running on the GPT-4 model, also known as "Prometheus," and has some additional features that ChatGPT 4 does not have, such as the ability to generate images with a simple prompt and provide cited sources of information.
+Microsoft Copilot is another option to access GPT-4 for free. You can send unlimited messages for free. Bing AI has announced that it is already running on the GPT-4 model, also known as "Prometheus," and has some additional features, such as the ability to generate images with a simple prompt and provide cited sources of information.
 
 ## 4. [HuggingFace](https://huggingface.co/spaces/ysharma/ChatGPT4)
 
