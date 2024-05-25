@@ -46,7 +46,7 @@ const StyledHeroSection = styled.section`
   }
 `;
 
-const TEXTS = ['JavaScript Fanatic', 'Product Enthusiast', 'Instructor', 'Content Creator'];
+const TEXTS = ['JavaScript Freak', 'Product Enthusiast', 'Instructor', 'Content Creator'];
 
 const Hero = () => {
   const [index, setIndex] = React.useState(0);
