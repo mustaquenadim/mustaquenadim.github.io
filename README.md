@@ -9,6 +9,38 @@
   The latest iteration of my personal<a href="https://mustaquenadim.com" target="_blank">website</a> built with <a href="https://www.gatsbyjs.org/" target="_blank">Gatsby</a> and hosted with <a href="https://pages.github.com/" target="_blank">GitHub Pages</a>
 </p>
 
+## ⚙️ Installation & Set Up
+
+1. Fork and clone this repo
+
+    ```sh
+    git clone https://github.com/mustaquenadim/mustaquenadim.github.io.git
+    ```
+
+2. Install the Gatsby CLI
+
+   ```sh
+   npm install -g gatsby-cli
+   ```
+
+3. Install and use the correct version of Node using [NVM](https://github.com/nvm-sh/nvm)
+
+   ```sh
+   nvm install
+   ```
+
+4. Install dependencies
+
+   ```sh
+   yarn
+   ```
+
+5. Start the development server
+
+   ```sh
+   npm start
+   ```
+
 ## 🛠️ Building and Running for Production
 
 1. Generate a full static production build
@@ -44,9 +76,9 @@ or,
 
 1. Deploy your site
 
-```sh
-npm run deploy
-```
+    ```sh
+    npm run deploy
+    ```
 
 ## 🎨 Color Reference
 
