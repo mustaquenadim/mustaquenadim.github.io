@@ -40,13 +40,57 @@ const StyledHeroSection = styled.section`
     max-width: 540px;
   }
 
+  .button-group {
+    display: flex;
+    gap: 12px;
+  }
+
   .email-link {
     ${({ theme }) => theme.mixins.bigButton};
     margin-top: 50px;
   }
+
+  .highlighted-box {
+    border-radius: 300px;
+    display: block;
+    margin-top: 18px;
+  }
+
+  .highlighted-box a {
+    background: linear-gradient(to right, #80ed99, #57cc99, #38a3a5, #57cc99, #80ed99);
+    background-size: 200%;
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: animate-gradient 4s linear infinite;
+  }
+
+  @keyframes animate-gradient {
+    0% {
+      background-position: 0%;
+    }
+    20% {
+      background-position: 100%;
+    }
+    50% {
+      background-position: 200%;
+    }
+    80% {
+      background-position: 100%;
+    }
+    100% {
+      background-position: 0%;
+    }
+  }
 `;
 
-const TEXTS = ['JavaScript Freak', 'Product Enthusiast', 'Instructor', 'Content Creator'];
+const TEXTS = [
+  'JavaScript Freak',
+  'Open Source Enthusiast',
+  'Product Enthusiast',
+  'Instructor',
+  'Content Creator',
+];
 
 const Hero = () => {
   const [index, setIndex] = React.useState(0);
@@ -72,7 +116,6 @@ const Hero = () => {
 
   const one = <h1>Hi, my name is</h1>;
   const two = <h2 className="big-heading">Mustaque Nadim</h2>;
-  // const three = <h3 className="big-heading">Full Stack Developer</h3>;
   const three = (
     <h3 className="big-heading">
       <TextTransition springConfig={presets.wobbly}>{TEXTS[index % TEXTS.length]}</TextTransition>
@@ -87,17 +130,33 @@ const Hero = () => {
     </>
   );
   const five = (
-    <a
-      className="email-link"
-      href="/Mustaque-Nadim-Software-Engineer-Resume.pdf"
-      target="_blank"
-      rel="noreferrer"
-    >
-      Hire me
-    </a>
+    <div className="button-group">
+      <a className="email-link" href="#contact">
+        Hire me
+      </a>
+      <a
+        className="email-link"
+        href="/Mustaque-Nadim-Software-Engineer-Resume.pdf"
+        target="_blank"
+        rel="noreferrer"
+      >
+        Download Resume
+      </a>
+    </div>
   );
 
-  const items = [one, two, three, four, five];
+  const six = (
+    <div className="highlighted-box">
+      <span>
+        Do you have a project? Let's{' '}
+        <a href="https://cal.com/mustaquenadim/15min" target="_blank" rel="noreferrer">
+          schedule a meeting.
+        </a>
+      </span>
+    </div>
+  );
+
+  const items = [one, two, three, four, five, six];
 
   return (
     <StyledHeroSection>
