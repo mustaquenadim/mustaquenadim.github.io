@@ -130,12 +130,14 @@ const About = () => {
   }, []);
 
   const skills = [
-    'JavaScript (ES6+)',
+    'JavaScript',
     'TypeScript',
+    'React.js',
     'Next.js',
     'Node.js',
     'Express.js',
     'React Native',
+    'Locofy',
   ];
 
   return (
@@ -175,12 +177,6 @@ const About = () => {
           <ul className="skills-list">
             {skills && skills.map((skill, i) => <li key={i}>{skill}</li>)}
           </ul>
-
-          <p>
-            Furthermore, I have demonstrated proficiency in using a variety of artificial
-            intelligence (AI) tools like <a href="https://www.locofy.ai/">Locofy</a> to speed up the
-            software development process.
-          </p>
         </StyledText>
 
         <StyledPic>
