@@ -5,8 +5,9 @@ import { StaticImage } from 'gatsby-plugin-image';
 import React, { useEffect, useRef } from 'react';
 import styled from 'styled-components';
 
-const StyledAboutSection = styled.section`
+const StyledWorkStationSection = styled.section`
   max-width: 900px;
+  padding-bottom: 0;
 
   h2 {
     text-align: center;
@@ -187,7 +188,7 @@ const Workstation = () => {
   };
 
   return (
-    <StyledAboutSection id="workstation" ref={revealContainer}>
+    <StyledWorkStationSection id="workstation" ref={revealContainer}>
       <h2>My Workstation</h2>
 
       <div className="inner">
@@ -234,7 +235,7 @@ const Workstation = () => {
           </div>
         </StyledPic>
       </div>
-    </StyledAboutSection>
+    </StyledWorkStationSection>
   );
 };
 
