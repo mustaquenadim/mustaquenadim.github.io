@@ -176,7 +176,7 @@ const Services = () => {
           fileAbsolutePath: { regex: "/content/services/" }
           frontmatter: { showInServices: { ne: false } }
         }
-        sort: { fields: [frontmatter___order], order: ASC }
+        sort: { frontmatter: { order: ASC } }
       ) {
         edges {
           node {
@@ -235,8 +235,7 @@ const Services = () => {
                   aria-label="External Link"
                   className="external"
                   target="_blank"
-                  rel="noreferrer"
-                >
+                  rel="noreferrer">
                   <Icon name="External" />
                 </a>
               )}
@@ -285,15 +284,13 @@ const Services = () => {
                   key={i}
                   classNames="fadeup"
                   timeout={i >= GRID_LIMIT ? (i - GRID_LIMIT) * 300 : 300}
-                  exit={false}
-                >
+                  exit={false}>
                   <StyledService
                     key={i}
                     ref={el => (revealServices.current[i] = el)}
                     style={{
                       transitionDelay: `${i >= GRID_LIMIT ? (i - GRID_LIMIT) * 100 : 0}ms`,
-                    }}
-                  >
+                    }}>
                     {serviceInner(node)}
                   </StyledService>
                 </CSSTransition>

@@ -1,11 +1,11 @@
-import React, { useState, useEffect, useRef } from 'react';
-import { useStaticQuery, graphql } from 'gatsby';
-import { CSSTransition } from 'react-transition-group';
-import styled from 'styled-components';
 import { srConfig } from '@config';
+import { usePrefersReducedMotion } from '@hooks';
 import { KEY_CODES } from '@utils';
 import sr from '@utils/sr';
-import { usePrefersReducedMotion } from '@hooks';
+import { graphql, useStaticQuery } from 'gatsby';
+import React, { useEffect, useRef, useState } from 'react';
+import { CSSTransition } from 'react-transition-group';
+import styled from 'styled-components';
 
 const StyledJobsSection = styled.section`
   max-width: 700px;
@@ -169,7 +169,7 @@ const Jobs = () => {
     query {
       jobs: allMarkdownRemark(
         filter: { fileAbsolutePath: { regex: "/content/jobs/" } }
-        sort: { fields: [frontmatter___date], order: DESC }
+        sort: { frontmatter: { date: DESC } }
       ) {
         edges {
           node {
