@@ -1,10 +1,10 @@
-import React, { useState, useEffect, useRef } from 'react';
-import { Helmet } from 'react-helmet';
-import { Link } from 'gatsby';
-import styled from 'styled-components';
 import { navLinks } from '@config';
-import { KEY_CODES } from '@utils';
 import { useOnClickOutside } from '@hooks';
+import { KEY_CODES } from '@utils';
+import { Link } from 'gatsby';
+import React, { useEffect, useRef, useState } from 'react';
+import { Helmet } from 'react-helmet';
+import styled from 'styled-components';
 
 const StyledMenu = styled.div`
   display: none;
@@ -49,10 +49,10 @@ const StyledHamburgerButton = styled.button`
     background-color: var(--green);
     transition-duration: 0.22s;
     transition-property: transform;
-    transition-delay: ${props => (props.menuOpen ? `0.12s` : `0s`)};
-    transform: rotate(${props => (props.menuOpen ? `225deg` : `0deg`)});
+    transition-delay: ${props => (props.menuopen ? `0.12s` : `0s`)};
+    transform: rotate(${props => (props.menuopen ? `225deg` : `0deg`)});
     transition-timing-function: cubic-bezier(
-      ${props => (props.menuOpen ? `0.215, 0.61, 0.355, 1` : `0.55, 0.055, 0.675, 0.19`)}
+      ${props => (props.menuopen ? `0.215, 0.61, 0.355, 1` : `0.55, 0.055, 0.675, 0.19`)}
     );
     &:before,
     &:after {
@@ -70,17 +70,17 @@ const StyledHamburgerButton = styled.button`
       transition-property: transform;
     }
     &:before {
-      width: ${props => (props.menuOpen ? `100%` : `120%`)};
-      top: ${props => (props.menuOpen ? `0` : `-10px`)};
-      opacity: ${props => (props.menuOpen ? 0 : 1)};
-      transition: ${({ menuOpen }) =>
-    menuOpen ? 'var(--ham-before-active)' : 'var(--ham-before)'};
+      width: ${props => (props.menuopen ? `100%` : `120%`)};
+      top: ${props => (props.menuopen ? `0` : `-10px`)};
+      opacity: ${props => (props.menuopen ? 0 : 1)};
+      transition: ${({ menuopen }) =>
+    menuopen ? 'var(--ham-before-active)' : 'var(--ham-before)'};
     }
     &:after {
-      width: ${props => (props.menuOpen ? `100%` : `80%`)};
-      bottom: ${props => (props.menuOpen ? `0` : `-10px`)};
-      transform: rotate(${props => (props.menuOpen ? `-90deg` : `0`)});
-      transition: ${({ menuOpen }) => (menuOpen ? 'var(--ham-after-active)' : 'var(--ham-after)')};
+      width: ${props => (props.menuopen ? `100%` : `80%`)};
+      bottom: ${props => (props.menuopen ? `0` : `-10px`)};
+      transform: rotate(${props => (props.menuopen ? `-90deg` : `0`)});
+      transition: ${({ menuopen }) => (menuopen ? 'var(--ham-after-active)' : 'var(--ham-after)')};
     }
   }
 `;
@@ -101,8 +101,8 @@ const StyledSidebar = styled.aside`
     background-color: var(--light-navy);
     box-shadow: -10px 0px 30px -15px var(--navy-shadow);
     z-index: 9;
-    transform: translateX(${props => (props.menuOpen ? 0 : 100)}vw);
-    visibility: ${props => (props.menuOpen ? 'visible' : 'hidden')};
+    transform: translateX(${props => (props.menuopen ? 0 : 100)}vw);
+    visibility: ${props => (props.menuopen ? 'visible' : 'hidden')};
     transition: var(--transition);
   }
 
@@ -244,16 +244,15 @@ const Menu = () => {
       <div ref={wrapperRef}>
         <StyledHamburgerButton
           onClick={toggleMenu}
-          menuOpen={menuOpen}
+          menuopen={menuOpen}
           ref={buttonRef}
-          aria-label="Menu"
-        >
+          aria-label="Menu">
           <div className="ham-box">
             <div className="ham-box-inner" />
           </div>
         </StyledHamburgerButton>
 
-        <StyledSidebar menuOpen={menuOpen} aria-hidden={!menuOpen} tabIndex={menuOpen ? 1 : -1}>
+        <StyledSidebar menuopen={menuOpen} aria-hidden={!menuOpen} tabIndex={menuOpen ? 1 : -1}>
           <nav ref={navRef}>
             {navLinks && (
               <ol>

@@ -1,5 +1,4 @@
 import { Layout } from '@components';
-import { Icon } from '@components/icons';
 import { srConfig } from '@config';
 import { usePrefersReducedMotion } from '@hooks';
 import sr from '@utils/sr';
@@ -129,8 +128,8 @@ const StyledTableContainer = styled.div`
   }
 `;
 
-const ArchivePage = ({ location, data }) => {
-  const projects = data.allMarkdownRemark.edges;
+const ArchivePage = ({ location }) => {
+  // const projects = data.allMdx.edges;
   const revealTitle = useRef(null);
   const revealTable = useRef(null);
   const revealProjects = useRef([]);
@@ -167,7 +166,7 @@ const ArchivePage = ({ location, data }) => {
                 <th>Link</th>
               </tr>
             </thead>
-            <tbody>
+            {/* <tbody>
               {projects.length > 0 &&
                 projects.map(({ node }, i) => {
                   const { date, github, external, ios, android, title, tech, company } =
@@ -220,7 +219,7 @@ const ArchivePage = ({ location, data }) => {
                     </tr>
                   );
                 })}
-            </tbody>
+            </tbody> */}
           </table>
         </StyledTableContainer>
       </main>
@@ -236,8 +235,8 @@ export default ArchivePage;
 
 export const pageQuery = graphql`
   {
-    allMarkdownRemark(
-      filter: { fileAbsolutePath: { regex: "/content/projects/" } }
+    allMdx(
+      filter: { internal: { contentFilePath: { regex: "/content/projects/" } } }
       sort: { frontmatter: { date: DESC } }
     ) {
       edges {
@@ -252,7 +251,7 @@ export const pageQuery = graphql`
             android
             company
           }
-          html
+          body
         }
       }
     }

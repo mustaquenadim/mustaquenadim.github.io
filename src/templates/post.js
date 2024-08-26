@@ -1,5 +1,6 @@
 import { Layout } from '@components';
 import { graphql, Link } from 'gatsby';
+import { MDXRenderer } from 'gatsby-plugin-mdx';
 import kebabCase from 'lodash/kebabCase';
 import PropTypes from 'prop-types';
 import React from 'react';
@@ -50,7 +51,7 @@ const StyledPostContent = styled.div`
   }
 `;
 
-const PostTemplate = ({ data, location }) => {
+const PostTemplate = ({ data, location, children }) => {
   if (!data) {
     return (
       <Layout location={location}>
@@ -61,7 +62,7 @@ const PostTemplate = ({ data, location }) => {
     );
   }
 
-  const { frontmatter, html } = data.markdownRemark;
+  const { frontmatter } = data.mdx;
   const { title, date, tags } = frontmatter;
 
   return (
@@ -78,7 +79,7 @@ const PostTemplate = ({ data, location }) => {
           <h1 className="medium-heading">{title}</h1>
           <p className="subtitle">
             <time>
-              {new Date(date).toLocaleDateString('en-US', {
+              {new Date(parseInt(date)).toLocaleDateString('en-US', {
                 year: 'numeric',
                 month: 'long',
                 day: 'numeric',
@@ -95,7 +96,9 @@ const PostTemplate = ({ data, location }) => {
           </p>
         </StyledPostHeader>
 
-        <StyledPostContent dangerouslySetInnerHTML={{ __html: html }} />
+        <StyledPostContent>{children}</StyledPostContent>
+
+        <MDXRenderer>{children}</MDXRenderer>
       </StyledPostContainer>
     </Layout>
   );
@@ -110,8 +113,7 @@ PostTemplate.propTypes = {
 
 export const pageQuery = graphql`
   query ($slug: String!) {
-    markdownRemark(frontmatter: { slug: { eq: $slug } }) {
-      html
+    mdx(frontmatter: { slug: { eq: $slug } }) {
       frontmatter {
         title
         description

@@ -33,7 +33,7 @@ const StyledTagsContainer = styled.main`
 
 const TagsPage = ({
   data: {
-    allMarkdownRemark: { group },
+    allMdx: { group },
   },
   location,
 }) => (
@@ -62,7 +62,7 @@ const TagsPage = ({
 
 TagsPage.propTypes = {
   data: PropTypes.shape({
-    allMarkdownRemark: PropTypes.shape({
+    allMdx: PropTypes.shape({
       group: PropTypes.arrayOf(
         PropTypes.shape({
           fieldValue: PropTypes.string.isRequired,
@@ -83,7 +83,7 @@ export default TagsPage;
 
 export const pageQuery = graphql`
   query {
-    allMarkdownRemark(limit: 2000, filter: { frontmatter: { draft: { ne: true } } }) {
+    allMdx(limit: 2000, filter: { frontmatter: { draft: { ne: true } } }) {
       group(field: { frontmatter: { tags: SELECT } }) {
         fieldValue
         totalCount

@@ -168,9 +168,9 @@ const StyledProject = styled.li`
 const Projects = () => {
   const data = useStaticQuery(graphql`
     query {
-      projects: allMarkdownRemark(
+      projects: allMdx(
         filter: {
-          fileAbsolutePath: { regex: "/content/projects/" }
+          internal: { contentFilePath: { regex: "/content/projects/" } }
           frontmatter: { showInProjects: { ne: false } }
         }
         sort: { frontmatter: { date: DESC } }
@@ -183,7 +183,7 @@ const Projects = () => {
               github
               external
             }
-            html
+            body
           }
         }
       }
@@ -212,7 +212,7 @@ const Projects = () => {
   const projectsToShow = showMore ? projects : firstSix;
 
   const projectInner = node => {
-    const { frontmatter, html } = node;
+    const { frontmatter, body } = node;
     const { github, external, title, tech } = frontmatter;
 
     return (
@@ -247,7 +247,7 @@ const Projects = () => {
             </a>
           </h3>
 
-          <div className="project-description" dangerouslySetInnerHTML={{ __html: html }} />
+          <div className="project-description" dangerouslySetInnerHTML={{ __html: body }} />
         </header>
 
         <footer>

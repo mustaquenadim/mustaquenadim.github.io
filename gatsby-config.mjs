@@ -1,6 +1,12 @@
-const config = require('./src/config');
+import { dirname } from 'path';
+import { fileURLToPath } from 'url';
+import siteConfig from './src/config.js';
 
-module.exports = {
+// Create __filename and __dirname for ES modules
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
+
+const config = {
   pathPrefix: '/',
   siteMetadata: {
     title: 'Mustaque Nadim',
@@ -24,45 +30,19 @@ module.exports = {
         name: 'mustaquenadim',
         short_name: 'mustaquenadim',
         start_url: '/',
-        background_color: config.colors.darkNavy,
-        theme_color: config.colors.navy,
+        background_color: siteConfig.colors.darkNavy,
+        theme_color: siteConfig.colors.navy,
         display: 'minimal-ui',
         icon: 'src/images/logo.png',
       },
     },
     `gatsby-plugin-offline`,
     {
-      resolve: `gatsby-source-filesystem`,
+      // https://www.gatsbyjs.com/plugins/gatsby-plugin-mdx
+      resolve: `gatsby-plugin-mdx`,
       options: {
-        name: `images`,
-        path: `${__dirname}/src/images`,
-      },
-    },
-    {
-      resolve: 'gatsby-source-filesystem',
-      options: {
-        name: 'content',
-        path: `${__dirname}/content/`,
-      },
-    },
-    {
-      resolve: `gatsby-source-filesystem`,
-      options: {
-        name: `posts`,
-        path: `${__dirname}/content/posts`,
-      },
-    },
-    {
-      resolve: `gatsby-source-filesystem`,
-      options: {
-        name: `projects`,
-        path: `${__dirname}/content/projects`,
-      },
-    },
-    {
-      resolve: `gatsby-transformer-remark`,
-      options: {
-        plugins: [
+        extensions: [`.md`, `.mdx`, `.markdown`],
+        gatsbyRemarkPlugins: [
           {
             // https://www.gatsbyjs.org/packages/gatsby-remark-external-links
             resolve: 'gatsby-remark-external-links',
@@ -78,7 +58,7 @@ module.exports = {
               maxWidth: 700,
               linkImagesToOriginal: true,
               quality: 90,
-              tracedSVG: { color: config.colors.green },
+              tracedSVG: { color: siteConfig.colors.green },
             },
           },
           {
@@ -148,6 +128,62 @@ module.exports = {
             },
           },
         ],
+        mdxOptions: {
+          remarkPlugins: [
+            // remarkGfm,
+            // [remarkExternalLinks, { target: false }]
+          ],
+          // rehypePlugins: [rehypeSlug, [rehypeAutolinkHeadings, { behavior: `wrap` }]],
+        },
+      },
+    },
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        name: `images`,
+        path: `${__dirname}/src/images`,
+      },
+    },
+    {
+      resolve: 'gatsby-source-filesystem',
+      options: {
+        name: 'content',
+        path: `${__dirname}/content/`,
+      },
+    },
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        name: `featured`,
+        path: `${__dirname}/content/featured`,
+      },
+    },
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        name: `jobs`,
+        path: `${__dirname}/content/jobs`,
+      },
+    },
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        name: `posts`,
+        path: `${__dirname}/content/posts`,
+      },
+    },
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        name: `projects`,
+        path: `${__dirname}/content/projects`,
+      },
+    },
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        name: `services`,
+        path: `${__dirname}/content/services`,
       },
     },
     {
@@ -159,3 +195,5 @@ module.exports = {
     },
   ],
 };
+
+export default config;

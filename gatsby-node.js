@@ -14,8 +14,8 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
 
   const result = await graphql(`
     {
-      postsRemark: allMarkdownRemark(
-        filter: { fileAbsolutePath: { regex: "/content/posts/" } }
+      postsRemark: allMdx(
+        filter: { internal: { contentFilePath: { regex: "/content/posts/" } } }
         sort: { frontmatter: { date: DESC } }
         limit: 1000
       ) {
@@ -24,10 +24,13 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
             frontmatter {
               slug
             }
+            internal {
+              contentFilePath
+            }
           }
         }
       }
-      tagsGroup: allMarkdownRemark(limit: 2000) {
+      tagsGroup: allMdx(limit: 2000) {
         group(field: { frontmatter: { tags: SELECT } }) {
           fieldValue
         }
@@ -47,7 +50,7 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
   posts.forEach(({ node }) => {
     createPage({
       path: node.frontmatter.slug,
-      component: postTemplate,
+      component: `${postTemplate}?__contentFilePath=${node.internal.contentFilePath}`,
       context: {
         // additional data can be passed via context
         slug: node.frontmatter.slug,

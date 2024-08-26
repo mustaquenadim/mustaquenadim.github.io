@@ -126,12 +126,52 @@ In this code snippet, the `<span>` element with the class "highlight" is set to 
 There are some default block-level elements in HTML. Here are some examples:
 
 ```html
-<address>     <article>     <aside>       <blockquote>  <canvas>
-<dd>          <div>         <dl>          <dt>          <fieldset>
-<figcaption>  <figure>      <footer>      <form>        <h1>-<h6>
-<header>      <hr>          <li>          <main>        <nav>
-<noscript>    <ol>          <p>           <pre>         <section>
-<table>       <tfoot>       <ul>          <video>
+<address>
+  <article>
+    <aside>
+      <blockquote>
+        <canvas>
+          <dd>
+            <div>
+              <dl>
+                <dt>
+                  <fieldset>
+                    <figcaption>
+                      <figure>
+                        <footer>
+                          <form>
+                            <h1>
+                              -
+                              <h6>
+                                <header>
+                                  <hr />
+                                  <li>
+                                    <main>
+                                      <nav>
+                                        <noscript>
+                                          <ol>
+                                            <p></p>
+                                            <pre></pre></ol
+                                        ></noscript>
+                                      </nav>
+                                    </main>
+                                  </li>
+                                </header>
+                              </h6>
+                            </h1>
+                          </form>
+                        </footer>
+                      </figure>
+                    </figcaption>
+                  </fieldset>
+                </dt>
+              </dl>
+            </div></dd
+        ></canvas>
+      </blockquote>
+    </aside>
+  </article>
+</address>
 ```
 
 ## Conclusion <a id='conclusion'></a>
@@ -140,6 +180,6 @@ Understanding the differences between inline, inline-block, and block elements i
 
 ## Resources <a id='resources'></a>
 
-- <https://www.digitalocean.com/community/tutorials/css-display-inline-vs-inline-block>
-- <https://www.w3schools.com/css/css_inline-block.asp>
+- [https://www.digitalocean.com/community/tutorials/css-display-inline-vs-inline-block](https://www.digitalocean.com/community/tutorials/css-display-inline-vs-inline-block)
+- [https://www.w3schools.com/css/css_inline-block.asp](https://www.w3schools.com/css/css_inline-block.asp)
 - [HTML and CSS: Design and Build Websites by Jon Duckett](https://a.co/d/fHZH58q)

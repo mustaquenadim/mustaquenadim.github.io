@@ -65,7 +65,7 @@ In conclusion, understanding the difference between functions and methods is ess
 
 ## Resources <a id='resources'></a>
 
-- <https://developer.mozilla.org/en-US/docs/Web/JavaScript>
-- <https://eloquentjavascript.net/>
+- [https://developer.mozilla.org/en-US/docs/Web/JavaScript](https://developer.mozilla.org/en-US/docs/Web/JavaScript)
+- [https://eloquentjavascript.net/](https://eloquentjavascript.net/)
 
 If you found this article helpful, feel free to share it with fellow developers and subscribe to our blog for more informative content.

@@ -171,9 +171,9 @@ const StyledService = styled.li`
 const Services = () => {
   const data = useStaticQuery(graphql`
     query {
-      services: allMarkdownRemark(
+      services: allMdx(
         filter: {
-          fileAbsolutePath: { regex: "/content/services/" }
+          internal: { contentFilePath: { regex: "/content/services/" } }
           frontmatter: { showInServices: { ne: false } }
         }
         sort: { frontmatter: { order: ASC } }
@@ -184,7 +184,7 @@ const Services = () => {
               title
               icon
             }
-            html
+            body
           }
         }
       }
@@ -213,7 +213,7 @@ const Services = () => {
   const firstSix = services.slice(0, GRID_LIMIT);
 
   const serviceInner = node => {
-    const { frontmatter, html } = node;
+    const { frontmatter, body } = node;
     const { github, external, title, tech, icon } = frontmatter;
 
     return (
@@ -248,7 +248,7 @@ const Services = () => {
             </a>
           </h3>
 
-          <div className="service-description" dangerouslySetInnerHTML={{ __html: html }} />
+          <div className="service-description" dangerouslySetInnerHTML={{ __html: body }} />
         </header>
 
         <footer>

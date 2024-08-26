@@ -144,7 +144,7 @@ const StyledPost = styled.li`
 `;
 
 const PensievePage = ({ location, data }) => {
-  const posts = data.allMarkdownRemark.edges;
+  const posts = data.allMdx.edges;
 
   return (
     <Layout location={location}>
@@ -165,7 +165,7 @@ const PensievePage = ({ location, data }) => {
             posts.map(({ node }, i) => {
               const { frontmatter } = node;
               const { title, description, slug, date, tags } = frontmatter;
-              const formattedDate = new Date(date).toLocaleDateString();
+              const formattedDate = new Date(parseInt(date)).toLocaleDateString();
 
               return (
                 <StyledPost key={i}>
@@ -211,9 +211,9 @@ export default PensievePage;
 
 export const pageQuery = graphql`
   {
-    allMarkdownRemark(
+    allMdx(
       filter: {
-        fileAbsolutePath: { regex: "/content/posts/" }
+        internal: { contentFilePath: { regex: "/content/posts/" } }
         frontmatter: { draft: { ne: true } }
       }
       sort: { frontmatter: { date: DESC } }
@@ -228,7 +228,6 @@ export const pageQuery = graphql`
             tags
             draft
           }
-          html
         }
       }
     }

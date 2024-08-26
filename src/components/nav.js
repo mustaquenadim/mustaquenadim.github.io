@@ -33,8 +33,8 @@ const StyledHeader = styled.header`
 
   @media (prefers-reduced-motion: no-preference) {
     ${props =>
-    props.scrollDirection === 'up' &&
-      !props.scrolledToTop &&
+    props.scrolldirection === 'up' &&
+      !props.scrolledtotop &&
       css`
         height: var(--nav-scroll-height);
         transform: translateY(0px);
@@ -43,8 +43,8 @@ const StyledHeader = styled.header`
       `};
 
     ${props =>
-    props.scrollDirection === 'down' &&
-      !props.scrolledToTop &&
+    props.scrolldirection === 'down' &&
+      !props.scrolledtotop &&
       css`
         height: var(--nav-scroll-height);
         transform: translateY(calc(var(--nav-scroll-height) * -1));
@@ -207,14 +207,13 @@ const Nav = ({ isHome }) => {
       className="resume-button"
       href="/Mustaque-Nadim-Software-Engineer-Resume.pdf"
       target="_blank"
-      rel="noopener noreferrer"
-    >
+      rel="noopener noreferrer">
       Resume
     </a>
   );
 
   return (
-    <StyledHeader scrollDirection={scrollDirection} scrolledToTop={scrolledToTop}>
+    <StyledHeader scrolldirection={scrollDirection} scrolledtotop={scrolledToTop}>
       <StyledNav>
         {prefersReducedMotion ? (
           <>

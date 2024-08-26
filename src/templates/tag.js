@@ -47,7 +47,7 @@ const StyledTagsContainer = styled.main`
 
 const TagTemplate = ({ pageContext, data, location }) => {
   const { tag } = pageContext;
-  const { edges } = data.allMarkdownRemark;
+  const { edges } = data.allMdx;
 
   return (
     <Layout location={location}>
@@ -107,7 +107,7 @@ TagTemplate.propTypes = {
     tag: PropTypes.string.isRequired,
   }),
   data: PropTypes.shape({
-    allMarkdownRemark: PropTypes.shape({
+    allMdx: PropTypes.shape({
       totalCount: PropTypes.number.isRequired,
       edges: PropTypes.arrayOf(
         PropTypes.shape({
@@ -125,7 +125,7 @@ TagTemplate.propTypes = {
 
 export const pageQuery = graphql`
   query ($tag: String!) {
-    allMarkdownRemark(
+    allMdx(
       limit: 2000
       sort: { frontmatter: { date: DESC } }
       filter: { frontmatter: { tags: { in: [$tag] } } }

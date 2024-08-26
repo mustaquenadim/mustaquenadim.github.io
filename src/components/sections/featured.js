@@ -306,8 +306,8 @@ const StyledProject = styled.li`
 const Featured = () => {
   const data = useStaticQuery(graphql`
     {
-      featured: allMarkdownRemark(
-        filter: { fileAbsolutePath: { regex: "/content/featured/" } }
+      featured: allMdx(
+        filter: { internal: { contentFilePath: { regex: "/content/featured/" } } }
         sort: { frontmatter: { date: ASC } }
       ) {
         edges {
@@ -324,7 +324,7 @@ const Featured = () => {
               external
               cta
             }
-            html
+            body
           }
         }
       }
@@ -354,7 +354,7 @@ const Featured = () => {
       <StyledProjectsGrid>
         {featuredProjects &&
           featuredProjects.map(({ node }, i) => {
-            const { frontmatter, html } = node;
+            const { frontmatter, body } = node;
             const { external, title, tech, github, cover, cta } = frontmatter;
             const image = getImage(cover);
 
@@ -370,7 +370,7 @@ const Featured = () => {
 
                     <div
                       className="project-description"
-                      dangerouslySetInnerHTML={{ __html: html }}
+                      dangerouslySetInnerHTML={{ __html: body }}
                     />
 
                     {tech.length && (

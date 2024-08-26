@@ -195,9 +195,9 @@ const StyledProject = styled.li`
 const Blogs = () => {
   // const data = useStaticQuery(graphql`
   //   query {
-  //     projects: allMarkdownRemark(
+  //     projects: allMdx(
   //       filter: {
-  //         fileAbsolutePath: { regex: "/content/projects/" }
+  //         internal: { contentFilePath: { regex: "/content/projects/" } }
   //         frontmatter: { showInProjects: { ne: false } }
   //       }
   //       sort: { fields: [frontmatter___date], order: DESC }
@@ -210,7 +210,7 @@ const Blogs = () => {
   //             github
   //             external
   //           }
-  //           html
+  //           body
   //         }
   //       }
   //     }
@@ -257,8 +257,7 @@ const Blogs = () => {
                   aria-label="External Link"
                   className="external"
                   target="_blank"
-                  rel="noreferrer"
-                >
+                  rel="noreferrer">
                   <Icon name="External" />
                 </a>
               )}
@@ -271,7 +270,7 @@ const Blogs = () => {
             </a>
           </h3>
 
-          <div className="project-description" dangerouslySetInnerHTML={{ __html: description }} />
+          <div className="project-description">{description}</div>
         </header>
 
         <footer>
@@ -313,15 +312,13 @@ const Blogs = () => {
                   key={i}
                   classNames="fadeup"
                   timeout={i >= GRID_LIMIT ? (i - GRID_LIMIT) * 300 : 300}
-                  exit={false}
-                >
+                  exit={false}>
                   <StyledProject
                     key={i}
                     ref={el => (revealProjects.current[i] = el)}
                     style={{
                       transitionDelay: `${i >= GRID_LIMIT ? (i - GRID_LIMIT) * 100 : 0}ms`,
-                    }}
-                  >
+                    }}>
                     {projectInner(node)}
                   </StyledProject>
                 </CSSTransition>

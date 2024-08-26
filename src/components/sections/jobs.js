@@ -167,8 +167,8 @@ const StyledTabPanel = styled.div`
 const Jobs = () => {
   const data = useStaticQuery(graphql`
     query {
-      jobs: allMarkdownRemark(
-        filter: { fileAbsolutePath: { regex: "/content/jobs/" } }
+      jobs: allMdx(
+        filter: { internal: { contentFilePath: { regex: "/content/jobs/" } } }
         sort: { frontmatter: { date: DESC } }
       ) {
         edges {
@@ -180,7 +180,7 @@ const Jobs = () => {
               range
               url
             }
-            html
+            body
           }
         }
       }
@@ -272,7 +272,7 @@ const Jobs = () => {
         <StyledTabPanels>
           {jobsData &&
             jobsData.map(({ node }, i) => {
-              const { frontmatter, html } = node;
+              const { frontmatter, body } = node;
               const { title, url, company, range } = frontmatter;
 
               return (
@@ -296,7 +296,7 @@ const Jobs = () => {
 
                     <p className="range">{range}</p>
 
-                    <div dangerouslySetInnerHTML={{ __html: html }} />
+                    <div dangerouslySetInnerHTML={{ __html: body }} />
                   </StyledTabPanel>
                 </CSSTransition>
               );
