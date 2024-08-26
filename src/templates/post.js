@@ -1,6 +1,5 @@
 import { Layout } from '@components';
 import { graphql, Link } from 'gatsby';
-import { MDXRenderer } from 'gatsby-plugin-mdx';
 import kebabCase from 'lodash/kebabCase';
 import PropTypes from 'prop-types';
 import React from 'react';
@@ -97,8 +96,6 @@ const PostTemplate = ({ data, location, children }) => {
         </StyledPostHeader>
 
         <StyledPostContent>{children}</StyledPostContent>
-
-        <MDXRenderer>{children}</MDXRenderer>
       </StyledPostContainer>
     </Layout>
   );
