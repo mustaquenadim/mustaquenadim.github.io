@@ -1,8 +1,10 @@
+'use client';
+
 import { srConfig } from '@config';
 import { usePrefersReducedMotion } from '@hooks';
 import sr from '@utils/sr';
-import { StaticImage } from 'gatsby-plugin-image';
-import React, { useEffect, useRef } from 'react';
+import Image from 'next/image';
+import { useEffect, useRef } from 'react';
 import Marquee from 'react-fast-marquee';
 import styled from 'styled-components';
 
@@ -40,10 +42,9 @@ const imageSelector = imageName => {
   switch (imageName) {
     case 'c-plus-plus':
       return (
-        <StaticImage
+        <Image
           className="img"
-          src="../../../content/skills/c-plus-plus.png"
-          height={64}
+          src="/images/skills/c-plus-plus.png"
           quality={95}
           objectFit="contain"
           formats={['AUTO', 'WEBP', 'AVIF']}
@@ -52,10 +53,9 @@ const imageSelector = imageName => {
       );
     case 'javascript':
       return (
-        <StaticImage
+        <Image
           className="img"
-          src="../../../content/skills/javascript.png"
-          height={64}
+          src="/images/skills/javascript.png"
           quality={95}
           objectFit="contain"
           formats={['AUTO', 'WEBP', 'AVIF']}
@@ -64,10 +64,9 @@ const imageSelector = imageName => {
       );
     case 'typescript':
       return (
-        <StaticImage
+        <Image
           className="img"
-          src="../../../content/skills/typescript.png"
-          height={64}
+          src="/images/skills/typescript.png"
           quality={95}
           objectFit="contain"
           formats={['AUTO', 'WEBP', 'AVIF']}
@@ -76,10 +75,9 @@ const imageSelector = imageName => {
       );
     case 'react-js':
       return (
-        <StaticImage
+        <Image
           className="img"
-          src="../../../content/skills/react-js.png"
-          height={64}
+          src="/images/skills/react-js.png"
           quality={95}
           objectFit="contain"
           formats={['AUTO', 'WEBP', 'AVIF']}
@@ -88,10 +86,9 @@ const imageSelector = imageName => {
       );
     case 'next-js':
       return (
-        <StaticImage
+        <Image
           className="img"
-          src="../../../content/skills/next-js.png"
-          height={64}
+          src="/images/skills/next-js.png"
           quality={95}
           objectFit="contain"
           formats={['AUTO', 'WEBP', 'AVIF']}
@@ -100,10 +97,9 @@ const imageSelector = imageName => {
       );
     case 'tailwind-css':
       return (
-        <StaticImage
+        <Image
           className="img"
-          src="../../../content/skills/tailwind-css.png"
-          height={64}
+          src="/images/skills/tailwind-css.png"
           quality={95}
           objectFit="contain"
           formats={['AUTO', 'WEBP', 'AVIF']}
@@ -112,10 +108,9 @@ const imageSelector = imageName => {
       );
     case 'node-js':
       return (
-        <StaticImage
+        <Image
           className="img"
-          src="../../../content/skills/node-js.png"
-          height={64}
+          src="/images/skills/node-js.png"
           quality={95}
           objectFit="contain"
           formats={['AUTO', 'WEBP', 'AVIF']}
@@ -124,10 +119,9 @@ const imageSelector = imageName => {
       );
     case 'postgresql':
       return (
-        <StaticImage
+        <Image
           className="img"
-          src="../../../content/skills/postgresql.png"
-          height={64}
+          src="/images/skills/postgresql.png"
           quality={95}
           objectFit="contain"
           formats={['AUTO', 'WEBP', 'AVIF']}
@@ -136,10 +130,9 @@ const imageSelector = imageName => {
       );
     case 'docker':
       return (
-        <StaticImage
+        <Image
           className="img"
-          src="../../../content/skills/docker.png"
-          height={64}
+          src="/images/skills/docker.png"
           quality={95}
           objectFit="contain"
           formats={['AUTO', 'WEBP', 'AVIF']}
@@ -148,10 +141,9 @@ const imageSelector = imageName => {
       );
     case 'vs-code':
       return (
-        <StaticImage
+        <Image
           className="img"
-          src="../../../content/skills/vs-code.png"
-          height={64}
+          src="/images/skills/vs-code.png"
           quality={95}
           objectFit="contain"
           formats={['AUTO', 'WEBP', 'AVIF']}

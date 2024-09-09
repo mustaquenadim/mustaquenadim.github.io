@@ -1,9 +1,11 @@
+'use client';
+
 import { Icon } from '@components/icons';
 import { srConfig } from '@config';
 import { usePrefersReducedMotion } from '@hooks';
 import sr from '@utils/sr';
 // import { graphql, Link, useStaticQuery } from 'gatsby';
-import React, { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { CSSTransition, TransitionGroup } from 'react-transition-group';
 import styled from 'styled-components';
 
@@ -27,7 +29,7 @@ const blogs = [
   {
     title: 'JavaScript Strings 101: The Complete Beginner’s Guide',
     description:
-      'Learn JavaScript string methods like charAt, concat, indexOf, lastIndexOf, slice and split in this beginner\'s guide.',
+      "Learn JavaScript string methods like charAt, concat, indexOf, lastIndexOf, slice and split in this beginner's guide.",
     tech: ['JavaScript', 'Beginners Guide', 'String Methods'],
     external:
       'https://medium.com/@mustaquenadim/javascript-strings-101-the-complete-beginners-guide-c5505823855d',
@@ -257,8 +259,7 @@ const Blogs = () => {
                   aria-label="External Link"
                   className="external"
                   target="_blank"
-                  rel="noreferrer"
-                >
+                  rel="noreferrer">
                   <Icon name="External" />
                 </a>
               )}
@@ -313,15 +314,13 @@ const Blogs = () => {
                   key={i}
                   classNames="fadeup"
                   timeout={i >= GRID_LIMIT ? (i - GRID_LIMIT) * 300 : 300}
-                  exit={false}
-                >
+                  exit={false}>
                   <StyledProject
                     key={i}
                     ref={el => (revealProjects.current[i] = el)}
                     style={{
                       transitionDelay: `${i >= GRID_LIMIT ? (i - GRID_LIMIT) * 100 : 0}ms`,
-                    }}
-                  >
+                    }}>
                     {projectInner(node)}
                   </StyledProject>
                 </CSSTransition>

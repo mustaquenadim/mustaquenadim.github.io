@@ -1,7 +1,9 @@
-import React, { useState, useEffect } from 'react';
-import { Helmet } from 'react-helmet';
-import PropTypes from 'prop-types';
+'use client';
+
 import anime from 'animejs';
+import PropTypes from 'prop-types';
+import { useEffect, useState } from 'react';
+import { Helmet } from 'react-helmet';
 import styled from 'styled-components';
 
 const StyledLoader = styled.div``;

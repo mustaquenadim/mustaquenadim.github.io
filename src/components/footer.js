@@ -1,7 +1,9 @@
+'use client';
+
 import { Icon } from '@components/icons';
 import { socialMedia } from '@config';
 import PropTypes from 'prop-types';
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import styled from 'styled-components';
 
 const StyledFooter = styled.footer`

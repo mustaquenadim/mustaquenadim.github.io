@@ -1,8 +1,9 @@
+'use client';
+
 import { srConfig } from '@config';
 import { usePrefersReducedMotion } from '@hooks';
 import sr from '@utils/sr';
-import { StaticImage } from 'gatsby-plugin-image';
-import React, { useEffect, useRef } from 'react';
+import { useEffect, useRef } from 'react';
 import styled from 'styled-components';
 import Skills from './skills';
 import Workstation from './workstation';
@@ -181,14 +182,15 @@ const About = () => {
 
         <StyledPic>
           <div className="wrapper">
-            <StaticImage
+            {/* <Image
               className="img"
-              src="../../images/me.jpg"
+              src="/images/me.jpg"
+              height={500}
               width={500}
               quality={95}
               formats={['AUTO', 'WEBP', 'AVIF']}
               alt="Headshot"
-            />
+            /> */}
           </div>
         </StyledPic>
       </div>

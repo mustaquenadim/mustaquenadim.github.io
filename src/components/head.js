@@ -1,32 +1,20 @@
-import { useLocation } from '@reach/router';
-import { graphql, useStaticQuery } from 'gatsby';
+import { useRouter } from 'next/router';
 import PropTypes from 'prop-types';
-import React from 'react';
 import { Helmet } from 'react-helmet';
 
-// https://www.gatsbyjs.com/docs/add-seo-component/
+const siteMetadata = {
+  title: 'Mustaque Nadim',
+  description:
+    'Mustaque Nadim is a passionate programmer from Bangladesh, skilled in building web applications using MERN (MongoDB, ExpressJS, ReactJS, NodeJS) technologies.',
+  siteUrl: 'https://mustaquenadim.com', // No trailing slash allowed!
+  image: '/og.png', // Path to your image you placed in the 'static' folder
+  twitterUsername: '@_mustaquenadim_',
+};
 
 const Head = ({ title, description, image }) => {
-  const { pathname } = useLocation();
+  const { pathname } = useRouter();
 
-  const { site } = useStaticQuery(
-    graphql`
-      query {
-        site {
-          siteMetadata {
-            defaultTitle: title
-            defaultDescription: description
-            siteUrl
-            defaultImage: image
-            twitterUsername
-          }
-        }
-      }
-    `,
-  );
-
-  const { defaultTitle, defaultDescription, siteUrl, defaultImage, twitterUsername } =
-    site.siteMetadata;
+  const { defaultTitle, defaultDescription, siteUrl, defaultImage, twitterUsername } = siteMetadata;
 
   const seo = {
     title: title || defaultTitle,

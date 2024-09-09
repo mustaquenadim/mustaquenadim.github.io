@@ -1,13 +1,15 @@
-import React, { useRef, useEffect } from 'react';
-import { graphql } from 'gatsby';
-import PropTypes from 'prop-types';
-import { Helmet } from 'react-helmet';
-import styled from 'styled-components';
-import { srConfig } from '@config';
-import sr from '@utils/sr';
+'use client';
+
 import { Layout } from '@components';
 import { Icon } from '@components/icons';
+import { srConfig } from '@config';
 import { usePrefersReducedMotion } from '@hooks';
+import sr from '@utils/sr';
+import { graphql } from 'gatsby';
+import PropTypes from 'prop-types';
+import { useEffect, useRef } from 'react';
+import { Helmet } from 'react-helmet';
+import styled from 'styled-components';
 
 const StyledTableContainer = styled.div`
   margin: 100px -20px;
@@ -170,16 +172,8 @@ const ArchivePage = ({ location, data }) => {
             <tbody>
               {projects.length > 0 &&
                 projects.map(({ node }, i) => {
-                  const {
-                    date,
-                    github,
-                    external,
-                    ios,
-                    android,
-                    title,
-                    tech,
-                    company,
-                  } = node.frontmatter;
+                  const { date, github, external, ios, android, title, tech, company } =
+                    node.frontmatter;
                   return (
                     <tr key={i} ref={el => (revealProjects.current[i] = el)}>
                       <td className="overline year">{`${new Date(date).getFullYear()}`}</td>

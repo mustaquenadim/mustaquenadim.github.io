@@ -1,13 +1,14 @@
+'use client';
+
 import { Menu } from '@components';
 import { navLinks } from '@config';
 import { usePrefersReducedMotion, useScrollDirection } from '@hooks';
 import { loaderDelay } from '@utils';
-import { Link } from 'gatsby';
+import Link from 'next/link';
 import PropTypes from 'prop-types';
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { CSSTransition, TransitionGroup } from 'react-transition-group';
 import styled, { css } from 'styled-components';
-import logo from '../images/mn-logo.png';
 
 const StyledHeader = styled.header`
   ${({ theme }) => theme.mixins.flexBetween};
@@ -33,7 +34,7 @@ const StyledHeader = styled.header`
 
   @media (prefers-reduced-motion: no-preference) {
     ${props =>
-    props.scrollDirection === 'up' &&
+      props.scrollDirection === 'up' &&
       !props.scrolledToTop &&
       css`
         height: var(--nav-scroll-height);
@@ -43,7 +44,7 @@ const StyledHeader = styled.header`
       `};
 
     ${props =>
-    props.scrollDirection === 'down' &&
+      props.scrollDirection === 'down' &&
       !props.scrolledToTop &&
       css`
         height: var(--nav-scroll-height);
@@ -190,12 +191,12 @@ const Nav = ({ isHome }) => {
     <div className="logo" tabIndex="-1">
       {isHome ? (
         <a href="/" aria-label="home">
-          <img src={logo} alt="Mustaque Nadim Logo" />
+          {/* <Image src="/images/mn-logo.png" alt="Mustaque Nadim Logo" fill={true} /> */}
           <div className="sliding-line"></div>
         </a>
       ) : (
-        <Link to="/" aria-label="home">
-          <img src={logo} alt="Mustaque Nadim Logo" />
+        <Link href="/" aria-label="home">
+          {/* <Image src="/images/mn-logo.png" alt="Mustaque Nadim Logo" fill={true} /> */}
           <div className="sliding-line"></div>
         </Link>
       )}
@@ -207,8 +208,7 @@ const Nav = ({ isHome }) => {
       className="resume-button"
       href="/Mustaque-Nadim-Software-Engineer-Resume.pdf"
       target="_blank"
-      rel="noopener noreferrer"
-    >
+      rel="noopener noreferrer">
       Resume
     </a>
   );
@@ -225,7 +225,7 @@ const Nav = ({ isHome }) => {
                 {navLinks &&
                   navLinks.map(({ url, name }, i) => (
                     <li key={i}>
-                      <Link to={url}>{name}</Link>
+                      <Link href={url}>{name}</Link>
                     </li>
                   ))}
               </ol>
@@ -252,7 +252,7 @@ const Nav = ({ isHome }) => {
                     navLinks.map(({ url, name }, i) => (
                       <CSSTransition key={i} classNames={fadeDownClass} timeout={timeout}>
                         <li key={i} style={{ transitionDelay: `${isHome ? i * 100 : 0}ms` }}>
-                          <Link to={url}>{name}</Link>
+                          <Link href={url}>{name}</Link>
                         </li>
                       </CSSTransition>
                     ))}

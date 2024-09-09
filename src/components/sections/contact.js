@@ -1,7 +1,9 @@
+'use client';
+
 import { email, srConfig } from '@config';
 import { usePrefersReducedMotion } from '@hooks';
 import sr from '@utils/sr';
-import React, { useEffect, useRef } from 'react';
+import { useEffect, useRef } from 'react';
 import styled from 'styled-components';
 
 const StyledContactSection = styled.section`

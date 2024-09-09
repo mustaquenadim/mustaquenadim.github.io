@@ -1,3 +1,5 @@
+'use client';
+
 import { usePrefersReducedMotion } from '@hooks';
 import { loaderDelay, navDelay } from '@utils';
 import React, { useEffect, useState } from 'react';
@@ -138,8 +140,7 @@ const Hero = () => {
         className="email-link"
         href="/Mustaque-Nadim-Software-Engineer-Resume.pdf"
         target="_blank"
-        rel="noreferrer"
-      >
+        rel="noreferrer">
         Download Resume
       </a>
     </div>

@@ -1,8 +1,9 @@
-import React from 'react';
+'use client';
+
+import { Side } from '@components';
+import { email } from '@config';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
-import { email } from '@config';
-import { Side } from '@components';
 
 const StyledLinkWrapper = styled.div`
   display: flex;

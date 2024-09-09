@@ -1,9 +1,11 @@
-import React, { useState, useEffect } from 'react';
+'use client';
+
+import { usePrefersReducedMotion } from '@hooks';
+import { loaderDelay } from '@utils';
 import PropTypes from 'prop-types';
+import { useEffect, useState } from 'react';
 import { CSSTransition, TransitionGroup } from 'react-transition-group';
 import styled from 'styled-components';
-import { loaderDelay } from '@utils';
-import { usePrefersReducedMotion } from '@hooks';
 
 const StyledSideElement = styled.div`
   width: 40px;

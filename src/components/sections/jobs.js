@@ -1,11 +1,12 @@
-import React, { useState, useEffect, useRef } from 'react';
-import { useStaticQuery, graphql } from 'gatsby';
-import { CSSTransition } from 'react-transition-group';
-import styled from 'styled-components';
+'use client';
+
 import { srConfig } from '@config';
+import { usePrefersReducedMotion } from '@hooks';
 import { KEY_CODES } from '@utils';
 import sr from '@utils/sr';
-import { usePrefersReducedMotion } from '@hooks';
+import { useEffect, useRef, useState } from 'react';
+import { CSSTransition } from 'react-transition-group';
+import styled from 'styled-components';
 
 const StyledJobsSection = styled.section`
   max-width: 700px;
@@ -164,31 +165,30 @@ const StyledTabPanel = styled.div`
   }
 `;
 
-const Jobs = () => {
-  const data = useStaticQuery(graphql`
-    query {
-      jobs: allMarkdownRemark(
-        filter: { fileAbsolutePath: { regex: "/content/jobs/" } }
-        sort: { fields: [frontmatter___date], order: DESC }
-      ) {
-        edges {
-          node {
-            frontmatter {
-              title
-              company
-              location
-              range
-              url
-            }
-            html
-          }
-        }
-      }
-    }
-  `);
+export async function getStaticProps() {
+  const contentDirectory = path.join(process.cwd(), 'content/jobs');
+  const files = fs.readdirSync(contentDirectory);
 
-  const jobsData = data.jobs.edges;
+  const jobsData = files
+    .map(filename => {
+      const filePath = path.join(contentDirectory, filename);
+      const fileContents = fs.readFileSync(filePath, 'utf8');
+      const { data, content } = matter(fileContents);
+      return {
+        frontmatter: data,
+        html: content,
+      };
+    })
+    .sort((a, b) => new Date(a.frontmatter.date) - new Date(b.frontmatter.date));
 
+  return {
+    props: {
+      jobsData,
+    },
+  };
+}
+
+const Jobs = ({ jobsData }) => {
   const [activeTabId, setActiveTabId] = useState(0);
   const [tabFocus, setTabFocus] = useState(null);
   const tabs = useRef([]);

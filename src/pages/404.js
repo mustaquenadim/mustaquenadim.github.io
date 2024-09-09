@@ -1,12 +1,14 @@
-import React, { useState, useEffect } from 'react';
-import { Link } from 'gatsby';
-import { Helmet } from 'react-helmet';
-import { CSSTransition, TransitionGroup } from 'react-transition-group';
-import PropTypes from 'prop-types';
-import styled from 'styled-components';
-import { navDelay } from '@utils';
+'use client';
+
 import { Layout } from '@components';
 import { usePrefersReducedMotion } from '@hooks';
+import { navDelay } from '@utils';
+import Link from 'next/link';
+import PropTypes from 'prop-types';
+import { useEffect, useState } from 'react';
+import { Helmet } from 'react-helmet';
+import { CSSTransition, TransitionGroup } from 'react-transition-group';
+import styled from 'styled-components';
 
 const StyledMainContainer = styled.main`
   ${({ theme }) => theme.mixins.flexCenter};
@@ -44,7 +46,7 @@ const NotFoundPage = ({ location }) => {
     <StyledMainContainer className="fillHeight">
       <StyledTitle>404</StyledTitle>
       <StyledSubtitle>Page Not Found</StyledSubtitle>
-      <StyledHomeButton to="/">Go Home</StyledHomeButton>
+      <StyledHomeButton href="/">Go Home</StyledHomeButton>
     </StyledMainContainer>
   );
 

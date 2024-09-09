@@ -1,11 +1,10 @@
-import React from 'react';
-import { graphql, Link } from 'gatsby';
+import { Layout } from '@components';
+import { IconBookmark } from '@components/icons';
 import kebabCase from 'lodash/kebabCase';
+import Link from 'next/link';
 import PropTypes from 'prop-types';
 import { Helmet } from 'react-helmet';
 import styled from 'styled-components';
-import { Layout } from '@components';
-import { IconBookmark } from '@components/icons';
 
 const StyledMainContainer = styled.main`
   & > header {
@@ -174,7 +173,7 @@ const PensievePage = ({ location, data }) => {
                         <IconBookmark />
                       </div>
                       <h5 className="post__title">
-                        <Link to={slug}>{title}</Link>
+                        <Link href={slug}>{title}</Link>
                       </h5>
                       <p className="post__desc">{description}</p>
                     </header>
@@ -184,7 +183,9 @@ const PensievePage = ({ location, data }) => {
                       <ul className="post__tags">
                         {tags.map((tag, i) => (
                           <li key={i}>
-                            <Link to={`/pensieve/tags/${kebabCase(tag)}/`} className="inline-link">
+                            <Link
+                              href={`/pensieve/tags/${kebabCase(tag)}/`}
+                              className="inline-link">
                               #{tag}
                             </Link>
                           </li>
@@ -211,7 +212,10 @@ export default PensievePage;
 export const pageQuery = graphql`
   {
     allMarkdownRemark(
-      filter: { fileAbsolutePath: { regex: "/content/posts/" }, frontmatter: { draft: { ne: true } } }
+      filter: {
+        fileAbsolutePath: { regex: "/content/posts/" }
+        frontmatter: { draft: { ne: true } }
+      }
       sort: { fields: [frontmatter___date], order: DESC }
     ) {
       edges {

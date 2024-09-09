@@ -1,9 +1,10 @@
+'use client';
+
 import { Icon } from '@components/icons';
 import { srConfig } from '@config';
 import { usePrefersReducedMotion } from '@hooks';
 import sr from '@utils/sr';
-import { graphql, useStaticQuery } from 'gatsby';
-import React, { useEffect, useRef } from 'react';
+import { useEffect, useRef } from 'react';
 import { CSSTransition, TransitionGroup } from 'react-transition-group';
 import styled from 'styled-components';
 
@@ -168,29 +169,30 @@ const StyledService = styled.li`
   }
 `;
 
-const Services = () => {
-  const data = useStaticQuery(graphql`
-    query {
-      services: allMarkdownRemark(
-        filter: {
-          fileAbsolutePath: { regex: "/content/services/" }
-          frontmatter: { showInServices: { ne: false } }
-        }
-        sort: { fields: [frontmatter___order], order: ASC }
-      ) {
-        edges {
-          node {
-            frontmatter {
-              title
-              icon
-            }
-            html
-          }
-        }
-      }
-    }
-  `);
+export async function getStaticProps() {
+  const contentDirectory = path.join(process.cwd(), 'content/services');
+  const files = fs.readdirSync(contentDirectory);
 
+  const services = files
+    .map(filename => {
+      const filePath = path.join(contentDirectory, filename);
+      const fileContents = fs.readFileSync(filePath, 'utf8');
+      const { data, content } = matter(fileContents);
+      return {
+        frontmatter: data,
+        html: content,
+      };
+    })
+    .sort((a, b) => new Date(a.frontmatter.date) - new Date(b.frontmatter.date));
+
+  return {
+    props: {
+      services,
+    },
+  };
+}
+
+const Services = ({ services }) => {
   const revealContainer = useRef(null);
   const revealTitle = useRef(null);
   const revealArchiveLink = useRef(null);
@@ -209,8 +211,7 @@ const Services = () => {
   }, []);
 
   const GRID_LIMIT = 6;
-  const services = data.services.edges.filter(({ node }) => node);
-  const firstSix = services.slice(0, GRID_LIMIT);
+  const firstSix = services?.slice(0, GRID_LIMIT);
 
   const serviceInner = node => {
     const { frontmatter, html } = node;
@@ -235,8 +236,7 @@ const Services = () => {
                   aria-label="External Link"
                   className="external"
                   target="_blank"
-                  rel="noreferrer"
-                >
+                  rel="noreferrer">
                   <Icon name="External" />
                 </a>
               )}
@@ -285,15 +285,13 @@ const Services = () => {
                   key={i}
                   classNames="fadeup"
                   timeout={i >= GRID_LIMIT ? (i - GRID_LIMIT) * 300 : 300}
-                  exit={false}
-                >
+                  exit={false}>
                   <StyledService
                     key={i}
                     ref={el => (revealServices.current[i] = el)}
                     style={{
                       transitionDelay: `${i >= GRID_LIMIT ? (i - GRID_LIMIT) * 100 : 0}ms`,
-                    }}
-                  >
+                    }}>
                     {serviceInner(node)}
                   </StyledService>
                 </CSSTransition>

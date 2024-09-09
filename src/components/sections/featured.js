@@ -1,10 +1,10 @@
+'use client';
+
 import { Icon } from '@components/icons';
 import { srConfig } from '@config';
 import { usePrefersReducedMotion } from '@hooks';
 import sr from '@utils/sr';
-import { graphql, useStaticQuery } from 'gatsby';
-import { GatsbyImage, getImage } from 'gatsby-plugin-image';
-import React, { useEffect, useRef } from 'react';
+import { useEffect, useRef } from 'react';
 import styled from 'styled-components';
 
 const StyledProjectsGrid = styled.ul`
@@ -303,35 +303,30 @@ const StyledProject = styled.li`
   }
 `;
 
-const Featured = () => {
-  const data = useStaticQuery(graphql`
-    {
-      featured: allMarkdownRemark(
-        filter: { fileAbsolutePath: { regex: "/content/featured/" } }
-        sort: { fields: [frontmatter___date], order: ASC }
-      ) {
-        edges {
-          node {
-            frontmatter {
-              title
-              cover {
-                childImageSharp {
-                  gatsbyImageData(width: 700, placeholder: BLURRED, formats: [AUTO, WEBP, AVIF])
-                }
-              }
-              tech
-              github
-              external
-              cta
-            }
-            html
-          }
-        }
-      }
-    }
-  `);
+export async function getStaticProps() {
+  const contentDirectory = path.join(process.cwd(), 'content/featured');
+  const files = fs.readdirSync(contentDirectory);
 
-  const featuredProjects = data.featured.edges.filter(({ node }) => node);
+  const featuredProjects = files
+    .map(filename => {
+      const filePath = path.join(contentDirectory, filename);
+      const fileContents = fs.readFileSync(filePath, 'utf8');
+      const { data, content } = matter(fileContents);
+      return {
+        frontmatter: data,
+        html: content,
+      };
+    })
+    .sort((a, b) => new Date(a.frontmatter.date) - new Date(b.frontmatter.date));
+
+  return {
+    props: {
+      featuredProjects,
+    },
+  };
+}
+
+const Featured = ({ featuredProjects }) => {
   const revealTitle = useRef(null);
   const revealProjects = useRef([]);
   const prefersReducedMotion = usePrefersReducedMotion();
@@ -356,7 +351,6 @@ const Featured = () => {
           featuredProjects.map(({ node }, i) => {
             const { frontmatter, html } = node;
             const { external, title, tech, github, cover, cta } = frontmatter;
-            const image = getImage(cover);
 
             return (
               <StyledProject key={i} ref={el => (revealProjects.current[i] = el)}>
@@ -403,7 +397,7 @@ const Featured = () => {
 
                 <div className="project-image">
                   <a href={external ? external : github ? github : '#'}>
-                    <GatsbyImage image={image} alt={title} className="img" />
+                    {/* <Image image={cover} alt={title} className="img" fill={true} /> */}
                   </a>
                 </div>
               </StyledProject>

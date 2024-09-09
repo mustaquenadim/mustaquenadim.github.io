@@ -11,11 +11,11 @@
   "license": "MIT",
   "browserslist": "> 0.25%, not dead",
   "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next",
     "deploy": "gatsby build --prefix-paths && gh-pages -d public",
-    "build": "gatsby build",
-    "develop": "gatsby develop",
     "format": "prettier --write \"**/*.{js,jsx,json,md}\"",
-    "start": "npm run develop",
     "serve": "gatsby serve",
     "clean": "gatsby clean",
     "prepare": "husky install",
@@ -30,26 +30,30 @@
     ]
   },
   "dependencies": {
+    "@types/scrollreveal": "^0.0.11",
     "animejs": "^3.1.0",
     "babel-plugin-styled-components": "^1.12.0",
     "lodash": "^4.17.19",
+    "next": "^14.2.8",
+    "next-reveal": "^1.0.6",
     "prismjs": "^1.25.0",
     "prop-types": "^15.7.2",
-    "react": "^17.0.2",
-    "react-dom": "^17.0.2",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
     "react-fast-marquee": "^1.6.4",
     "react-helmet": "^6.1.0",
     "react-icons": "^5.0.1",
     "react-text-transition": "^3.1.0",
-    "react-transition-group": "^4.3.0",
-    "scrollreveal": "^4.0.5",
-    "styled-components": "^5.3.0",
+    "react-transition-group": "^4.4.5",
+    "scrollreveal": "^4.0.9",
+    "styled-components": "^6.1.13",
     "swiper": "^11.0.7"
   },
   "devDependencies": {
     "@babel/core": "^7.14.0",
     "@babel/eslint-parser": "^7.13.14",
     "@babel/preset-react": "^7.13.13",
+    "@types/react": "^18.3.5",
     "@upstatement/eslint-config": "^1.0.0",
     "@upstatement/prettier-config": "^1.0.0",
     "babel-preset-gatsby": "^1.4.0",
@@ -61,11 +65,13 @@
     "gh-pages": "^4.0.0",
     "husky": "^6.0.0",
     "lint-staged": "^10.1.2",
-    "prettier": "^2.2.1"
+    "prettier": "^2.2.1",
+    "typescript": "^5.6.2"
   },
   "husky": {
     "hooks": {
       "pre-commit": "lint-staged"
     }
-  }
+  },
+  "packageManager": "yarn@1.22.22+sha512.a6b2f7906b721bba3d67d4aff083df04dad64c399707841b7acf00f6b133b7ac24255f2652fa22ae3534329dc6180534e98d17432037ff6fd140556e2bb3137e"
 }
