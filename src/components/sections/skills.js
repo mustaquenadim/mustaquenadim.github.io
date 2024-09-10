@@ -45,6 +45,7 @@ const imageSelector = imageName => {
         <Image
           className="img"
           src="/images/skills/c-plus-plus.png"
+          fill={true}
           quality={95}
           objectFit="contain"
           formats={['AUTO', 'WEBP', 'AVIF']}
@@ -56,6 +57,7 @@ const imageSelector = imageName => {
         <Image
           className="img"
           src="/images/skills/javascript.png"
+          fill={true}
           quality={95}
           objectFit="contain"
           formats={['AUTO', 'WEBP', 'AVIF']}
@@ -67,6 +69,7 @@ const imageSelector = imageName => {
         <Image
           className="img"
           src="/images/skills/typescript.png"
+          fill={true}
           quality={95}
           objectFit="contain"
           formats={['AUTO', 'WEBP', 'AVIF']}
@@ -78,6 +81,7 @@ const imageSelector = imageName => {
         <Image
           className="img"
           src="/images/skills/react-js.png"
+          fill={true}
           quality={95}
           objectFit="contain"
           formats={['AUTO', 'WEBP', 'AVIF']}
@@ -89,6 +93,7 @@ const imageSelector = imageName => {
         <Image
           className="img"
           src="/images/skills/next-js.png"
+          fill={true}
           quality={95}
           objectFit="contain"
           formats={['AUTO', 'WEBP', 'AVIF']}
@@ -100,6 +105,7 @@ const imageSelector = imageName => {
         <Image
           className="img"
           src="/images/skills/tailwind-css.png"
+          fill={true}
           quality={95}
           objectFit="contain"
           formats={['AUTO', 'WEBP', 'AVIF']}
@@ -111,6 +117,7 @@ const imageSelector = imageName => {
         <Image
           className="img"
           src="/images/skills/node-js.png"
+          fill={true}
           quality={95}
           objectFit="contain"
           formats={['AUTO', 'WEBP', 'AVIF']}
@@ -122,6 +129,7 @@ const imageSelector = imageName => {
         <Image
           className="img"
           src="/images/skills/postgresql.png"
+          fill={true}
           quality={95}
           objectFit="contain"
           formats={['AUTO', 'WEBP', 'AVIF']}
@@ -133,6 +141,7 @@ const imageSelector = imageName => {
         <Image
           className="img"
           src="/images/skills/docker.png"
+          fill={true}
           quality={95}
           objectFit="contain"
           formats={['AUTO', 'WEBP', 'AVIF']}
@@ -144,6 +153,7 @@ const imageSelector = imageName => {
         <Image
           className="img"
           src="/images/skills/vs-code.png"
+          fill={true}
           quality={95}
           objectFit="contain"
           formats={['AUTO', 'WEBP', 'AVIF']}
