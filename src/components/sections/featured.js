@@ -4,7 +4,8 @@ import { Icon } from '@components/icons';
 import { srConfig } from '@config';
 import { usePrefersReducedMotion } from '@hooks';
 import sr from '@utils/sr';
-import { useEffect, useRef } from 'react';
+import Image from 'next/image';
+import { useEffect, useRef, useState } from 'react';
 import styled from 'styled-components';
 
 const StyledProjectsGrid = styled.ul`
@@ -303,30 +304,15 @@ const StyledProject = styled.li`
   }
 `;
 
-export async function getStaticProps() {
-  const contentDirectory = path.join(process.cwd(), 'content/featured');
-  const files = fs.readdirSync(contentDirectory);
+const Featured = () => {
+  const [featuredProjects, setFeaturedProjects] = useState([]);
 
-  const featuredProjects = files
-    .map(filename => {
-      const filePath = path.join(contentDirectory, filename);
-      const fileContents = fs.readFileSync(filePath, 'utf8');
-      const { data, content } = matter(fileContents);
-      return {
-        frontmatter: data,
-        html: content,
-      };
-    })
-    .sort((a, b) => new Date(a.frontmatter.date) - new Date(b.frontmatter.date));
+  useEffect(() => {
+    fetch('/api/featured')
+      .then(response => response.json())
+      .then(data => setFeaturedProjects(data));
+  }, []);
 
-  return {
-    props: {
-      featuredProjects,
-    },
-  };
-}
-
-const Featured = ({ featuredProjects }) => {
   const revealTitle = useRef(null);
   const revealProjects = useRef([]);
   const prefersReducedMotion = usePrefersReducedMotion();
@@ -338,7 +324,7 @@ const Featured = ({ featuredProjects }) => {
 
     sr.reveal(revealTitle.current, srConfig());
     revealProjects.current.forEach((ref, i) => sr.reveal(ref, srConfig(i * 100)));
-  }, []);
+  }, [prefersReducedMotion]);
 
   return (
     <section id="projects">
@@ -348,8 +334,8 @@ const Featured = ({ featuredProjects }) => {
 
       <StyledProjectsGrid>
         {featuredProjects &&
-          featuredProjects.map(({ node }, i) => {
-            const { frontmatter, html } = node;
+          featuredProjects.map((node, i) => {
+            const { frontmatter, content } = node;
             const { external, title, tech, github, cover, cta } = frontmatter;
 
             return (
@@ -364,7 +350,7 @@ const Featured = ({ featuredProjects }) => {
 
                     <div
                       className="project-description"
-                      dangerouslySetInnerHTML={{ __html: html }}
+                      dangerouslySetInnerHTML={{ __html: content }}
                     />
 
                     {tech.length && (
@@ -396,9 +382,11 @@ const Featured = ({ featuredProjects }) => {
                 </div>
 
                 <div className="project-image">
-                  <a href={external ? external : github ? github : '#'}>
-                    {/* <Image image={cover} alt={title} className="img" fill={true} /> */}
-                  </a>
+                  {cover && (
+                    <a href={external ? external : github ? github : '#'}>
+                      <Image src={cover} alt={title} className="img" width={700} height={438} />
+                    </a>
+                  )}
                 </div>
               </StyledProject>
             );

@@ -3,6 +3,7 @@
 import { srConfig } from '@config';
 import { usePrefersReducedMotion } from '@hooks';
 import sr from '@utils/sr';
+import Image from 'next/image';
 import { useEffect, useRef } from 'react';
 import styled from 'styled-components';
 
@@ -225,14 +226,16 @@ const Workstation = () => {
 
         <StyledPic>
           <div className="wrapper">
-            {/* <Image
+            <Image
               className="img"
               src="/images/workstation.jpg"
+              layout="responsive"
               width={500}
               height={500}
               quality={95}
-              alt="Headshot"
-            /> */}
+              formats={['AUTO', 'WEBP', 'AVIF']}
+              alt="Workstation"
+            />
           </div>
         </StyledPic>
       </div>

@@ -1,3 +1,5 @@
+'use client';
+
 import { useRouter } from 'next/navigation';
 import PropTypes from 'prop-types';
 import { Helmet } from 'react-helmet';

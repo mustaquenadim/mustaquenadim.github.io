@@ -4,7 +4,7 @@ import { Icon } from '@components/icons';
 import { srConfig } from '@config';
 import { usePrefersReducedMotion } from '@hooks';
 import sr from '@utils/sr';
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { CSSTransition, TransitionGroup } from 'react-transition-group';
 import styled from 'styled-components';
 
@@ -169,30 +169,15 @@ const StyledService = styled.li`
   }
 `;
 
-export async function getStaticProps() {
-  const contentDirectory = path.join(process.cwd(), 'content/services');
-  const files = fs.readdirSync(contentDirectory);
+const Services = () => {
+  const [services, setServices] = useState([]);
 
-  const services = files
-    .map(filename => {
-      const filePath = path.join(contentDirectory, filename);
-      const fileContents = fs.readFileSync(filePath, 'utf8');
-      const { data, content } = matter(fileContents);
-      return {
-        frontmatter: data,
-        html: content,
-      };
-    })
-    .sort((a, b) => new Date(a.frontmatter.date) - new Date(b.frontmatter.date));
+  useEffect(() => {
+    fetch('/api/services')
+      .then(response => response.json())
+      .then(data => setServices(data));
+  }, []);
 
-  return {
-    props: {
-      services,
-    },
-  };
-}
-
-const Services = ({ services }) => {
   const revealContainer = useRef(null);
   const revealTitle = useRef(null);
   const revealArchiveLink = useRef(null);
@@ -214,7 +199,7 @@ const Services = ({ services }) => {
   const firstSix = services?.slice(0, GRID_LIMIT);
 
   const serviceInner = node => {
-    const { frontmatter, html } = node;
+    const { frontmatter, content } = node;
     const { github, external, title, tech, icon } = frontmatter;
 
     return (
@@ -249,7 +234,7 @@ const Services = ({ services }) => {
             </a>
           </h3>
 
-          <div className="service-description" dangerouslySetInnerHTML={{ __html: html }} />
+          <div className="service-description">{content}</div>
         </header>
 
         <footer>
@@ -273,14 +258,14 @@ const Services = ({ services }) => {
         {prefersReducedMotion ? (
           <>
             {firstSix &&
-              firstSix.map(({ node }, i) => (
+              firstSix?.map((node, i) => (
                 <StyledService key={i}>{serviceInner(node)}</StyledService>
               ))}
           </>
         ) : (
           <TransitionGroup component={null}>
             {firstSix &&
-              firstSix.map(({ node }, i) => (
+              firstSix?.map((node, i) => (
                 <CSSTransition
                   key={i}
                   classNames="fadeup"

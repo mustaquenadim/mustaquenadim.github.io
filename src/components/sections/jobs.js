@@ -165,30 +165,15 @@ const StyledTabPanel = styled.div`
   }
 `;
 
-export async function getStaticProps() {
-  const contentDirectory = path.join(process.cwd(), 'content/jobs');
-  const files = fs.readdirSync(contentDirectory);
+const Jobs = () => {
+  const [jobsData, setJobsData] = useState([]);
 
-  const jobsData = files
-    .map(filename => {
-      const filePath = path.join(contentDirectory, filename);
-      const fileContents = fs.readFileSync(filePath, 'utf8');
-      const { data, content } = matter(fileContents);
-      return {
-        frontmatter: data,
-        html: content,
-      };
-    })
-    .sort((a, b) => new Date(a.frontmatter.date) - new Date(b.frontmatter.date));
+  useEffect(() => {
+    fetch('/api/jobs')
+      .then(response => response.json())
+      .then(data => setJobsData(data));
+  }, []);
 
-  return {
-    props: {
-      jobsData,
-    },
-  };
-}
-
-const Jobs = ({ jobsData }) => {
   const [activeTabId, setActiveTabId] = useState(0);
   const [tabFocus, setTabFocus] = useState(null);
   const tabs = useRef([]);
@@ -249,7 +234,7 @@ const Jobs = ({ jobsData }) => {
       <div className="inner">
         <StyledTabList role="tablist" aria-label="Job tabs" onKeyDown={e => onKeyDown(e)}>
           {jobsData &&
-            jobsData.map(({ node }, i) => {
+            jobsData.map((node, i) => {
               const { company } = node.frontmatter;
               return (
                 <StyledTabButton
@@ -271,8 +256,8 @@ const Jobs = ({ jobsData }) => {
 
         <StyledTabPanels>
           {jobsData &&
-            jobsData.map(({ node }, i) => {
-              const { frontmatter, html } = node;
+            jobsData.map((node, i) => {
+              const { frontmatter, content } = node;
               const { title, url, company, range } = frontmatter;
 
               return (
@@ -296,7 +281,7 @@ const Jobs = ({ jobsData }) => {
 
                     <p className="range">{range}</p>
 
-                    <div dangerouslySetInnerHTML={{ __html: html }} />
+                    <div dangerouslySetInnerHTML={{ __html: content }} />
                   </StyledTabPanel>
                 </CSSTransition>
               );
