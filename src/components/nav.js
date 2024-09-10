@@ -191,12 +191,12 @@ const Nav = ({ isHome }) => {
     <div className="logo" tabIndex="-1">
       {isHome ? (
         <a href="/" aria-label="home">
-          {/* <Image src="/images/mn-logo.png" alt="Mustaque Nadim Logo" fill={true} /> */}
+          <img src="/images/mn-logo.png" alt="Mustaque Nadim Logo" />
           <div className="sliding-line"></div>
         </a>
       ) : (
         <Link href="/" aria-label="home">
-          {/* <Image src="/images/mn-logo.png" alt="Mustaque Nadim Logo" fill={true} /> */}
+          <img src="/images/mn-logo.png" alt="Mustaque Nadim Logo" />
           <div className="sliding-line"></div>
         </Link>
       )}
