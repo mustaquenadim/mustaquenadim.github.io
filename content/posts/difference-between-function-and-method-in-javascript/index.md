@@ -3,7 +3,7 @@ title: Difference between Function and Method in JavaScript
 description: Discover the key differences between functions and methods in JavaScript
 date: 2023-07-01
 draft: false
-slug: /pensieve/difference-between-function-and-method-in-javascript
+slug: /post/difference-between-function-and-method-in-javascript
 tags:
   - JavaScript
   - Programming

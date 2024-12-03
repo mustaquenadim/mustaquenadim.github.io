@@ -1,9 +1,11 @@
+'use client';
+
 import { Layout } from '@components';
 import { IconBookmark } from '@components/icons';
 import kebabCase from 'lodash/kebabCase';
 import Link from 'next/link';
-import PropTypes from 'prop-types';
-import { Helmet } from 'react-helmet';
+import { useRouter } from 'next/navigation';
+import { useEffect, useState } from 'react';
 import styled from 'styled-components';
 
 const StyledMainContainer = styled.main`
@@ -141,16 +143,37 @@ const StyledPost = styled.li`
   }
 `;
 
-const PensievePage = ({ location, data }) => {
-  const posts = data.allMarkdownRemark.edges;
+interface Post {
+  slug: string;
+  frontMatter: {
+    title: string;
+    description: string;
+    date: string;
+    tags: string[];
+  };
+}
+
+interface PensievePageProps {
+  posts: Post[];
+}
+
+const PensievePage: React.FC<PensievePageProps> = () => {
+  const [posts, setPosts] = useState([]);
+  const router = useRouter();
+
+  useEffect(() => {
+    fetch('/api/posts')
+      .then(response => response.json())
+      .then(data => setPosts(data));
+  }, []);
+
+  console.log(posts);
 
   return (
-    <Layout location={location}>
-      <Helmet title="Pensieve" />
-
+    <Layout location={router}>
       <StyledMainContainer>
         <header>
-          <h1 className="big-heading">Pensieve</h1>
+          <h1 className="big-heading">Posts</h1>
           <p className="subtitle">
             <a href="https://www.wizardingworld.com/writing-by-jk-rowling/pensieve">
               a collection of memories
@@ -159,10 +182,10 @@ const PensievePage = ({ location, data }) => {
         </header>
 
         <StyledGrid>
-          {posts.length > 0 &&
-            posts.map(({ node }, i) => {
-              const { frontmatter } = node;
-              const { title, description, slug, date, tags } = frontmatter;
+          {posts?.length > 0 &&
+            posts?.map((post, i) => {
+              const { title, date, tags, slug } = post.frontmatter;
+              const { description } = post.frontmatter;
               const formattedDate = new Date(date).toLocaleDateString();
 
               return (
@@ -202,35 +225,4 @@ const PensievePage = ({ location, data }) => {
   );
 };
 
-PensievePage.propTypes = {
-  location: PropTypes.object.isRequired,
-  data: PropTypes.object.isRequired,
-};
-
 export default PensievePage;
-
-export const pageQuery = graphql`
-  {
-    allMarkdownRemark(
-      filter: {
-        fileAbsolutePath: { regex: "/content/posts/" }
-        frontmatter: { draft: { ne: true } }
-      }
-      sort: { fields: [frontmatter___date], order: DESC }
-    ) {
-      edges {
-        node {
-          frontmatter {
-            title
-            description
-            slug
-            date
-            tags
-            draft
-          }
-          html
-        }
-      }
-    }
-  }
-`;

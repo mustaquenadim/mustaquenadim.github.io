@@ -3,7 +3,7 @@ title: How to Disable Right-Click in a React Application
 description: Disable Right-Click in a React Application
 date: 2024-04-18
 draft: false
-slug: /pensieve/disable-right-click-in-a-react-app
+slug: /post/disable-right-click-in-a-react-app
 tags:
   - React
   - Web Development

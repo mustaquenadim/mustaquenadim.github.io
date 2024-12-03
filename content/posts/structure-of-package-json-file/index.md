@@ -3,7 +3,7 @@ title: Structure of Package.json File
 description: abc234
 date: 2024-05-28
 draft: true
-slug: /pensieve/structure-of-package-json-file
+slug: /post/structure-of-package-json-file
 tags:
   -
 ---

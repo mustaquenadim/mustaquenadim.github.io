@@ -3,7 +3,7 @@ title: How to use ChatGPT Plus GPT-4 Model for free
 description: ChatGPT-4 is completely free in other sites
 date: 2024-05-25
 draft: false
-slug: /pensieve/how-to-use-gpt-4-model-for-free
+slug: /post/how-to-use-gpt-4-model-for-free
 tags:
   - AI
   - Tools

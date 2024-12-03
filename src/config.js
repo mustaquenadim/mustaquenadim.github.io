@@ -51,7 +51,7 @@ module.exports = {
     },
     {
       name: 'Posts',
-      url: '/pensieve',
+      url: '/post',
     },
   ],
 

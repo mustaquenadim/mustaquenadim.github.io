@@ -3,7 +3,7 @@ title: 'Dependencies vs DevDependencies: What Every Beginner Should Know'
 description: Discover the key differences between functions and methods in JavaScript
 date: 2024-05-26
 draft: false
-slug: /pensieve/difference-between-dependencies-and-dev-dependencies
+slug: /post/difference-between-dependencies-and-dev-dependencies
 tags:
   - JavaScript
   - Programming

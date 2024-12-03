@@ -3,7 +3,7 @@ title: Understanding Inline, Inline-Block, and Block Elements in HTML
 description: Unlock the secrets of inline, inline-block, and block elements in HTML
 date: 2023-07-02
 draft: false
-slug: /pensieve/understanding-inline-inline-block-and-block-elements-in-html
+slug: /post/understanding-inline-inline-block-and-block-elements-in-html
 tags:
   - HTML
   - Web Development
