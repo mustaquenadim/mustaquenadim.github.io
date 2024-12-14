@@ -16,7 +16,10 @@ export async function generateStaticParams() {
 }
 
 export function generateMetadata({ params }) {
-  let post = getBlogPosts().find(post => post.slug === params.slug);
+  let post = getBlogPosts().find(post => {
+    return post.slug === params.slug;
+  });
+
   if (!post) {
     return;
   }
@@ -55,8 +58,7 @@ interface PostPageProps {
 }
 
 const PostPage = async ({ params }: PostPageProps) => {
-  const posts = getBlogPosts();
-  const post = posts.find(post => post.slug === params.slug);
+  let post = getBlogPosts().find(post => post.slug === params.slug);
   const { metadata, content } = post;
 
   if (!post) {

@@ -140,6 +140,6 @@ Understanding the differences between inline, inline-block, and block elements i
 
 ## Resources <a id='resources'></a>
 
-- <https://www.digitalocean.com/community/tutorials/css-display-inline-vs-inline-block>
-- <https://www.w3schools.com/css/css_inline-block.asp>
+- [https://www.digitalocean.com/community/tutorials/css-display-inline-vs-inline-block](https://www.digitalocean.com/community/tutorials/css-display-inline-vs-inline-block)
+- [https://www.w3schools.com/css/css_inline-block.asp](https://www.w3schools.com/css/css_inline-block.asp)
 - [HTML and CSS: Design and Build Websites by Jon Duckett](https://a.co/d/fHZH58q)

@@ -69,7 +69,7 @@ const CustomPost = ({ data, content, children }: CustomPostProps) => {
       <StyledPostContainer>
         <span className="breadcrumb">
           <span className="arrow">&larr;</span>
-          <Link href="/post">All memories</Link>
+          <Link href="/blogs">All memories</Link>
         </span>
 
         <StyledPostHeader>

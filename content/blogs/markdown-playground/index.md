@@ -8,7 +8,7 @@ tags:
   - Testing
 ---
 
-![Image Alt](./image.jpg)
+![Image Alt](/blogs/markdown-playground/image.jpg)
 
 ```jsx
 class FlavorForm extends React.Component { // highlight-line
@@ -295,8 +295,6 @@ you can write text [with links](http://example.com) inline or [link references][
 Paragraph:
 
     Code
-
-<!-- -->
 
     Paragraph:
 

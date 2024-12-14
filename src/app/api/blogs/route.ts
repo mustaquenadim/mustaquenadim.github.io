@@ -41,7 +41,7 @@ function findAssociatedImage(mdFilePath: string): string | null {
 
 export async function GET() {
   try {
-    const contentDirectory = path.join(process.cwd(), 'content', 'posts');
+    const contentDirectory = path.join(process.cwd(), 'content', 'blogs');
     const markdownFiles = getMarkdownFiles(contentDirectory);
 
     const posts = await Promise.all(

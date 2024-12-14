@@ -50,8 +50,8 @@ module.exports = {
       url: '/#contact',
     },
     {
-      name: 'Posts',
-      url: '/post',
+      name: 'Blogs',
+      url: '/blogs',
     },
   ],
 

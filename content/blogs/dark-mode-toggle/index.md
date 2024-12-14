@@ -91,8 +91,8 @@ const onToggleClick = () => {
 
 ## Resources
 
-- <https://css-tricks.com/a-complete-guide-to-dark-mode-on-the-web/>
-- <https://css-tricks.com/flash-of-inaccurate-color-theme-fart/>
-- <https://mxb.dev/blog/color-theme-switcher/>
-- <https://www.joshwcomeau.com/react/dark-mode/>
-- <https://web.dev/prefers-color-scheme/>
+- [https://css-tricks.com/a-complete-guide-to-dark-mode-on-the-web](https://css-tricks.com/a-complete-guide-to-dark-mode-on-the-web)
+- [https://css-tricks.com/flash-of-inaccurate-color-theme-fart](https://css-tricks.com/flash-of-inaccurate-color-theme-fart)
+- [https://mxb.dev/blog/color-theme-switcher](https://mxb.dev/blog/color-theme-switcher)
+- [https://www.joshwcomeau.com/react/dark-mode](https://www.joshwcomeau.com/react/dark-mode)
+- [https://web.dev/prefers-color-scheme](https://web.dev/prefers-color-scheme)
