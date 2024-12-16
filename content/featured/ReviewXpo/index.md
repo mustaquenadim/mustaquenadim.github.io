@@ -1,7 +1,7 @@
 ---
 date: '1'
 title: 'Shopify Customer Feedback App'
-cover: './reviewxpo.png'
+cover: '/content/featured/ReviewXpo/reviewxpo.png'
 # github: 'https://github.com/bchiang7/halcyon-site'
 external: 'https://www.reviewxpo.com/shopify-reviews-app'
 tech:

@@ -59,7 +59,6 @@ export async function GET() {
           slug,
           frontmatter: {
             ...data,
-            cover: imageRelativePath ? `/${imageRelativePath.replace(/\\/g, '/')}` : null,
           },
           content: htmlContent,
           filePath: relativePath,

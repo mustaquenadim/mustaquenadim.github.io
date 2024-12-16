@@ -139,7 +139,6 @@ const About = () => {
     'Node.js',
     'Express.js',
     'React Native',
-    'Locofy',
   ];
 
   return (

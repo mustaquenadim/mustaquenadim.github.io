@@ -1,7 +1,7 @@
 ---
 date: '3'
 title: 'Company Portfolio Website'
-cover: './techsist.png'
+cover: '/content/featured/TechsistLimited/techsist.png'
 external: 'https://techsistltd.com/'
 cta: ''
 tech:

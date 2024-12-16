@@ -34,7 +34,8 @@ const StyledContactSection = styled.section`
   }
 
   .title {
-    font-size: clamp(40px, 5vw, 60px);
+    font-size: clamp(36px, 5vw, 44px);
+    font-weight: 700;
   }
 
   .email-link {
@@ -42,10 +43,23 @@ const StyledContactSection = styled.section`
     margin-top: 50px;
   }
 
+  p {
+    font-size: 17px;
+
+    @media (max-width: 768px) {
+      font-size: 14px;
+    }
+  }
+
   .small-text {
-    font-size: 16px;
+    font-size: 13px;
+    font-style: italic;
     margin-top: 8px;
     color: var(--slate);
+
+    b {
+      font-weight: 600;
+    }
   }
 `;
 
@@ -76,7 +90,7 @@ const Contact = () => {
         Say Hello
       </a>
       <div className="small-text">
-        Replies within <b>an hour</b>
+        Usually replies within <b>an hour</b>
       </div>
     </StyledContactSection>
   );

@@ -146,7 +146,7 @@ const StyledProject = styled.li`
   .project-title {
     margin: 0 0 10px;
     color: var(--lightest-slate);
-    font-size: var(--fz-xxl);
+    font-size: var(--fz-lg);
 
     a {
       position: static;
@@ -166,7 +166,7 @@ const StyledProject = styled.li`
 
   .project-description {
     color: var(--light-slate);
-    font-size: 17px;
+    font-size: 14px;
 
     a {
       ${({ theme }) => theme.mixins.inlineLink};
@@ -195,30 +195,6 @@ const StyledProject = styled.li`
 `;
 
 const Blogs = () => {
-  // const data = useStaticQuery(graphql`
-  //   query {
-  //     projects: allMarkdownRemark(
-  //       filter: {
-  //         fileAbsolutePath: { regex: "/content/projects/" }
-  //         frontmatter: { showInProjects: { ne: false } }
-  //       }
-  //       sort: { fields: [frontmatter___date], order: DESC }
-  //     ) {
-  //       edges {
-  //         node {
-  //           frontmatter {
-  //             title
-  //             tech
-  //             github
-  //             external
-  //           }
-  //           html
-  //         }
-  //       }
-  //     }
-  //   }
-  // `);
-
   const [showMore, setShowMore] = useState(false);
   const revealTitle = useRef(null);
   const revealArchiveLink = useRef(null);

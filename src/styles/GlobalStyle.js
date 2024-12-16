@@ -1,9 +1,9 @@
 import { createGlobalStyle } from 'styled-components';
 import fonts from './fonts';
-import variables from './variables';
-import TransitionStyles from './TransitionStyles';
-import PrismStyles from './PrismStyles';
 import PreloaderStyles from './PreloaderStyles';
+import PrismStyles from './PrismStyles';
+import TransitionStyles from './TransitionStyles';
+import variables from './variables';
 
 const GlobalStyle = createGlobalStyle`
   ${fonts};
@@ -78,11 +78,11 @@ const GlobalStyle = createGlobalStyle`
     background-color: var(--navy);
     color: var(--slate);
     font-family: var(--font-sans);
-    font-size: var(--fz-xl);
-    line-height: 1.3;
+    font-size: var(--fz-md);
+    line-height: 1.6;
 
     @media (max-width: 480px) {
-      font-size: var(--fz-lg);
+      font-size: var(--fz-sm);
     }
 
     &.hidden {
@@ -167,17 +167,17 @@ const GlobalStyle = createGlobalStyle`
     margin: 0 0 10px 0;
     font-weight: 600;
     color: var(--lightest-slate);
-    line-height: 1.1;
+    line-height: 1.4;
   }
 
   .big-heading {
-    margin: 0;
-    font-size: clamp(40px, 8vw, 80px);
+    margin: 0px;
+    font-size: clamp(40px, 8vw, 64px);
   }
 
   .medium-heading {
     margin: 0;
-    font-size: clamp(40px, 8vw, 60px);
+    font-size: clamp(40px, 8vw, 52px);
   }
 
   .numbered-heading {
@@ -191,13 +191,12 @@ const GlobalStyle = createGlobalStyle`
 
     &:before {
       position: relative;
-      bottom: 4px;
       counter-increment: section;
       content: '0' counter(section) '.';
       margin-right: 10px;
       color: var(--green);
       font-family: var(--font-mono);
-      font-size: clamp(var(--fz-md), 3vw, var(--fz-xl));
+      font-size: clamp(var(--fz-sm), 3vw, var(--fz-lg));
       font-weight: 400;
 
       @media (max-width: 480px) {
@@ -210,7 +209,7 @@ const GlobalStyle = createGlobalStyle`
       content: '';
       display: block;
       position: relative;
-      top: -5px;
+      top: 0;
       width: 300px;
       height: 1px;
       margin-left: 20px;
@@ -317,7 +316,7 @@ const GlobalStyle = createGlobalStyle`
       padding: 0;
       margin: 0;
       list-style: none;
-      font-size: var(--fz-lg);
+      font-size: var(--fz-md);
       li {
         position: relative;
         padding-left: 30px;

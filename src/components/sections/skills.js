@@ -26,12 +26,25 @@ const StyledSkillsSection = styled.div`
       }
     }
 
+    @media (max-width: 768px) {
+      margin: 0 12px;
+    }
+
     .img {
       position: relative;
       border-radius: var(--border-radius);
       mix-blend-mode: multiply;
       filter: grayscale(100%) contrast(1);
       transition: var(--transition);
+
+      @media (max-width: 768px) {
+        width: 48px;
+        height: 48px;
+      }
+    }
+
+    @media (max-width: 768px) {
+      margin-top: 2rem;
     }
   }
 `;
@@ -72,8 +85,6 @@ const Skills = () => {
               alt={skill.alt}
               width={64}
               height={64}
-              quality={95}
-              priority={index < 4}
             />
           </div>
         ))}

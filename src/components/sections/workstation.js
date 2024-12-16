@@ -47,14 +47,14 @@ const StyledText = styled.div`
       margin-bottom: 10px;
       padding-left: 20px;
       // font-family: var(--font-mono);
-      font-size: var(--fz-lg);
+      font-size: var(--fz-sm);
 
       &:before {
         content: '▹';
         position: absolute;
         left: 0;
         color: var(--green);
-        font-size: var(--fz-lg);
+        font-size: var(--fz-sm);
         line-height: 24px;
       }
     }

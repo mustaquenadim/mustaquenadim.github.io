@@ -126,7 +126,7 @@ const StyledProject = styled.li`
 
   .project-title {
     color: var(--lightest-slate);
-    font-size: clamp(24px, 5vw, 28px);
+    font-size: clamp(24px, 5vw, 20px);
 
     @media (min-width: 768px) {
       margin: 0 0 20px;
@@ -160,7 +160,7 @@ const StyledProject = styled.li`
     border-radius: var(--border-radius);
     background-color: var(--light-navy);
     color: var(--light-slate);
-    font-size: var(--fz-lg);
+    font-size: var(--fz-sm);
 
     @media (max-width: 768px) {
       padding: 20px 0;
@@ -290,6 +290,8 @@ const StyledProject = styled.li`
     }
 
     .img {
+      width: 100%;
+      height: auto;
       border-radius: var(--border-radius);
       mix-blend-mode: multiply;
       filter: grayscale(100%) contrast(1) brightness(90%);
@@ -325,6 +327,8 @@ const Featured = () => {
     sr.reveal(revealTitle.current, srConfig());
     revealProjects.current.forEach((ref, i) => sr.reveal(ref, srConfig(i * 100)));
   }, [prefersReducedMotion]);
+
+  console.log(featuredProjects);
 
   return (
     <section id="projects">

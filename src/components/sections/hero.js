@@ -38,7 +38,7 @@ const StyledHeroSection = styled.section`
   }
 
   p {
-    margin: 20px 0 0;
+    margin: 32px 0 0;
     max-width: 540px;
   }
 
@@ -88,9 +88,9 @@ const StyledHeroSection = styled.section`
 
 const TEXTS = [
   'JavaScript Freak',
-  'Open Source Enthusiast',
+  'Solopreneur',
   'Product Enthusiast',
-  'Instructor',
+  'Coding Mentor',
   'Content Creator',
 ];
 
@@ -119,7 +119,7 @@ const Hero = () => {
   const one = <h1>Hi, my name is</h1>;
   const two = <h2 className="big-heading">Mustaque Nadim</h2>;
   const three = (
-    <h3 className="big-heading">
+    <h3 className="medium-heading">
       <TextTransition springConfig={presets.wobbly}>{TEXTS[index % TEXTS.length]}</TextTransition>
     </h3>
   );
@@ -136,13 +136,13 @@ const Hero = () => {
       <a className="email-link" href="#contact">
         Hire me
       </a>
-      <a
+      {/* <a
         className="email-link"
         href="/Mustaque-Nadim-Software-Engineer-Resume.pdf"
         target="_blank"
         rel="noreferrer">
         Download Resume
-      </a>
+      </a> */}
     </div>
   );
 
@@ -157,7 +157,7 @@ const Hero = () => {
     </div>
   );
 
-  const items = [one, two, three, four, five, six];
+  const items = [one, two, three, four, five];
 
   return (
     <StyledHeroSection>

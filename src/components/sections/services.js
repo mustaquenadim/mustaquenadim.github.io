@@ -13,10 +13,6 @@ const StyledServicesSection = styled.section`
   flex-direction: column;
   align-items: center;
 
-  h2 {
-    font-size: clamp(24px, 5vw, var(--fz-heading));
-  }
-
   .archive-link {
     font-family: var(--font-mono);
     font-size: var(--fz-sm);
@@ -119,7 +115,7 @@ const StyledService = styled.li`
   .service-title {
     margin: 0 0 10px;
     color: var(--lightest-slate);
-    font-size: var(--fz-xxl);
+    font-size: var(--fz-lg);
     text-align: center;
 
     a {
@@ -140,7 +136,7 @@ const StyledService = styled.li`
 
   .service-description {
     color: var(--light-slate);
-    font-size: 17px;
+    font-size: 14px;
     text-align: center;
 
     a {

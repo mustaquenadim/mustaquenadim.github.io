@@ -1,7 +1,7 @@
 ---
 date: '2'
 title: 'E-commerce Web Application'
-cover: './thekoreanmall.png'
+cover: '/content/featured/TheKoreanMall/thekoreanmall.png'
 # github: 'https://github.com/bchiang7/spotify-profile'
 external: 'https://www.koreanmallbd.org/'
 tech:
