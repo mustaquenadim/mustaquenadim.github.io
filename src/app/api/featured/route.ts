@@ -66,9 +66,9 @@ export async function GET() {
       }),
     );
 
-    const sortedProjects = featuredProjects.sort(
-      (a, b) => parseInt(b.frontmatter.date) - parseInt(a.frontmatter.date),
-    );
+    const sortedProjects = featuredProjects
+      .filter(service => service.frontmatter.showInFeaturedProjects)
+      .sort((a, b) => a.frontmatter.order - b.frontmatter.order);
 
     return NextResponse.json(sortedProjects);
   } catch (error) {

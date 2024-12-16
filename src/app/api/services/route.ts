@@ -18,9 +18,9 @@ export async function GET() {
     };
   });
 
-  const sortedServices = services.sort(
-    (a, b) => new Date(b.frontmatter.date).getTime() - new Date(a.frontmatter.date).getTime(),
-  );
+  const sortedServices = services
+    .filter(service => service.frontmatter.showInServices)
+    .sort((a, b) => a.frontmatter.order - b.frontmatter.order);
 
   return NextResponse.json(sortedServices);
 }

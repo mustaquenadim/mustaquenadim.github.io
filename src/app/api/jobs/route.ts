@@ -59,6 +59,7 @@ export async function GET() {
           slug,
           frontmatter: {
             ...data,
+            date: data.date || null,
             cover: imageRelativePath ? `/${imageRelativePath.replace(/\\/g, '/')}` : null,
           },
           content: htmlContent,
@@ -67,9 +68,11 @@ export async function GET() {
       }),
     );
 
-    const sortedJobs = jobsData.sort(
-      (a, b) => parseInt(b.frontmatter.date) - parseInt(a.frontmatter.date),
-    );
+    const sortedJobs = jobsData.sort((a, b) => {
+      const dateA = new Date(a.frontmatter.date).getTime();
+      const dateB = new Date(b.frontmatter.date).getTime();
+      return dateB - dateA;
+    });
 
     return NextResponse.json(sortedJobs);
   } catch (error) {

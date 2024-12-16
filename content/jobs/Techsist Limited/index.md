@@ -4,7 +4,7 @@ title: 'Frontend Developer Intern'
 company: 'Techsist Limited'
 location: 'Baridhara DOHS, Dhaka, Bangladesh'
 range: 'April 2021 - January 2022'
-url: 'https://techsistltd.com/'
+url: 'https://www.techsistltd.com/'
 ---
 
 - Developed and shipped responsive designed, cross-browser compatible and accessibility complaint websites, achieving 22% faster load time than the industry average

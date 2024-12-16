@@ -1,13 +1,15 @@
 ---
-date: '3'
+date: ''
+order: 3
 title: 'Company Portfolio Website'
 cover: '/content/featured/TechsistLimited/techsist.png'
-external: 'https://techsistltd.com/'
+external: 'https://www.techsistltd.com/'
 cta: ''
 tech:
   - React
   - SASS
   - Bootstrap
+showInFeaturedProjects: true
 ---
 
 Techsist Limited

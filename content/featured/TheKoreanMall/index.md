@@ -1,9 +1,10 @@
 ---
-date: '2'
+date: ''
+order: 2
 title: 'E-commerce Web Application'
 cover: '/content/featured/TheKoreanMall/thekoreanmall.png'
 # github: 'https://github.com/bchiang7/spotify-profile'
-external: 'https://www.koreanmallbd.org/'
+external: 'https://www.thekoreanmall.com/'
 tech:
   - React
   - SASS
@@ -13,6 +14,7 @@ tech:
   - Mongoose
   - MongoDB
   - Render
+showInFeaturedProjects: true
 ---
 
 [The Korean Mall](https://www.koreanmallbd.org/)

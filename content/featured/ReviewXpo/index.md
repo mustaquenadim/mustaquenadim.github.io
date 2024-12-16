@@ -1,5 +1,6 @@
 ---
-date: '1'
+date: ''
+order: 1
 title: 'Shopify Customer Feedback App'
 cover: '/content/featured/ReviewXpo/reviewxpo.png'
 # github: 'https://github.com/bchiang7/halcyon-site'
@@ -10,6 +11,8 @@ tech:
   - Tailwind CSS
   - Storybook
   - Shopify
+
+showInFeaturedProjects: true
 ---
 
 [ReviewXpo](https://www.reviewxpo.com/shopify-reviews-app)
