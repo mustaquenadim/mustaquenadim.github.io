@@ -1,5 +1,6 @@
 import fs from 'fs';
 import matter from 'gray-matter';
+import kebabCase from 'lodash/kebabCase';
 import path from 'path';
 
 type Metadata = {
@@ -69,8 +70,37 @@ function getMDXData(dir) {
   });
 }
 
+export function getTagsWithCount() {
+  const posts = getBlogPosts();
+  const tagCount = new Map<string, number>();
+
+  posts.forEach(post => {
+    const tags = post.metadata.tags || [];
+    tags.forEach(tag => {
+      tagCount.set(tag, (tagCount.get(tag) || 0) + 1);
+    });
+  });
+
+  return Array.from(tagCount.entries())
+    .map(([fieldValue, totalCount]) => ({
+      fieldValue,
+      totalCount,
+    }))
+    .sort((a, b) => b.totalCount - a.totalCount);
+}
+
 export function getBlogPosts() {
-  return getMDXData(path.join(process.cwd(), 'content', 'blogs'));
+  const posts = getMDXData(path.join(process.cwd(), 'content', 'blogs'));
+  return posts.filter(post => !post.metadata.draft);
+}
+
+export function getPostsByTag(tag: string) {
+  const posts = getBlogPosts();
+
+  return posts.filter(post => {
+    const tags = post.metadata.tags || [];
+    return tags.some(t => kebabCase(t) === tag);
+  });
 }
 
 export function formatDate(date: string, includeRelative = false) {

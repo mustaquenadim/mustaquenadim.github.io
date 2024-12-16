@@ -68,7 +68,8 @@ const StyledPost = styled.li`
   .post__title {
     margin: 0 0 10px;
     color: var(--lightest-slate);
-    font-size: var(--fz-xxl);
+    font-size: var(--fz-lg);
+    font-weight: 700;
 
     a {
       position: static;
@@ -88,7 +89,7 @@ const StyledPost = styled.li`
 
   .post__desc {
     color: var(--light-slate);
-    font-size: 17px;
+    font-size: 13px;
   }
 
   .post__date {
@@ -124,7 +125,6 @@ interface StyledBlogsProps {
 }
 
 export const StyledBlogs: React.FC<StyledBlogsProps> = ({ allBlogs }) => {
-  `use client`;
   return (
     <StyledGrid>
       {allBlogs?.length > 0 &&
@@ -140,7 +140,7 @@ export const StyledBlogs: React.FC<StyledBlogsProps> = ({ allBlogs }) => {
                     <IconBookmark />
                   </div>
                   <h5 className="post__title">
-                    <Link href={slug}>{title}</Link>
+                    <Link href={`/blog/${slug}`}>{title}</Link>
                   </h5>
                   <p className="post__desc">{description}</p>
                 </header>
@@ -150,7 +150,7 @@ export const StyledBlogs: React.FC<StyledBlogsProps> = ({ allBlogs }) => {
                   <ul className="post__tags">
                     {tags.map((tag, i) => (
                       <li key={i}>
-                        <Link href={`/pensieve/tags/${kebabCase(tag)}/`} className="inline-link">
+                        <Link href={`/blogs/tags/${kebabCase(tag)}/`} className="inline-link">
                           #{tag}
                         </Link>
                       </li>

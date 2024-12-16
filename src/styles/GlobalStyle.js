@@ -423,7 +423,6 @@ const GlobalStyle = createGlobalStyle`
     .arrow {
       display: block;
       margin-right: 10px;
-      padding-top: 4px;
     }
 
     a {
@@ -434,6 +433,7 @@ const GlobalStyle = createGlobalStyle`
       line-height: 1.5;
       text-transform: uppercase;
       letter-spacing: 0.1em;
+      margin-top: 3px;
     }
   }
 
