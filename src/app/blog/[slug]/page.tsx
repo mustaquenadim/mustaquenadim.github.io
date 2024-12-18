@@ -1,5 +1,5 @@
+import BlogPost from '@components/blog-post';
 import { CustomMDX } from '@components/custom-mdx';
-import CustomPost from '@components/custom-post';
 import { getBlogPosts } from '@utils/getPost';
 import { notFound } from 'next/navigation';
 
@@ -66,9 +66,9 @@ const PostPage = async ({ params }: PostPageProps) => {
   }
 
   return (
-    <CustomPost data={metadata} content={content}>
+    <BlogPost data={metadata}>
       <CustomMDX source={content} />
-    </CustomPost>
+    </BlogPost>
   );
 };
 

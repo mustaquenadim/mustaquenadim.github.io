@@ -328,8 +328,6 @@ const Featured = () => {
     revealProjects.current.forEach((ref, i) => sr.reveal(ref, srConfig(i * 100)));
   }, [prefersReducedMotion]);
 
-  console.log(featuredProjects);
-
   return (
     <section id="projects">
       <h2 className="numbered-heading" ref={revealTitle}>

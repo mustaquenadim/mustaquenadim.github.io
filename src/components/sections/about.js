@@ -158,7 +158,7 @@ const About = () => {
               Throughout this journey, I've had the opportunity to work at{' '}
               <a href="https://bengalsoftware.com/">Bengal Software</a>,{' '}
               <a href="https://jouleslabs.com/">JoulesLabs</a> and{' '}
-              <a href="https://techsistltd.com/">Techsist Limited</a>. Additionally, to share my
+              <a href="https://www.techsistltd.com/">Techsist Limited</a>. Additionally, to share my
               programming knowledge and experience, I founded{' '}
               <a href="https://academy.mustaquenadim.com/">Mustaque Nadim Academy</a> and Passionate
               Programmer Community. I firmly believe that{' '}

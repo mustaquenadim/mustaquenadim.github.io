@@ -1,8 +1,7 @@
 'use client';
 
-import { useRouter } from 'next/navigation';
 import styled from 'styled-components';
-import Layout from './layout';
+import Layout from '../layout';
 
 const StyledMainContainer = styled.main`
   & > header {
@@ -27,18 +26,16 @@ const StyledMainContainer = styled.main`
 `;
 
 const BlogsLayout = ({ children }) => {
-  const router = useRouter();
-
   return (
-    <Layout location={router}>
+    <Layout>
       <StyledMainContainer>
         <header>
-          <h1 className="big-heading">Posts</h1>
-          <p className="subtitle">
+          <h1 className="big-heading">Blogs</h1>
+          {/* <p className="subtitle">
             <a href="https://www.wizardingworld.com/writing-by-jk-rowling/pensieve">
               a collection of memories
             </a>
-          </p>
+          </p> */}
         </header>
         {children}
       </StyledMainContainer>

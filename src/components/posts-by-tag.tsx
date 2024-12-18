@@ -4,7 +4,6 @@ import Link from 'next/link';
 
 const PostsByTag = ({ tag }) => {
   const posts = getPostsByTag(tag);
-  console.log(posts);
 
   return (
     <>
@@ -35,7 +34,7 @@ const PostsByTag = ({ tag }) => {
                 {tags &&
                   tags.length > 0 &&
                   tags.map((tag, i) => (
-                    <Link key={i} href={`/blogs/tags/${kebabCase(tag)}/`} className="tag">
+                    <Link key={i} href={`/blogs/tag/${kebabCase(tag)}/`} className="tag">
                       #{tag}
                     </Link>
                   ))}

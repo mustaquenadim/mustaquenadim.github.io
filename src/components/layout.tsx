@@ -3,7 +3,6 @@
 import { Email, Footer, Head, Loader, Nav, Social } from '@components';
 import { GlobalStyle, theme } from '@styles';
 import { usePathname, useSearchParams } from 'next/navigation';
-import PropTypes from 'prop-types';
 import { useEffect, useState } from 'react';
 import styled, { ThemeProvider } from 'styled-components';
 
@@ -38,6 +37,7 @@ const Layout = ({ children }) => {
   }, [isLoading, pathname, searchParams]);
 
   useEffect(() => {
+    // Disable right click
     // const handleContextmenu = e => {
     //   e.preventDefault();
     // };

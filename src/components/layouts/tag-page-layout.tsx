@@ -2,7 +2,6 @@
 
 import Layout from '@components/layout';
 import Link from 'next/link';
-import { useRouter } from 'next/navigation';
 import styled from 'styled-components';
 
 const StyledTagsContainer = styled.main`
@@ -24,9 +23,10 @@ const StyledTagsContainer = styled.main`
 
   ul {
     li {
-      font-size: 24px;
+      font-size: 20px;
       h2 {
         font-size: inherit;
+        font-weight: 700;
         margin: 0;
         a {
           color: var(--light-slate);
@@ -45,9 +45,8 @@ const StyledTagsContainer = styled.main`
 `;
 
 const TagPageLayout = ({ children }) => {
-  const router = useRouter();
   return (
-    <Layout location={router}>
+    <Layout>
       <StyledTagsContainer>
         <span className="breadcrumb">
           <span className="arrow">&larr;</span>

@@ -14,7 +14,7 @@ const IndexPage = () => {
   const router = useRouter();
 
   return (
-    <Layout location={router}>
+    <Layout>
       <StyledMainContainer className="fillHeight">
         <Hero />
         <About />

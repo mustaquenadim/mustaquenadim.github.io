@@ -4,6 +4,7 @@ import { Menu } from '@components';
 import { navLinks } from '@config';
 import { usePrefersReducedMotion, useScrollDirection } from '@hooks';
 import { loaderDelay } from '@utils';
+import Image from 'next/image';
 import Link from 'next/link';
 import PropTypes from 'prop-types';
 import { useEffect, useState } from 'react';
@@ -191,12 +192,24 @@ const Nav = ({ isHome }) => {
     <div className="logo" tabIndex="-1">
       {isHome ? (
         <a href="/" aria-label="home">
-          <img src="/images/mn-logo.png" alt="Mustaque Nadim Logo" />
+          <Image
+            src="/images/mn-logo.png"
+            alt="Mustaque Nadim Logo"
+            height={42}
+            width={42}
+            priority
+          />
           <div className="sliding-line"></div>
         </a>
       ) : (
         <Link href="/" aria-label="home">
-          <img src="/images/mn-logo.png" alt="Mustaque Nadim Logo" />
+          <Image
+            src="/images/mn-logo.png"
+            alt="Mustaque Nadim Logo"
+            height={42}
+            width={42}
+            priority
+          />
           <div className="sliding-line"></div>
         </Link>
       )}

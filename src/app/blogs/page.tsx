@@ -1,4 +1,4 @@
-import BlogsLayout from '@components/blogs-layout';
+import BlogsLayout from '@components/layouts/blogs-layout';
 import { BlogPosts } from '@components/posts';
 
 export const metadata = {

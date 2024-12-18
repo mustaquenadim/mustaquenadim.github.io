@@ -2,7 +2,6 @@
 
 import kebabCase from 'lodash/kebabCase';
 import Link from 'next/link';
-import { useRouter } from 'next/navigation';
 import styled from 'styled-components';
 import Layout from './layout';
 
@@ -30,7 +29,8 @@ const StyledPostContent = styled.div`
 
   p {
     margin: 1em 0;
-    line-height: 1.5;
+    font-size: var(--fz-md);
+    line-height: 1.8;
     color: var(--light-slate);
   }
 
@@ -60,12 +60,11 @@ interface CustomPostProps {
   children?: any;
 }
 
-const CustomPost = ({ data, content, children }: CustomPostProps) => {
-  const router = useRouter();
+const BlogPost = ({ data, children }: CustomPostProps) => {
   const { title, date, tags } = data;
 
   return (
-    <Layout location={router}>
+    <Layout>
       <StyledPostContainer>
         <span className="breadcrumb">
           <span className="arrow">&larr;</span>
@@ -73,7 +72,7 @@ const CustomPost = ({ data, content, children }: CustomPostProps) => {
         </span>
 
         <StyledPostHeader>
-          <h1 className="medium-heading">{title}</h1>
+          <h1 className="blogpost-heading">{title}</h1>
           <p className="subtitle">
             <time>
               {new Date(date).toLocaleDateString('en-US', {
@@ -86,7 +85,7 @@ const CustomPost = ({ data, content, children }: CustomPostProps) => {
             {tags &&
               tags.length > 0 &&
               tags.map((tag, i) => (
-                <Link key={i} href={`/blogs/tags/${kebabCase(tag)}/`} className="tag">
+                <Link key={i} href={`/blogs/tag/${kebabCase(tag)}/`} className="tag">
                   #{tag}
                 </Link>
               ))}
@@ -99,4 +98,4 @@ const CustomPost = ({ data, content, children }: CustomPostProps) => {
   );
 };
 
-export default CustomPost;
+export default BlogPost;

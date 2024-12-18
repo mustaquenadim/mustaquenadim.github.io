@@ -1,8 +1,6 @@
 'use client';
 
 import Layout from '@components/layout';
-import Link from 'next/link';
-import { useRouter } from 'next/navigation';
 import styled from 'styled-components';
 
 const StyledTagsContainer = styled.main`
@@ -15,7 +13,7 @@ const StyledTagsContainer = styled.main`
     color: var(--light-slate);
 
     li {
-      font-size: var(--fz-xxl);
+      font-size: var(--fz-lg);
 
       a {
         color: var(--light-slate);
@@ -31,9 +29,8 @@ const StyledTagsContainer = styled.main`
 `;
 
 const TagsLayout = ({ children }) => {
-  const router = useRouter();
   return (
-    <Layout location={router}>
+    <Layout>
       <StyledTagsContainer>{children}</StyledTagsContainer>
     </Layout>
   );

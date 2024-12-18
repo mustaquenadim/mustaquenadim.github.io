@@ -1,8 +1,8 @@
 import { getBlogPosts } from '@utils/getPost';
-import { StyledBlogs } from './styled-blogs';
+import BlogGrid from './blog-grid';
 
 export function BlogPosts() {
   let allBlogs = getBlogPosts();
 
-  return <StyledBlogs allBlogs={allBlogs} />;
+  return <BlogGrid allBlogs={allBlogs} />;
 }

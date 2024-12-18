@@ -124,7 +124,7 @@ interface StyledBlogsProps {
   allBlogs: { metadata: any; slug: string; content: any }[];
 }
 
-export const StyledBlogs: React.FC<StyledBlogsProps> = ({ allBlogs }) => {
+const BlogGrid: React.FC<StyledBlogsProps> = ({ allBlogs }) => {
   return (
     <StyledGrid>
       {allBlogs?.length > 0 &&
@@ -150,7 +150,7 @@ export const StyledBlogs: React.FC<StyledBlogsProps> = ({ allBlogs }) => {
                   <ul className="post__tags">
                     {tags.map((tag, i) => (
                       <li key={i}>
-                        <Link href={`/blogs/tags/${kebabCase(tag)}/`} className="inline-link">
+                        <Link href={`/blogs/tag/${kebabCase(tag)}/`} className="inline-link">
                           #{tag}
                         </Link>
                       </li>
@@ -164,3 +164,5 @@ export const StyledBlogs: React.FC<StyledBlogsProps> = ({ allBlogs }) => {
     </StyledGrid>
   );
 };
+
+export default BlogGrid;

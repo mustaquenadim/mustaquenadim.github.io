@@ -5,7 +5,6 @@ import { useOnClickOutside } from '@hooks';
 import { KEY_CODES } from '@utils';
 import Link from 'next/link';
 import { useEffect, useRef, useState } from 'react';
-import { Helmet } from 'react-helmet';
 import styled from 'styled-components';
 
 const StyledMenu = styled.div`
@@ -127,7 +126,7 @@ const StyledSidebar = styled.aside`
       position: relative;
       margin: 0 auto 20px;
       counter-increment: item 1;
-      font-size: clamp(var(--fz-sm), 4vw, var(--fz-lg));
+      font-size: clamp(var(--fz-sm), 4vw, var(--fz-md));
 
       @media (max-width: 600px) {
         margin: 0 auto 10px;
@@ -145,7 +144,7 @@ const StyledSidebar = styled.aside`
     a {
       ${({ theme }) => theme.mixins.link};
       width: 100%;
-      padding: 3px 20px 20px;
+      padding: 3px 20px 12px;
     }
   }
 
@@ -239,10 +238,6 @@ const Menu = () => {
 
   return (
     <StyledMenu>
-      <Helmet>
-        <body className={menuOpen ? 'blur' : ''} />
-      </Helmet>
-
       <div ref={wrapperRef}>
         <StyledHamburgerButton
           onClick={toggleMenu}

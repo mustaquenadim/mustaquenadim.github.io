@@ -172,12 +172,18 @@ const GlobalStyle = createGlobalStyle`
 
   .big-heading {
     margin: 0px;
-    font-size: clamp(40px, 8vw, 64px);
+    font-size: clamp(32px, 8vw, 64px);
   }
 
   .medium-heading {
     margin: 0;
-    font-size: clamp(40px, 8vw, 52px);
+    font-size: clamp(24px, 8vw, 52px);
+  }
+
+  .blogpost-heading {
+    margin: 0;
+    font-size: clamp(32px, 8vw, 48px);
+    font-weight: 700;
   }
 
   .numbered-heading {
