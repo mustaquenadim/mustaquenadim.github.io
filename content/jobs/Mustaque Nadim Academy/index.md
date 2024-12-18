@@ -1,6 +1,6 @@
 ---
 date: '2023-01-12'
-title: 'Instructor'
+title: 'Mentor'
 company: 'Mustaque Nadim Academy'
 location: 'Virtual'
 range: 'March 2022 - Present'

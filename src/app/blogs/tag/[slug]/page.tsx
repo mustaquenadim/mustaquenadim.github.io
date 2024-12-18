@@ -13,6 +13,13 @@ export async function generateStaticParams() {
     }));
 }
 
+export function generateMetadata({ params }) {
+  return {
+    title: `${params.slug}`,
+    description: `Browse all blog posts tagged with ${params.slug}`,
+  };
+}
+
 const TagPage = ({ params }: { params: { slug: string } }) => {
   const tag = params.slug;
 

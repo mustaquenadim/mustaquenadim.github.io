@@ -1,11 +1,9 @@
 {
-  "name": "mustaquenadim",
-  "short_name": "mustaquenadim",
+  "name": "Mustaque Nadim",
+  "description": "A passionate programmer from Bangladesh with entrepreneurial spirit.",
+  "short_name": "Mustaque Nadim",
   "start_url": "/",
-  "background_color": "#020c1b",
-  "theme_color": "#0a192f",
-  "display": "minimal-ui",
-  "cacheDigest": "48d0f6390849836d44a053cbc206d8ad",
+  "orientation": "portrait",
   "icons": [
     {
       "src": "icons/icon-48x48.png?v=48d0f6390849836d44a053cbc206d8ad",
@@ -47,5 +45,8 @@
       "sizes": "512x512",
       "type": "image/png"
     }
-  ]
+  ],
+  "theme_color": "#67e26d",
+  "background_color": "#0a1930",
+  "display": "standalone"
 }

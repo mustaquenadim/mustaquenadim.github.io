@@ -34,15 +34,7 @@ const TagsLayout = ({ children }) => {
   const router = useRouter();
   return (
     <Layout location={router}>
-      <StyledTagsContainer>
-        <span className="breadcrumb">
-          <span className="arrow">&larr;</span>
-          <Link href="/blogs">All memories</Link>
-        </span>
-
-        <h1>Tags</h1>
-        {children}
-      </StyledTagsContainer>
+      <StyledTagsContainer>{children}</StyledTagsContainer>
     </Layout>
   );
 };

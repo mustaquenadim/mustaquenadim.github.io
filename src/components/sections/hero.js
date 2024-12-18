@@ -127,7 +127,7 @@ const Hero = () => {
     <>
       <p>
         I’m a passionate programmer from Bangladesh with entrepreneurial spirit, experienced in
-        building large scale web application using MERN technologies.
+        building large scale web, mobile & desktop application using MERN technologies.
       </p>
     </>
   );

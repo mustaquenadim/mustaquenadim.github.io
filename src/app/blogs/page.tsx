@@ -1,7 +1,12 @@
 import BlogsLayout from '@components/blogs-layout';
 import { BlogPosts } from '@components/posts';
 
-const PensievePage: React.FC = () => {
+export const metadata = {
+  title: 'Blogs',
+  description: 'Browse all published blog posts by Mustaque Nadim',
+};
+
+const BlogsPage: React.FC = () => {
   return (
     <BlogsLayout>
       <BlogPosts />
@@ -9,4 +14,4 @@ const PensievePage: React.FC = () => {
   );
 };
 
-export default PensievePage;
+export default BlogsPage;

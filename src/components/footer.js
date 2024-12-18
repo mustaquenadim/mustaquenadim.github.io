@@ -124,7 +124,7 @@ const Footer = () => {
           )}
         </a>
         <div>
-          Revised by{' '}
+          Modified by{' '}
           <a href="https://github.com/mustaquenadim/mustaquenadim.github.io">Mustaque Nadim</a>
         </div>
       </StyledCredit>

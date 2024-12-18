@@ -2,7 +2,7 @@
 
 import { Email, Footer, Head, Loader, Nav, Social } from '@components';
 import { GlobalStyle, theme } from '@styles';
-import { usePathname } from 'next/navigation';
+import { usePathname, useSearchParams } from 'next/navigation';
 import PropTypes from 'prop-types';
 import { useEffect, useState } from 'react';
 import styled, { ThemeProvider } from 'styled-components';
@@ -13,12 +13,12 @@ const StyledContent = styled.div`
   min-height: 100vh;
 `;
 
-const Layout = ({ children, location }) => {
+const Layout = ({ children }) => {
   const pathname = usePathname();
+  const searchParams = useSearchParams();
   const isHome = pathname === '/';
   const [isLoading, setIsLoading] = useState(isHome);
 
-  // Sets target="_blank" rel="noopener noreferrer" on external links
   const handleExternalLinks = () => {
     const allLinks = Array.from(document.querySelectorAll('a'));
     if (allLinks.length > 0) {
@@ -32,23 +32,10 @@ const Layout = ({ children, location }) => {
   };
 
   useEffect(() => {
-    if (isLoading) {
-      return;
+    if (!isLoading) {
+      handleExternalLinks();
     }
-
-    if (location.hash) {
-      const id = location.hash.substring(1); // location.hash without the '#'
-      setTimeout(() => {
-        const el = document.getElementById(id);
-        if (el) {
-          el.scrollIntoView();
-          el.focus();
-        }
-      }, 0);
-    }
-
-    handleExternalLinks();
-  }, [isLoading]);
+  }, [isLoading, pathname, searchParams]);
 
   useEffect(() => {
     // const handleContextmenu = e => {
@@ -90,11 +77,6 @@ const Layout = ({ children, location }) => {
       </div>
     </>
   );
-};
-
-Layout.propTypes = {
-  children: PropTypes.node.isRequired,
-  location: PropTypes.object.isRequired,
 };
 
 export default Layout;
