@@ -9,6 +9,9 @@ import PropTypes from 'prop-types';
 import { useEffect, useRef } from 'react';
 import styled from 'styled-components';
 
+export const dynamic = 'force-dynamic';
+export const dynamicParams = true;
+
 const StyledTableContainer = styled.div`
   margin: 100px -20px;
 
