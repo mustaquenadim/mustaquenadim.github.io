@@ -152,15 +152,15 @@ const ArchivePage = () => {
   const revealProjects = useRef([]);
   const prefersReducedMotion = usePrefersReducedMotion();
 
-  useEffect(() => {
-    const fetchProjects = async () => {
-      const response = await fetch('/api/projects');
-      const data = await response.json();
-      setProjects(data);
-    };
+  // useEffect(() => {
+  //   const fetchProjects = async () => {
+  //     const response = await fetch('/api/projects');
+  //     const data = await response.json();
+  //     setProjects(data);
+  //   };
 
-    fetchProjects();
-  }, []);
+  //   fetchProjects();
+  // }, []);
 
   useEffect(() => {
     if (prefersReducedMotion) {
