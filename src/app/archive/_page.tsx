@@ -146,7 +146,7 @@ interface Project {
 }
 
 const ArchivePage = () => {
-  const projects = data.allMarkdownRemark.edges;
+  // const projects = data.allMarkdownRemark.edges;
   const revealTitle = useRef(null);
   const revealTable = useRef(null);
   const revealProjects = useRef([]);
@@ -192,7 +192,7 @@ const ArchivePage = () => {
               </tr>
             </thead>
             <tbody>
-              {projects.length > 0 &&
+              {/* {projects.length > 0 &&
                 projects.map(({ node }, i) => {
                   const { date, github, external, ios, android, title, tech, company } =
                     node.frontmatter;
@@ -247,7 +247,7 @@ const ArchivePage = () => {
                       </td>
                     </tr>
                   );
-                })}
+                })} */}
             </tbody>
           </table>
         </StyledTableContainer>
