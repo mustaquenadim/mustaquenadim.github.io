@@ -269,7 +269,9 @@ const Services = () => {
                   exit={false}>
                   <StyledService
                     key={i}
-                    ref={el => (revealServices.current[i] = el)}
+                    ref={el => {
+                      revealServices.current[i] = el;
+                    }}
                     style={{
                       transitionDelay: `${i >= GRID_LIMIT ? (i - GRID_LIMIT) * 100 : 0}ms`,
                     }}>

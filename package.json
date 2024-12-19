@@ -13,13 +13,8 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "next",
-    "deploy": "gatsby build --prefix-paths && gh-pages -d public",
-    "format": "prettier --write \"**/*.{js,jsx,json,md}\"",
-    "serve": "gatsby serve",
-    "clean": "gatsby clean",
-    "prepare": "husky install",
-    "lint-staged": "lint-staged"
+    "start": "next start",
+    "lint": "next lint"
   },
   "lint-staged": {
     "*.{js,css,json,md}": [

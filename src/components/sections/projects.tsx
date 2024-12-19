@@ -6,7 +6,6 @@ import { usePrefersReducedMotion } from '@hooks';
 import sr from '@utils/sr';
 import Link from 'next/link';
 import { useEffect, useRef, useState } from 'react';
-import { CSSTransition, TransitionGroup } from 'react-transition-group';
 import styled from 'styled-components';
 
 const StyledProjectsSection = styled.section`
@@ -167,30 +166,7 @@ const StyledProject = styled.li`
   }
 `;
 
-export async function getStaticProps() {
-  const contentDirectory = path.join(process.cwd(), 'content/projects');
-  const files = fs.readdirSync(contentDirectory);
-
-  const projects = files
-    .map(filename => {
-      const filePath = path.join(contentDirectory, filename);
-      const fileContents = fs.readFileSync(filePath, 'utf8');
-      const { data, content } = matter(fileContents);
-      return {
-        frontmatter: data,
-        html: content,
-      };
-    })
-    .sort((a, b) => new Date(a.frontmatter.date) - new Date(b.frontmatter.date));
-
-  return {
-    props: {
-      projects,
-    },
-  };
-}
-
-const Projects = ({ projects }) => {
+const Projects = () => {
   const [showMore, setShowMore] = useState(false);
   const revealTitle = useRef(null);
   const revealArchiveLink = useRef(null);
@@ -208,8 +184,8 @@ const Projects = ({ projects }) => {
   }, []);
 
   const GRID_LIMIT = 6;
-  const firstSix = projects.slice(0, GRID_LIMIT);
-  const projectsToShow = showMore ? projects : firstSix;
+  // const firstSix = projects.slice(0, GRID_LIMIT);
+  // const projectsToShow = showMore ? projects : firstSix;
 
   const projectInner = node => {
     const { frontmatter, html } = node;
@@ -271,7 +247,7 @@ const Projects = ({ projects }) => {
         view the archive
       </Link>
 
-      <ul className="projects-grid">
+      {/* <ul className="projects-grid">
         {prefersReducedMotion ? (
           <>
             {projectsToShow &&
@@ -290,7 +266,9 @@ const Projects = ({ projects }) => {
                   exit={false}>
                   <StyledProject
                     key={i}
-                    ref={el => (revealProjects.current[i] = el)}
+                    ref={el => {
+                      revealProjects.current[i] = el;
+                    }}
                     style={{
                       transitionDelay: `${i >= GRID_LIMIT ? (i - GRID_LIMIT) * 100 : 0}ms`,
                     }}>
@@ -300,7 +278,7 @@ const Projects = ({ projects }) => {
               ))}
           </TransitionGroup>
         )}
-      </ul>
+      </ul> */}
 
       <button className="more-button" onClick={() => setShowMore(!showMore)}>
         Show {showMore ? 'Less' : 'More'}

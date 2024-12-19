@@ -1,6 +1,7 @@
 import { Metadata } from 'next';
 
 export const metadata: Metadata = {
+  metadataBase: new URL(process.env.NEXT_PUBLIC_BASE_URL),
   title: {
     default: 'Mustaque Nadim ✦ Programmer ✦ Content Creator ✦ Aspiring Entrepreneur',
     template: '%s ✦ Mustaque Nadim',
