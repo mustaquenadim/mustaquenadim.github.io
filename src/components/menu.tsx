@@ -15,7 +15,11 @@ const StyledMenu = styled.div`
   }
 `;
 
-const StyledHamburgerButton = styled.button`
+interface HamburgerButtonProps {
+  menuOpen: boolean;
+}
+
+const StyledHamburgerButton = styled.button<HamburgerButtonProps>`
   display: none;
 
   @media (max-width: 768px) {
@@ -86,7 +90,11 @@ const StyledHamburgerButton = styled.button`
   }
 `;
 
-const StyledSidebar = styled.aside`
+interface SidebarProps {
+  menuOpen: boolean;
+}
+
+const StyledSidebar = styled.aside<SidebarProps>`
   display: none;
 
   @media (max-width: 768px) {

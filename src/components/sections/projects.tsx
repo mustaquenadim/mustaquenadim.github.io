@@ -4,37 +4,10 @@ import { Icon } from '@components/icons';
 import { srConfig } from '@config';
 import { usePrefersReducedMotion } from '@hooks';
 import sr from '@utils/sr';
-// import { graphql, Link, useStaticQuery } from 'gatsby';
+import Link from 'next/link';
 import { useEffect, useRef, useState } from 'react';
 import { CSSTransition, TransitionGroup } from 'react-transition-group';
 import styled from 'styled-components';
-
-const blogs = [
-  {
-    title: 'The Ultimate Guide to Mastering Any Programming Language!',
-    description:
-      'Learning a new programming language is a challenging, but incredibly rewarding, experience. It requires dedication, hard work, willingness to learn, and make mistakes.',
-    tech: ['Learn to Code', 'Programming Tips', 'Beginners Guide', 'Programming Language'],
-    external:
-      'https://medium.com/@mustaquenadim/the-ultimate-guide-to-mastering-any-programming-language-5293d57cc169',
-  },
-  {
-    title: 'Maximize Your Productivity with These Essential JavaScript Array Techniques',
-    description:
-      'Learn essential techniques for working with JavaScript arrays that will help you maximize your productivity.',
-    tech: ['JavaScript', 'Beginners Guide', 'Array Methods'],
-    external:
-      'https://medium.com/@mustaquenadim/maximize-your-productivity-with-these-essential-javascript-array-techniques-f1a211bef347',
-  },
-  {
-    title: 'JavaScript Strings 101: The Complete Beginner’s Guide',
-    description:
-      "Learn JavaScript string methods like charAt, concat, indexOf, lastIndexOf, slice and split in this beginner's guide.",
-    tech: ['JavaScript', 'Beginners Guide', 'String Methods'],
-    external:
-      'https://medium.com/@mustaquenadim/javascript-strings-101-the-complete-beginners-guide-c5505823855d',
-  },
-];
 
 const StyledProjectsSection = styled.section`
   display: flex;
@@ -112,8 +85,8 @@ const StyledProject = styled.li`
     .folder {
       color: var(--green);
       svg {
-        width: 48px;
-        height: 48px;
+        width: 40px;
+        height: 40px;
       }
     }
 
@@ -146,7 +119,7 @@ const StyledProject = styled.li`
   .project-title {
     margin: 0 0 10px;
     color: var(--lightest-slate);
-    font-size: var(--fz-lg);
+    font-size: var(--fz-xxl);
 
     a {
       position: static;
@@ -166,7 +139,7 @@ const StyledProject = styled.li`
 
   .project-description {
     color: var(--light-slate);
-    font-size: 14px;
+    font-size: 17px;
 
     a {
       ${({ theme }) => theme.mixins.inlineLink};
@@ -194,7 +167,30 @@ const StyledProject = styled.li`
   }
 `;
 
-const Blogs = () => {
+export async function getStaticProps() {
+  const contentDirectory = path.join(process.cwd(), 'content/projects');
+  const files = fs.readdirSync(contentDirectory);
+
+  const projects = files
+    .map(filename => {
+      const filePath = path.join(contentDirectory, filename);
+      const fileContents = fs.readFileSync(filePath, 'utf8');
+      const { data, content } = matter(fileContents);
+      return {
+        frontmatter: data,
+        html: content,
+      };
+    })
+    .sort((a, b) => new Date(a.frontmatter.date) - new Date(b.frontmatter.date));
+
+  return {
+    props: {
+      projects,
+    },
+  };
+}
+
+const Projects = ({ projects }) => {
   const [showMore, setShowMore] = useState(false);
   const revealTitle = useRef(null);
   const revealArchiveLink = useRef(null);
@@ -212,23 +208,26 @@ const Blogs = () => {
   }, []);
 
   const GRID_LIMIT = 6;
-  // const projects = data.projects.edges.filter(({ node }) => node);
-  const firstSix = blogs.slice(0, GRID_LIMIT);
-  const publishedBlogs = showMore ? blogs : firstSix;
+  const firstSix = projects.slice(0, GRID_LIMIT);
+  const projectsToShow = showMore ? projects : firstSix;
 
   const projectInner = node => {
-    // const { frontmatter, html } = node;
-    // const { github, external, title, tech } = frontmatter;
-    const { title, description, tech, external } = node;
+    const { frontmatter, html } = node;
+    const { github, external, title, tech } = frontmatter;
 
     return (
       <div className="project-inner">
         <header>
           <div className="project-top">
             <div className="folder">
-              <Icon name="Article" />
+              <Icon name="Folder" />
             </div>
             <div className="project-links">
+              {github && (
+                <a href={github} aria-label="GitHub Link" target="_blank" rel="noreferrer">
+                  <Icon name="GitHub" />
+                </a>
+              )}
               {external && (
                 <a
                   href={external}
@@ -248,7 +247,7 @@ const Blogs = () => {
             </a>
           </h3>
 
-          <div className="project-description" dangerouslySetInnerHTML={{ __html: description }} />
+          <div className="project-description" dangerouslySetInnerHTML={{ __html: html }} />
         </header>
 
         <footer>
@@ -265,27 +264,25 @@ const Blogs = () => {
   };
 
   return (
-    <StyledProjectsSection id="blogs">
-      <h2 className="numbered-heading" ref={revealTitle}>
-        Recently Published Blogs
-      </h2>
+    <StyledProjectsSection>
+      <h2 ref={revealTitle}>Other Noteworthy Projects</h2>
 
-      {/* <Link className="inline-link archive-link" to="/archive" ref={revealArchiveLink}>
+      <Link className="inline-link archive-link" href="/archive" ref={revealArchiveLink}>
         view the archive
-      </Link> */}
+      </Link>
 
       <ul className="projects-grid">
         {prefersReducedMotion ? (
           <>
-            {publishedBlogs &&
-              publishedBlogs.map((node, i) => (
+            {projectsToShow &&
+              projectsToShow.map(({ node }, i) => (
                 <StyledProject key={i}>{projectInner(node)}</StyledProject>
               ))}
           </>
         ) : (
           <TransitionGroup component={null}>
-            {publishedBlogs &&
-              publishedBlogs.map((node, i) => (
+            {projectsToShow &&
+              projectsToShow.map(({ node }, i) => (
                 <CSSTransition
                   key={i}
                   classNames="fadeup"
@@ -312,4 +309,4 @@ const Blogs = () => {
   );
 };
 
-export default Blogs;
+export default Projects;

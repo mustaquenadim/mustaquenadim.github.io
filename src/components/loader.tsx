@@ -54,7 +54,7 @@ const Loader = ({ finishLoading }) => {
   }, []);
 
   return (
-    <StyledLoader className="loader" isMounted={isMounted}>
+    <StyledLoader className="loader">
       <Helmet bodyAttributes={{ class: `hidden` }} />
       <div className="preloader">
         <svg viewBox="0 0 800 600">

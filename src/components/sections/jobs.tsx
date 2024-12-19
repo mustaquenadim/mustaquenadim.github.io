@@ -67,7 +67,11 @@ const StyledTabList = styled.div`
   }
 `;
 
-const StyledTabButton = styled.button`
+interface StyledTabButtonProps {
+  isActive: boolean;
+}
+
+const StyledTabButton = styled.button<StyledTabButtonProps>`
   ${({ theme }) => theme.mixins.link};
   display: flex;
   align-items: center;
@@ -100,7 +104,12 @@ const StyledTabButton = styled.button`
   }
 `;
 
-const StyledHighlight = styled.div`
+interface HighlightProps {
+  activeTabId: number;
+  prevTabWidths: number;
+}
+
+const StyledHighlight = styled.div<HighlightProps>`
   position: absolute;
   top: 0;
   left: 0;
@@ -256,10 +265,12 @@ const Jobs = () => {
                   key={i}
                   isActive={activeTabId === i}
                   onClick={() => setActiveTabId(i)}
-                  ref={el => (tabs.current[i] = el)}
+                  ref={el => {
+                    if (el) tabs.current[i] = el;
+                  }}
                   id={`tab-${i}`}
                   role="tab"
-                  tabIndex={activeTabId === i ? '0' : '-1'}
+                  tabIndex={activeTabId === i ? 0 : -1}
                   aria-selected={activeTabId === i ? true : false}
                   aria-controls={`panel-${i}`}>
                   <span>{company}</span>
@@ -269,7 +280,7 @@ const Jobs = () => {
           <StyledHighlight
             activeTabId={activeTabId}
             prevTabWidths={getPreviousTabsWidth()}
-            style={{ '--tab-width': `${getActiveTabWidth()}px` }}
+            style={{ ['--tab-width' as string]: `${getActiveTabWidth()}px` }}
           />
         </StyledTabList>
 
@@ -284,7 +295,7 @@ const Jobs = () => {
                   <StyledTabPanel
                     id={`panel-${i}`}
                     role="tabpanel"
-                    tabIndex={activeTabId === i ? '0' : '-1'}
+                    tabIndex={activeTabId === i ? 0 : -1}
                     aria-labelledby={`tab-${i}`}
                     aria-hidden={activeTabId !== i}
                     hidden={activeTabId !== i}>

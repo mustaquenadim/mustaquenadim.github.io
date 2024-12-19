@@ -7,7 +7,11 @@ import { useEffect, useState } from 'react';
 import { CSSTransition, TransitionGroup } from 'react-transition-group';
 import styled from 'styled-components';
 
-const StyledSideElement = styled.div`
+interface StyledSideElementProps {
+  orientation: 'left' | 'right';
+}
+
+const StyledSideElement = styled.div<StyledSideElementProps>`
   width: 40px;
   position: fixed;
   bottom: 0;

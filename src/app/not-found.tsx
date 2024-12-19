@@ -50,7 +50,7 @@ const NotFoundPage = ({ location }) => {
   );
 
   return (
-    <Layout location={location}>
+    <Layout>
       {prefersReducedMotion ? (
         <>{content}</>
       ) : (

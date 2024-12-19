@@ -341,7 +341,11 @@ const Featured = () => {
             const { external, title, tech, github, cover, cta } = frontmatter;
 
             return (
-              <StyledProject key={i} ref={el => (revealProjects.current[i] = el)}>
+              <StyledProject
+                key={i}
+                ref={el => {
+                  revealProjects.current[i] = el;
+                }}>
                 <div className="project-content">
                   <div>
                     <p className="project-overline">Featured Project</p>

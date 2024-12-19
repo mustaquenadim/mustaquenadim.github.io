@@ -1,6 +1,6 @@
 'use client';
 
-import { Email, Footer, Head, Loader, Nav, Social } from '@components';
+import { Email, Footer, Loader, Nav, Social } from '@components';
 import { GlobalStyle, theme } from '@styles';
 import { usePathname, useSearchParams } from 'next/navigation';
 import { useEffect, useState } from 'react';
@@ -48,34 +48,30 @@ const Layout = ({ children }) => {
   }, []);
 
   return (
-    <>
-      <Head />
+    <div id="root">
+      <ThemeProvider theme={theme}>
+        <GlobalStyle />
 
-      <div id="root">
-        <ThemeProvider theme={theme}>
-          <GlobalStyle />
+        <a className="skip-to-content" href="#content">
+          Skip to Content
+        </a>
 
-          <a className="skip-to-content" href="#content">
-            Skip to Content
-          </a>
+        {isLoading && isHome ? (
+          <Loader finishLoading={() => setIsLoading(false)} />
+        ) : (
+          <StyledContent>
+            <Nav isHome={isHome} />
+            <Social isHome={isHome} />
+            <Email isHome={isHome} />
 
-          {isLoading && isHome ? (
-            <Loader finishLoading={() => setIsLoading(false)} />
-          ) : (
-            <StyledContent>
-              <Nav isHome={isHome} />
-              <Social isHome={isHome} />
-              <Email isHome={isHome} />
-
-              <div id="content">
-                {children}
-                <Footer />
-              </div>
-            </StyledContent>
-          )}
-        </ThemeProvider>
-      </div>
-    </>
+            <div id="content">
+              {children}
+              <Footer />
+            </div>
+          </StyledContent>
+        )}
+      </ThemeProvider>
+    </div>
   );
 };
 

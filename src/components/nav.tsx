@@ -11,7 +11,12 @@ import { useEffect, useState } from 'react';
 import { CSSTransition, TransitionGroup } from 'react-transition-group';
 import styled, { css } from 'styled-components';
 
-const StyledHeader = styled.header`
+interface StyledHeaderProps {
+  scrollDirection: 'up' | 'down';
+  scrolledToTop: boolean;
+}
+
+const StyledHeader = styled.header<StyledHeaderProps>`
   ${({ theme }) => theme.mixins.flexBetween};
   position: fixed;
   top: 0;
@@ -189,7 +194,7 @@ const Nav = ({ isHome }) => {
   const fadeDownClass = isHome ? 'fadedown' : '';
 
   const Logo = (
-    <div className="logo" tabIndex="-1">
+    <div className="logo" tabIndex={-1}>
       {isHome ? (
         <a href="/" aria-label="home">
           <Image

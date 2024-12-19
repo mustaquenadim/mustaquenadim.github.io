@@ -5,10 +5,8 @@ import { Icon } from '@components/icons';
 import { srConfig } from '@config';
 import { usePrefersReducedMotion } from '@hooks';
 import sr from '@utils/sr';
-import { graphql } from 'gatsby';
 import PropTypes from 'prop-types';
 import { useEffect, useRef } from 'react';
-import { Helmet } from 'react-helmet';
 import styled from 'styled-components';
 
 const StyledTableContainer = styled.div`
@@ -149,9 +147,7 @@ const ArchivePage = ({ location, data }) => {
   }, []);
 
   return (
-    <Layout location={location}>
-      <Helmet title="Archive" />
-
+    <Layout>
       <main>
         <header ref={revealTitle}>
           <h1 className="big-heading">Archive</h1>
@@ -175,7 +171,11 @@ const ArchivePage = ({ location, data }) => {
                   const { date, github, external, ios, android, title, tech, company } =
                     node.frontmatter;
                   return (
-                    <tr key={i} ref={el => (revealProjects.current[i] = el)}>
+                    <tr
+                      key={i}
+                      ref={el => {
+                        revealProjects.current[i] = el;
+                      }}>
                       <td className="overline year">{`${new Date(date).getFullYear()}`}</td>
 
                       <td className="title">{title}</td>
@@ -235,28 +235,3 @@ ArchivePage.propTypes = {
 };
 
 export default ArchivePage;
-
-export const pageQuery = graphql`
-  {
-    allMarkdownRemark(
-      filter: { fileAbsolutePath: { regex: "/content/projects/" } }
-      sort: { fields: [frontmatter___date], order: DESC }
-    ) {
-      edges {
-        node {
-          frontmatter {
-            date
-            title
-            tech
-            github
-            external
-            ios
-            android
-            company
-          }
-          html
-        }
-      }
-    }
-  }
-`;

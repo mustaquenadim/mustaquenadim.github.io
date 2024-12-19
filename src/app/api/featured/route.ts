@@ -52,9 +52,6 @@ export async function GET() {
         const relativePath = path.relative(contentDirectory, filePath);
         const slug = path.basename(filePath, path.extname(filePath));
 
-        const imagePath = findAssociatedImage(filePath);
-        const imageRelativePath = imagePath ? path.relative(process.cwd(), imagePath) : null;
-
         return {
           slug,
           frontmatter: {

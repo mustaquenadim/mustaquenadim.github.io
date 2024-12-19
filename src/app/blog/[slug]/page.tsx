@@ -5,8 +5,6 @@ import { notFound } from 'next/navigation';
 
 const baseUrl = process.env.NEXT_PUBLIC_BASE_URL;
 
-const components = {};
-
 export async function generateStaticParams() {
   let posts = getBlogPosts();
 
@@ -25,29 +23,10 @@ export function generateMetadata({ params }) {
   }
 
   let { title, publishedAt: publishedTime, summary: description, image } = post.metadata;
-  let ogImage = image ? image : `${baseUrl}/og?title=${encodeURIComponent(title)}`;
 
   return {
     title,
     description,
-    // openGraph: {
-    //   title,
-    //   description,
-    //   type: 'article',
-    //   publishedTime,
-    //   url: `${baseUrl}/blog/${post.slug}`,
-    //   images: [
-    //     {
-    //       url: ogImage,
-    //     },
-    //   ],
-    // },
-    // twitter: {
-    //   card: 'summary_large_image',
-    //   title,
-    //   description,
-    //   images: [ogImage],
-    // },
   };
 }
 
