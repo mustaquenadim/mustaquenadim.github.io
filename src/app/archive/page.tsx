@@ -129,12 +129,35 @@ const StyledTableContainer = styled.div`
   }
 `;
 
-const ArchivePage = ({ location, data }) => {
+interface Project {
+  frontmatter: {
+    date: string;
+    github?: string;
+    external?: string;
+    ios?: string;
+    android?: string;
+    title: string;
+    tech?: string[];
+    company?: string;
+  };
+}
+
+const ArchivePage = () => {
   const projects = data.allMarkdownRemark.edges;
   const revealTitle = useRef(null);
   const revealTable = useRef(null);
   const revealProjects = useRef([]);
   const prefersReducedMotion = usePrefersReducedMotion();
+
+  useEffect(() => {
+    const fetchProjects = async () => {
+      const response = await fetch('/api/projects');
+      const data = await response.json();
+      setProjects(data);
+    };
+
+    fetchProjects();
+  }, []);
 
   useEffect(() => {
     if (prefersReducedMotion) {
@@ -228,10 +251,6 @@ const ArchivePage = ({ location, data }) => {
       </main>
     </Layout>
   );
-};
-ArchivePage.propTypes = {
-  location: PropTypes.object.isRequired,
-  data: PropTypes.object.isRequired,
 };
 
 export default ArchivePage;
