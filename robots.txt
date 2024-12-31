@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
-Sitemap: https://mustaquenadim.com/sitemap/sitemap-index.xml
+Sitemap: https://mustaquenadim.com/sitemap-index.xml
 Host: https://mustaquenadim.com
