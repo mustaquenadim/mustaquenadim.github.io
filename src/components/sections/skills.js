@@ -33,6 +33,13 @@ const StyledSkillsSection = styled.div`
       filter: grayscale(100%) contrast(1);
       transition: var(--transition);
     }
+
+    @media (max-width: 768px) {
+      margin: 16px 16px 0;
+      .img {
+        max-width: 40px;
+      }
+    }
   }
 `;
 

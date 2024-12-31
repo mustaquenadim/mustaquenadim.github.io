@@ -44,6 +44,7 @@ const StyledContactSection = styled.section`
     font-size: 16px;
     margin-top: 8px;
     color: var(--slate);
+    font-style: italic;
   }
 `;
 
@@ -74,7 +75,7 @@ const Contact = () => {
         Say Hello
       </a>
       <div className="small-text">
-        Replies within <b>an hour</b>
+        Usually replies within <b>an hour</b>
       </div>
     </StyledContactSection>
   );

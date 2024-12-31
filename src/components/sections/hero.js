@@ -86,7 +86,7 @@ const StyledHeroSection = styled.section`
 
 const TEXTS = [
   'JavaScript Freak',
-  'Open Source Enthusiast',
+  'Aspiringpreneur',
   'Product Enthusiast',
   'Instructor',
   'Content Creator',
@@ -134,14 +134,13 @@ const Hero = () => {
       <a className="email-link" href="#contact">
         Hire me
       </a>
-      <a
+      {/* <a
         className="email-link"
         href="/Mustaque-Nadim-Software-Engineer-Resume.pdf"
         target="_blank"
-        rel="noreferrer"
-      >
+        rel="noreferrer">
         Download Resume
-      </a>
+      </a> */}
     </div>
   );
 
@@ -156,7 +155,7 @@ const Hero = () => {
     </div>
   );
 
-  const items = [one, two, three, four, five, six];
+  const items = [one, two, three, four, five];
 
   return (
     <StyledHeroSection>

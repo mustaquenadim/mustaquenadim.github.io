@@ -86,7 +86,7 @@ const StyledTabButton = styled.button`
   }
   @media (max-width: 600px) {
     ${({ theme }) => theme.mixins.flexCenter};
-    min-width: 120px;
+    min-width: max-content;
     padding: 0 15px;
     border-left: 0;
     border-bottom: 2px solid var(--lightest-navy);
@@ -119,7 +119,7 @@ const StyledHighlight = styled.div`
     max-width: var(--tab-width);
     height: 2px;
     margin-left: 50px;
-    transform: translateX(calc(${({ activeTabId }) => activeTabId} * var(--tab-width)));
+    transform: translateX(${({ prevTabWidths }) => prevTabWidths}px);
   }
   @media (max-width: 480px) {
     margin-left: 25px;
@@ -190,6 +190,7 @@ const Jobs = () => {
   const jobsData = data.jobs.edges;
 
   const [activeTabId, setActiveTabId] = useState(0);
+  const [tabWidths, setTabWidths] = useState([]);
   const [tabFocus, setTabFocus] = useState(null);
   const tabs = useRef([]);
   const revealContainer = useRef(null);
@@ -202,6 +203,18 @@ const Jobs = () => {
 
     sr.reveal(revealContainer.current, srConfig());
   }, []);
+
+  useEffect(() => {
+    if (tabs.current.length > 0) {
+      const widths = tabs.current.map(tab => tab?.offsetWidth || 0);
+      setTabWidths(widths);
+    }
+  }, [jobsData]);
+
+  const getActiveTabWidth = () => tabWidths[activeTabId] || 0;
+
+  const getPreviousTabsWidth = () =>
+    tabWidths.slice(0, activeTabId).reduce((total, width) => total + width, 0);
 
   const focusTab = () => {
     if (tabs.current[tabFocus]) {
@@ -266,7 +279,11 @@ const Jobs = () => {
                 </StyledTabButton>
               );
             })}
-          <StyledHighlight activeTabId={activeTabId} />
+          <StyledHighlight
+            activeTabId={activeTabId}
+            prevTabWidths={getPreviousTabsWidth()}
+            style={{ ['--tab-width']: `${getActiveTabWidth()}px` }}
+          />
         </StyledTabList>
 
         <StyledTabPanels>
