@@ -4,6 +4,7 @@ import React, { useEffect, useState } from 'react';
 import TextTransition, { presets } from 'react-text-transition';
 import { CSSTransition, TransitionGroup } from 'react-transition-group';
 import styled from 'styled-components';
+import Companies from './companies';
 // import { email } from '@config';
 
 const StyledHeroSection = styled.section`
@@ -155,7 +156,9 @@ const Hero = () => {
     </div>
   );
 
-  const items = [one, two, three, four, five];
+  const seven = <Companies />;
+
+  const items = [one, two, three, four, five, seven];
 
   return (
     <StyledHeroSection>
