@@ -20,6 +20,7 @@ import {
   IconStar,
   IconTwitter,
   IconWebsite,
+  IconX,
 } from '@components/icons';
 import PropTypes from 'prop-types';
 import React from 'react';
@@ -68,6 +69,8 @@ const Icon = ({ name }) => {
       return <IconOptimization />;
     case 'Design':
       return <IconDesign />;
+    case 'X':
+      return <IconX />;
     default:
       return <IconExternal />;
   }

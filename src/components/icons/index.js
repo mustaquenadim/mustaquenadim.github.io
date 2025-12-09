@@ -20,3 +20,4 @@ export { default as IconPlugin } from './plugin';
 export { default as IconStar } from './star';
 export { default as IconTwitter } from './twitter';
 export { default as IconWebsite } from './website';
+export { default as IconX } from './x';

@@ -11,8 +11,8 @@ module.exports = {
       url: 'https://www.instagram.com/mustaquenadim',
     },
     {
-      name: 'Twitter',
-      url: 'https://twitter.com/_mustaquenadim_',
+      name: 'X',
+      url: 'https://x.com/0xmustaquenadim',
     },
     {
       name: 'Linkedin',

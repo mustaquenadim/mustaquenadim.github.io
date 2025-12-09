@@ -148,7 +148,7 @@ const Workstation = () => {
       },
       {
         hardware: 'RAM',
-        info: '16GB DDR4',
+        info: '32GB DDR4 3200MHz',
       },
       {
         hardware: 'Storage',
@@ -176,13 +176,14 @@ const Workstation = () => {
         hardware: 'Mouse',
         info: 'A4TECH G3-300N V-Track Wireless Mouse',
       },
+      { hardware: 'Portable SSD', info: 'Kingston NV2 1TB M.2 PCIe Gen 4.0 NVMe SSD' },
       {
         hardware: 'Graphic Tablet',
         info: 'VEIKK A50',
       },
       {
         hardware: 'Microphone',
-        info: 'Boya BY-M1',
+        info: 'Razer Siren Mini',
       },
     ],
   };

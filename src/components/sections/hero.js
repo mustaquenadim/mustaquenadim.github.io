@@ -87,9 +87,9 @@ const StyledHeroSection = styled.section`
 
 const TEXTS = [
   'JavaScript Freak',
-  'Aspiringpreneur',
+  'Building in Public',
   'Product Enthusiast',
-  'Instructor',
+  'Aspiring AI Engineer',
   'Content Creator',
 ];
 
@@ -125,8 +125,9 @@ const Hero = () => {
   const four = (
     <>
       <p>
-        I’m a passionate programmer from Bangladesh with entrepreneurial spirit, experienced in
-        building large scale web application using MERN technologies.
+        I&apos;m a passionate programmer from Bangladesh (Currently based in Riyadh, Saudi Arabia)
+        with entrepreneurial spirit, experienced in building scalable desktop, mobile &amp; web
+        application using MERN technologies.
       </p>
     </>
   );
@@ -145,6 +146,7 @@ const Hero = () => {
     </div>
   );
 
+  /*
   const six = (
     <div className="highlighted-box">
       <span>
@@ -155,6 +157,7 @@ const Hero = () => {
       </span>
     </div>
   );
+  */
 
   const seven = <Companies />;
 

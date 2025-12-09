@@ -5,10 +5,10 @@ module.exports = {
   siteMetadata: {
     title: 'Mustaque Nadim',
     description:
-      'Mustaque Nadim is a passionate programmer from Bangladesh, skilled in building web applications using MERN (MongoDB, ExpressJS, ReactJS, NodeJS) technologies.',
+      'Mustaque Nadim is a passionate programmer from Bangladesh, skilled in building full stack desktop, mobile & web applications using MERN (MongoDB, ExpressJS, ReactJS, NodeJS) technologies.',
     siteUrl: 'https://mustaquenadim.com', // No trailing slash allowed!
     image: '/og.png', // Path to your image you placed in the 'static' folder
-    twitterUsername: '@_mustaquenadim_',
+    twitterUsername: '@0xmustaquenadim',
   },
   plugins: [
     `gatsby-plugin-react-helmet`,

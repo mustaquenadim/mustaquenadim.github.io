@@ -137,7 +137,7 @@ const About = () => {
     'Node.js',
     'Express.js',
     'React Native',
-    'Locofy',
+    'Electron.js',
   ];
 
   return (
@@ -148,13 +148,14 @@ const About = () => {
         <StyledText>
           <div>
             <p>
-              A warrior's weapon is his sword. A writer's weapon is his pen. And my weapon is
-              programming. Over the past 7 years, programming has evolved from being my spare-time
-              friend to a daily life habit.
+              A warrior&apos;s weapon is his sword. A writer's weapon is his pen. And my weapon is
+              programming. Over the past {new Date().getFullYear() - 2017} years, programming has
+              evolved from being my spare-time friend to a daily life habit.
             </p>
 
             <p>
               Throughout this journey, I've had the opportunity to work at{' '}
+              <a href="https://www.visiontillion.com/">Visiontillion</a>,{' '}
               <a href="https://bengalsoftware.com/">Bengal Software</a>,{' '}
               <a href="https://jouleslabs.com/">JoulesLabs</a> and{' '}
               <a href="https://techsistltd.com/">Techsist Limited</a>. Additionally, to share my
@@ -183,7 +184,7 @@ const About = () => {
           <div className="wrapper">
             <StaticImage
               className="img"
-              src="../../images/me.jpg"
+              src="../../images/me.png"
               width={500}
               quality={95}
               formats={['AUTO', 'WEBP', 'AVIF']}

@@ -207,8 +207,7 @@ const Nav = ({ isHome }) => {
       className="resume-button"
       href="/Mustaque-Nadim-Software-Engineer-Resume.pdf"
       target="_blank"
-      rel="noopener noreferrer"
-    >
+      rel="noopener noreferrer">
       Resume
     </a>
   );

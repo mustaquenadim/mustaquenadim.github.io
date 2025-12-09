@@ -46,16 +46,6 @@ const Layout = ({ children, location }) => {
     handleExternalLinks();
   }, [isLoading]);
 
-  useEffect(() => {
-    const handleContextmenu = e => {
-      e.preventDefault();
-    };
-    document.addEventListener('contextmenu', handleContextmenu);
-    return function cleanup() {
-      document.removeEventListener('contextmenu', handleContextmenu);
-    };
-  }, []);
-
   return (
     <>
       <Head />
