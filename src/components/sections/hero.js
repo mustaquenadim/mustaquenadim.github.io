@@ -159,9 +159,7 @@ const Hero = () => {
   );
   */
 
-  const seven = <Companies />;
-
-  const items = [one, two, three, four, five, seven];
+  const items = [one, two, three, four, five];
 
   return (
     <StyledHeroSection>
@@ -181,6 +179,7 @@ const Hero = () => {
             ))}
         </TransitionGroup>
       )}
+      <Companies />
     </StyledHeroSection>
   );
 };
