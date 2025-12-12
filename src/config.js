@@ -50,6 +50,10 @@ module.exports = {
       url: '/#contact',
     },
     {
+      name: 'Photos',
+      url: '/photos',
+    },
+    {
       name: 'Posts',
       url: '/pensieve',
     },
