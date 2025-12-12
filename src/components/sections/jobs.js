@@ -1,5 +1,6 @@
+'use client';
+
 import React, { useState, useEffect, useRef } from 'react';
-import { useStaticQuery, graphql } from 'gatsby';
 import { CSSTransition } from 'react-transition-group';
 import styled from 'styled-components';
 import { srConfig } from '@config';
@@ -75,7 +76,7 @@ const StyledTabButton = styled.button`
   padding: 0 20px 2px;
   border-left: 2px solid var(--lightest-navy);
   background-color: transparent;
-  color: ${({ isActive }) => (isActive ? 'var(--green)' : 'var(--slate)')};
+  color: ${({ $isActive }) => ($isActive ? 'var(--green)' : 'var(--slate)')};
   font-family: var(--font-mono);
   font-size: var(--fz-xs);
   text-align: left;
@@ -108,7 +109,7 @@ const StyledHighlight = styled.div`
   height: var(--tab-height);
   border-radius: var(--border-radius);
   background: var(--green);
-  transform: translateY(calc(${({ activeTabId }) => activeTabId} * var(--tab-height)));
+  transform: translateY(calc(${({ $activeTabId }) => $activeTabId} * var(--tab-height)));
   transition: transform 0.25s cubic-bezier(0.645, 0.045, 0.355, 1);
   transition-delay: 0.1s;
 
@@ -119,7 +120,7 @@ const StyledHighlight = styled.div`
     max-width: var(--tab-width);
     height: 2px;
     margin-left: 50px;
-    transform: translateX(${({ prevTabWidths }) => prevTabWidths}px);
+    transform: translateX(${({ $prevTabWidths }) => $prevTabWidths}px);
   }
   @media (max-width: 480px) {
     margin-left: 25px;
@@ -164,31 +165,7 @@ const StyledTabPanel = styled.div`
   }
 `;
 
-const Jobs = () => {
-  const data = useStaticQuery(graphql`
-    query {
-      jobs: allMarkdownRemark(
-        filter: { fileAbsolutePath: { regex: "/content/jobs/" } }
-        sort: { fields: [frontmatter___date], order: DESC }
-      ) {
-        edges {
-          node {
-            frontmatter {
-              title
-              company
-              location
-              range
-              url
-            }
-            html
-          }
-        }
-      }
-    }
-  `);
-
-  const jobsData = data.jobs.edges;
-
+const Jobs = ({ jobsData = [] }) => {
   const [activeTabId, setActiveTabId] = useState(0);
   const [tabWidths, setTabWidths] = useState([]);
   const [tabFocus, setTabFocus] = useState(null);
@@ -202,7 +179,7 @@ const Jobs = () => {
     }
 
     sr.reveal(revealContainer.current, srConfig());
-  }, []);
+  }, [prefersReducedMotion]);
 
   useEffect(() => {
     if (tabs.current.length > 0) {
@@ -257,17 +234,17 @@ const Jobs = () => {
 
   return (
     <StyledJobsSection id="jobs" ref={revealContainer}>
-      <h2 className="numbered-heading">Where I’ve Worked</h2>
+      <h2 className="numbered-heading">Where I've Worked</h2>
 
       <div className="inner">
         <StyledTabList role="tablist" aria-label="Job tabs" onKeyDown={e => onKeyDown(e)}>
           {jobsData &&
-            jobsData.map(({ node }, i) => {
-              const { company } = node.frontmatter;
+            jobsData.map((job, i) => {
+              const { company } = job.frontmatter;
               return (
                 <StyledTabButton
                   key={i}
-                  isActive={activeTabId === i}
+                  $isActive={activeTabId === i}
                   onClick={() => setActiveTabId(i)}
                   ref={el => (tabs.current[i] = el)}
                   id={`tab-${i}`}
@@ -280,16 +257,16 @@ const Jobs = () => {
               );
             })}
           <StyledHighlight
-            activeTabId={activeTabId}
-            prevTabWidths={getPreviousTabsWidth()}
+            $activeTabId={activeTabId}
+            $prevTabWidths={getPreviousTabsWidth()}
             style={{ ['--tab-width']: `${getActiveTabWidth()}px` }}
           />
         </StyledTabList>
 
         <StyledTabPanels>
           {jobsData &&
-            jobsData.map(({ node }, i) => {
-              const { frontmatter, html } = node;
+            jobsData.map((job, i) => {
+              const { frontmatter, html } = job;
               const { title, url, company, range } = frontmatter;
 
               return (

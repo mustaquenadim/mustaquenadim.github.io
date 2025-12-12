@@ -1,7 +1,9 @@
+'use client';
+
 import { srConfig } from '@config';
 import { usePrefersReducedMotion } from '@hooks';
 import sr from '@utils/sr';
-import { StaticImage } from 'gatsby-plugin-image';
+import Image from 'next/image';
 import React, { useEffect, useRef } from 'react';
 import Marquee from 'react-fast-marquee';
 import styled from 'styled-components';
@@ -13,7 +15,7 @@ const StyledSkillsSection = styled.div`
     ${({ theme }) => theme.mixins.boxShadow};
     display: block;
     position: relative;
-    width: 100%;
+    width: auto;
     margin: 0 32px;
 
     &:hover,
@@ -43,138 +45,21 @@ const StyledSkillsSection = styled.div`
   }
 `;
 
-const imageSelector = imageName => {
-  switch (imageName) {
-    case 'c-plus-plus':
-      return (
-        <StaticImage
-          className="img"
-          src="../../../content/skills/c-plus-plus.png"
-          height={64}
-          quality={95}
-          objectFit="contain"
-          formats={['AUTO', 'WEBP', 'AVIF']}
-          alt="C++"
-        />
-      );
-    case 'javascript':
-      return (
-        <StaticImage
-          className="img"
-          src="../../../content/skills/javascript.png"
-          height={64}
-          quality={95}
-          objectFit="contain"
-          formats={['AUTO', 'WEBP', 'AVIF']}
-          alt="JavaScript"
-        />
-      );
-    case 'typescript':
-      return (
-        <StaticImage
-          className="img"
-          src="../../../content/skills/typescript.png"
-          height={64}
-          quality={95}
-          objectFit="contain"
-          formats={['AUTO', 'WEBP', 'AVIF']}
-          alt="TypeScript"
-        />
-      );
-    case 'react-js':
-      return (
-        <StaticImage
-          className="img"
-          src="../../../content/skills/react-js.png"
-          height={64}
-          quality={95}
-          objectFit="contain"
-          formats={['AUTO', 'WEBP', 'AVIF']}
-          alt="ReactJS"
-        />
-      );
-    case 'next-js':
-      return (
-        <StaticImage
-          className="img"
-          src="../../../content/skills/next-js.png"
-          height={64}
-          quality={95}
-          objectFit="contain"
-          formats={['AUTO', 'WEBP', 'AVIF']}
-          alt="NextJS"
-        />
-      );
-    case 'tailwind-css':
-      return (
-        <StaticImage
-          className="img"
-          src="../../../content/skills/tailwind-css.png"
-          height={64}
-          quality={95}
-          objectFit="contain"
-          formats={['AUTO', 'WEBP', 'AVIF']}
-          alt="Tailwind CSS"
-        />
-      );
-    case 'node-js':
-      return (
-        <StaticImage
-          className="img"
-          src="../../../content/skills/node-js.png"
-          height={64}
-          quality={95}
-          objectFit="contain"
-          formats={['AUTO', 'WEBP', 'AVIF']}
-          alt="NodeJS"
-        />
-      );
-    case 'postgresql':
-      return (
-        <StaticImage
-          className="img"
-          src="../../../content/skills/postgresql.png"
-          height={64}
-          quality={95}
-          objectFit="contain"
-          formats={['AUTO', 'WEBP', 'AVIF']}
-          alt="PostgreSQL"
-        />
-      );
-    case 'docker':
-      return (
-        <StaticImage
-          className="img"
-          src="../../../content/skills/docker.png"
-          height={64}
-          quality={95}
-          objectFit="contain"
-          formats={['AUTO', 'WEBP', 'AVIF']}
-          alt="Docker"
-        />
-      );
-    case 'vs-code':
-      return (
-        <StaticImage
-          className="img"
-          src="../../../content/skills/vs-code.png"
-          height={64}
-          quality={95}
-          objectFit="contain"
-          formats={['AUTO', 'WEBP', 'AVIF']}
-          alt="VS Code"
-        />
-      );
-    default:
-      return null; // Return null or a default image if preferred
-  }
-};
+const skillsData = [
+  { name: 'c-plus-plus', alt: 'C++', src: '/content/skills/c-plus-plus.png' },
+  { name: 'javascript', alt: 'JavaScript', src: '/content/skills/javascript.png' },
+  { name: 'typescript', alt: 'TypeScript', src: '/content/skills/typescript.png' },
+  { name: 'react-js', alt: 'ReactJS', src: '/content/skills/react-js.png' },
+  { name: 'next-js', alt: 'NextJS', src: '/content/skills/next-js.png' },
+  { name: 'tailwind-css', alt: 'Tailwind CSS', src: '/content/skills/tailwind-css.png' },
+  { name: 'node-js', alt: 'NodeJS', src: '/content/skills/node-js.png' },
+  { name: 'postgresql', alt: 'PostgreSQL', src: '/content/skills/postgresql.png' },
+  { name: 'docker', alt: 'Docker', src: '/content/skills/docker.png' },
+  { name: 'vs-code', alt: 'VS Code', src: '/content/skills/vs-code.png' },
+];
 
 const Skills = () => {
   const revealContainer = useRef(null);
-  const revealTitle = useRef(null);
-  const revealArchiveLink = useRef(null);
-  const revealServices = useRef([]);
   const prefersReducedMotion = usePrefersReducedMotion();
 
   useEffect(() => {
@@ -183,30 +68,21 @@ const Skills = () => {
     }
 
     sr.reveal(revealContainer.current, srConfig());
-    sr.reveal(revealTitle.current, srConfig());
-    sr.reveal(revealArchiveLink.current, srConfig());
-    revealServices.current.forEach((ref, i) => sr.reveal(ref, srConfig(i * 100)));
-  }, []);
-
-  const skills = [
-    'c-plus-plus',
-    'javascript',
-    'typescript',
-    'react-js',
-    'next-js',
-    'tailwind-css',
-    'node-js',
-    'postgresql',
-    'docker',
-    'vs-code',
-  ];
+  }, [prefersReducedMotion]);
 
   return (
-    <StyledSkillsSection>
-      <Marquee autoFill="true" pauseOnHover="true" gradient="true" gradientColor="#0a192f">
-        {skills.map((skill, index) => (
+    <StyledSkillsSection ref={revealContainer}>
+      <Marquee autoFill={true} pauseOnHover={true} gradient={true} gradientColor="#0a192f">
+        {skillsData.map((skill, index) => (
           <div key={index} className="wrapper">
-            {imageSelector(skill)}
+            <Image
+              className="img"
+              src={skill.src}
+              height={64}
+              width={64}
+              alt={skill.alt}
+              style={{ objectFit: 'contain' }}
+            />
           </div>
         ))}
       </Marquee>

@@ -1,8 +1,9 @@
+'use client';
+
 import { Icon } from '@components/icons';
 import { srConfig } from '@config';
 import { usePrefersReducedMotion } from '@hooks';
 import sr from '@utils/sr';
-// import { graphql, Link, useStaticQuery } from 'gatsby';
 import React, { useEffect, useRef, useState } from 'react';
 import { CSSTransition, TransitionGroup } from 'react-transition-group';
 import styled from 'styled-components';
@@ -25,7 +26,7 @@ const blogs = [
       'https://medium.com/@mustaquenadim/maximize-your-productivity-with-these-essential-javascript-array-techniques-f1a211bef347',
   },
   {
-    title: 'JavaScript Strings 101: The Complete Beginner’s Guide',
+    title: 'JavaScript Strings 101: The Complete Beginner\'s Guide',
     description:
       'Learn JavaScript string methods like charAt, concat, indexOf, lastIndexOf, slice and split in this beginner\'s guide.',
     tech: ['JavaScript', 'Beginners Guide', 'String Methods'],
@@ -193,30 +194,6 @@ const StyledProject = styled.li`
 `;
 
 const Blogs = () => {
-  // const data = useStaticQuery(graphql`
-  //   query {
-  //     projects: allMarkdownRemark(
-  //       filter: {
-  //         fileAbsolutePath: { regex: "/content/projects/" }
-  //         frontmatter: { showInProjects: { ne: false } }
-  //       }
-  //       sort: { fields: [frontmatter___date], order: DESC }
-  //     ) {
-  //       edges {
-  //         node {
-  //           frontmatter {
-  //             title
-  //             tech
-  //             github
-  //             external
-  //           }
-  //           html
-  //         }
-  //       }
-  //     }
-  //   }
-  // `);
-
   const [showMore, setShowMore] = useState(false);
   const revealTitle = useRef(null);
   const revealArchiveLink = useRef(null);
@@ -231,16 +208,13 @@ const Blogs = () => {
     sr.reveal(revealTitle.current, srConfig());
     sr.reveal(revealArchiveLink.current, srConfig());
     revealProjects.current.forEach((ref, i) => sr.reveal(ref, srConfig(i * 100)));
-  }, []);
+  }, [prefersReducedMotion]);
 
   const GRID_LIMIT = 6;
-  // const projects = data.projects.edges.filter(({ node }) => node);
   const firstSix = blogs.slice(0, GRID_LIMIT);
   const publishedBlogs = showMore ? blogs : firstSix;
 
   const projectInner = node => {
-    // const { frontmatter, html } = node;
-    // const { github, external, title, tech } = frontmatter;
     const { title, description, tech, external } = node;
 
     return (
@@ -277,8 +251,8 @@ const Blogs = () => {
         <footer>
           {tech && (
             <ul className="project-tech-list">
-              {tech.map((tech, i) => (
-                <li key={i}>{tech}</li>
+              {tech.map((t, i) => (
+                <li key={i}>{t}</li>
               ))}
             </ul>
           )}
@@ -292,10 +266,6 @@ const Blogs = () => {
       <h2 className="numbered-heading" ref={revealTitle}>
         Recently Published Blogs
       </h2>
-
-      {/* <Link className="inline-link archive-link" to="/archive" ref={revealArchiveLink}>
-        view the archive
-      </Link> */}
 
       <ul className="projects-grid">
         {prefersReducedMotion ? (

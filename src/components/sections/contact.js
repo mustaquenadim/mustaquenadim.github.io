@@ -1,3 +1,5 @@
+'use client';
+
 import { email, srConfig } from '@config';
 import { usePrefersReducedMotion } from '@hooks';
 import sr from '@utils/sr';
@@ -58,17 +60,17 @@ const Contact = () => {
     }
 
     sr.reveal(revealContainer.current, srConfig());
-  }, []);
+  }, [prefersReducedMotion]);
 
   return (
     <StyledContactSection id="contact" ref={revealContainer}>
-      <h2 className="numbered-heading overline">What’s Next?</h2>
+      <h2 className="numbered-heading overline">What's Next?</h2>
 
       <h2 className="title">Get In Touch</h2>
 
       <p>
-        I’m currently looking for new opportunities i.e. open to work, my inbox is always open.
-        Whether you have a question or just want to say hi, I’ll try my best to get back to you!
+        I'm currently looking for new opportunities i.e. open to work, my inbox is always open.
+        Whether you have a question or just want to say hi, I'll try my best to get back to you!
       </p>
 
       <a className="email-link" href={`mailto:${email}`}>

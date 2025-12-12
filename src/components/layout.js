@@ -1,8 +1,10 @@
-import { Email, Footer, Head, Loader, Nav, Social } from '@components';
-import { GlobalStyle, theme } from '@styles';
+'use client';
+
+import { Email, Footer, Loader, Nav, Social } from '@components';
 import PropTypes from 'prop-types';
 import React, { useEffect, useState } from 'react';
-import styled, { ThemeProvider } from 'styled-components';
+import styled from 'styled-components';
+import { usePathname } from 'next/navigation';
 
 const StyledContent = styled.div`
   display: flex;
@@ -10,8 +12,9 @@ const StyledContent = styled.div`
   min-height: 100vh;
 `;
 
-const Layout = ({ children, location }) => {
-  const isHome = location.pathname === '/';
+const Layout = ({ children }) => {
+  const pathname = usePathname();
+  const isHome = pathname === '/';
   const [isLoading, setIsLoading] = useState(isHome);
 
   // Sets target="_blank" rel="noopener noreferrer" on external links
@@ -32,8 +35,8 @@ const Layout = ({ children, location }) => {
       return;
     }
 
-    if (location.hash) {
-      const id = location.hash.substring(1); // location.hash without the '#'
+    if (window.location.hash) {
+      const id = window.location.hash.substring(1);
       setTimeout(() => {
         const el = document.getElementById(id);
         if (el) {
@@ -47,40 +50,31 @@ const Layout = ({ children, location }) => {
   }, [isLoading]);
 
   return (
-    <>
-      <Head />
+    <div id="root">
+      <a className="skip-to-content" href="#content">
+        Skip to Content
+      </a>
 
-      <div id="root">
-        <ThemeProvider theme={theme}>
-          <GlobalStyle />
+      {isLoading && isHome ? (
+        <Loader finishLoading={() => setIsLoading(false)} />
+      ) : (
+        <StyledContent>
+          <Nav isHome={isHome} />
+          <Social isHome={isHome} />
+          <Email isHome={isHome} />
 
-          <a className="skip-to-content" href="#content">
-            Skip to Content
-          </a>
-
-          {isLoading && isHome ? (
-            <Loader finishLoading={() => setIsLoading(false)} />
-          ) : (
-            <StyledContent>
-              <Nav isHome={isHome} />
-              <Social isHome={isHome} />
-              <Email isHome={isHome} />
-
-              <div id="content">
-                {children}
-                <Footer />
-              </div>
-            </StyledContent>
-          )}
-        </ThemeProvider>
-      </div>
-    </>
+          <div id="content">
+            {children}
+            <Footer />
+          </div>
+        </StyledContent>
+      )}
+    </div>
   );
 };
 
 Layout.propTypes = {
   children: PropTypes.node.isRequired,
-  location: PropTypes.object.isRequired,
 };
 
 export default Layout;

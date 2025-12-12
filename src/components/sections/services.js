@@ -1,8 +1,9 @@
+'use client';
+
 import { Icon } from '@components/icons';
 import { srConfig } from '@config';
 import { usePrefersReducedMotion } from '@hooks';
 import sr from '@utils/sr';
-import { graphql, useStaticQuery } from 'gatsby';
 import React, { useEffect, useRef } from 'react';
 import { CSSTransition, TransitionGroup } from 'react-transition-group';
 import styled from 'styled-components';
@@ -168,29 +169,7 @@ const StyledService = styled.li`
   }
 `;
 
-const Services = () => {
-  const data = useStaticQuery(graphql`
-    query {
-      services: allMarkdownRemark(
-        filter: {
-          fileAbsolutePath: { regex: "/content/services/" }
-          frontmatter: { showInServices: { ne: false } }
-        }
-        sort: { fields: [frontmatter___order], order: ASC }
-      ) {
-        edges {
-          node {
-            frontmatter {
-              title
-              icon
-            }
-            html
-          }
-        }
-      }
-    }
-  `);
-
+const Services = ({ servicesData = [] }) => {
   const revealContainer = useRef(null);
   const revealTitle = useRef(null);
   const revealArchiveLink = useRef(null);
@@ -206,14 +185,13 @@ const Services = () => {
     sr.reveal(revealTitle.current, srConfig());
     sr.reveal(revealArchiveLink.current, srConfig());
     revealServices.current.forEach((ref, i) => sr.reveal(ref, srConfig(i * 100)));
-  }, []);
+  }, [prefersReducedMotion]);
 
   const GRID_LIMIT = 6;
-  const services = data.services.edges.filter(({ node }) => node);
-  const firstSix = services.slice(0, GRID_LIMIT);
+  const firstSix = servicesData.slice(0, GRID_LIMIT);
 
-  const serviceInner = node => {
-    const { frontmatter, html } = node;
+  const serviceInner = service => {
+    const { frontmatter, html } = service;
     const { github, external, title, tech, icon } = frontmatter;
 
     return (
@@ -255,8 +233,8 @@ const Services = () => {
         <footer>
           {tech && (
             <ul className="service-tech-list">
-              {tech.map((tech, i) => (
-                <li key={i}>{tech}</li>
+              {tech.map((t, i) => (
+                <li key={i}>{t}</li>
               ))}
             </ul>
           )}
@@ -273,14 +251,14 @@ const Services = () => {
         {prefersReducedMotion ? (
           <>
             {firstSix &&
-              firstSix.map(({ node }, i) => (
-                <StyledService key={i}>{serviceInner(node)}</StyledService>
+              firstSix.map((service, i) => (
+                <StyledService key={i}>{serviceInner(service)}</StyledService>
               ))}
           </>
         ) : (
           <TransitionGroup component={null}>
             {firstSix &&
-              firstSix.map(({ node }, i) => (
+              firstSix.map((service, i) => (
                 <CSSTransition
                   key={i}
                   classNames="fadeup"
@@ -294,7 +272,7 @@ const Services = () => {
                       transitionDelay: `${i >= GRID_LIMIT ? (i - GRID_LIMIT) * 100 : 0}ms`,
                     }}
                   >
-                    {serviceInner(node)}
+                    {serviceInner(service)}
                   </StyledService>
                 </CSSTransition>
               ))}

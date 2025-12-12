@@ -1,7 +1,9 @@
+'use client';
+
 import { srConfig } from '@config';
 import { usePrefersReducedMotion } from '@hooks';
 import sr from '@utils/sr';
-import { StaticImage } from 'gatsby-plugin-image';
+import Image from 'next/image';
 import React, { useEffect, useRef } from 'react';
 import styled from 'styled-components';
 
@@ -44,7 +46,6 @@ const StyledText = styled.div`
       position: relative;
       margin-bottom: 10px;
       padding-left: 20px;
-      // font-family: var(--font-mono);
       font-size: var(--fz-lg);
 
       &:before {
@@ -135,7 +136,7 @@ const Workstation = () => {
     }
 
     sr.reveal(revealContainer.current, srConfig());
-  }, []);
+  }, [prefersReducedMotion]);
 
   const workstation = {
     device: 'Laptop',
@@ -225,13 +226,13 @@ const Workstation = () => {
 
         <StyledPic>
           <div className="wrapper">
-            <StaticImage
+            <Image
               className="img"
-              src="../../images/workstation.jpg"
+              src="/images/workstation.jpg"
               width={500}
+              height={500}
               quality={95}
-              formats={['AUTO', 'WEBP', 'AVIF']}
-              alt="Headshot"
+              alt="Workstation"
             />
           </div>
         </StyledPic>

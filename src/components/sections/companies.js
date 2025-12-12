@@ -1,7 +1,9 @@
+'use client';
+
 import { srConfig } from '@config';
 import { usePrefersReducedMotion } from '@hooks';
 import sr from '@utils/sr';
-import { StaticImage } from 'gatsby-plugin-image';
+import Image from 'next/image';
 import React, { useEffect, useRef } from 'react';
 import Marquee from 'react-fast-marquee';
 import styled from 'styled-components';
@@ -82,126 +84,18 @@ const StyledCompaniesSection = styled.div`
   }
 `;
 
-const imageSelector = imageName => {
-  switch (imageName) {
-    case 'techsist':
-      return (
-        <StaticImage
-          className="img"
-          src="../../../content/companies/techsist.png"
-          height={64}
-          quality={95}
-          objectFit="contain"
-          formats={['AUTO', 'WEBP', 'AVIF']}
-          alt="Techsist Limited"
-        />
-      );
-    case 'jouleslabs':
-      return (
-        <StaticImage
-          className="img"
-          src="../../../content/companies/jouleslabs.png"
-          height={64}
-          quality={95}
-          objectFit="contain"
-          formats={['AUTO', 'WEBP', 'AVIF']}
-          alt="JoulesLabs"
-        />
-      );
-    case 'reviewxpo':
-      return (
-        <StaticImage
-          className="img"
-          src="../../../content/companies/reviewxpo.png"
-          height={64}
-          quality={95}
-          objectFit="contain"
-          formats={['AUTO', 'WEBP', 'AVIF']}
-          alt="ReviewXpo"
-        />
-      );
-    case 'bengal-software':
-      return (
-        <StaticImage
-          className="img"
-          src="../../../content/companies/bengal-software.png"
-          height={64}
-          quality={95}
-          objectFit="contain"
-          formats={['AUTO', 'WEBP', 'AVIF']}
-          alt="Bengal Software"
-        />
-      );
-    case 'the-korean-mall':
-      return (
-        <StaticImage
-          className="img"
-          src="../../../content/companies/the-korean-mall.png"
-          height={64}
-          quality={95}
-          objectFit="contain"
-          formats={['AUTO', 'WEBP', 'AVIF']}
-          alt="The Korean Mall"
-        />
-      );
-    case 'payvill':
-      return (
-        <StaticImage
-          className="img"
-          src="../../../content/companies/payvill.png"
-          height={64}
-          quality={95}
-          objectFit="contain"
-          formats={['AUTO', 'WEBP', 'AVIF']}
-          alt="Payvill"
-        />
-      );
-    case 'metrocem':
-      return (
-        <StaticImage
-          className="img"
-          src="../../../content/companies/metrocem.png"
-          height={64}
-          quality={95}
-          objectFit="contain"
-          formats={['AUTO', 'WEBP', 'AVIF']}
-          alt="Metrocem Group"
-        />
-      );
-    case 'adstation':
-      return (
-        <StaticImage
-          className="img"
-          src="../../../content/companies/adstation.png"
-          height={64}
-          quality={95}
-          objectFit="contain"
-          formats={['AUTO', 'WEBP', 'AVIF']}
-          alt="AdStation"
-        />
-      );
-    case 'zyntrix':
-      return (
-        <StaticImage
-          className="img"
-          src="../../../content/companies/zyntrix.png"
-          height={64}
-          quality={95}
-          objectFit="contain"
-          formats={['AUTO', 'WEBP', 'AVIF']}
-          alt="Zyntrix"
-        />
-      );
-    default:
-      return null; // Return null or a default image if preferred
-  }
-};
+const companiesData = [
+  { name: 'techsist', alt: 'Techsist Limited', src: '/content/companies/techsist.png' },
+  { name: 'jouleslabs', alt: 'JoulesLabs', src: '/content/companies/jouleslabs.png' },
+  { name: 'bengal-software', alt: 'Bengal Software', src: '/content/companies/bengal-software.png' },
+  { name: 'payvill', alt: 'Payvill', src: '/content/companies/payvill.png' },
+  { name: 'metrocem', alt: 'Metrocem Group', src: '/content/companies/metrocem.png' },
+  { name: 'adstation', alt: 'AdStation', src: '/content/companies/adstation.png' },
+  { name: 'zyntrix', alt: 'Zyntrix', src: '/content/companies/zyntrix.png' },
+];
 
 const Companies = () => {
   const revealContainer = useRef(null);
-  const revealTitle = useRef(null);
-  const revealArchiveLink = useRef(null);
-  const revealServices = useRef([]);
   const prefersReducedMotion = usePrefersReducedMotion();
 
   useEffect(() => {
@@ -210,32 +104,25 @@ const Companies = () => {
     }
 
     sr.reveal(revealContainer.current, srConfig());
-    sr.reveal(revealTitle.current, srConfig());
-    sr.reveal(revealArchiveLink.current, srConfig());
-    revealServices.current.forEach((ref, i) => sr.reveal(ref, srConfig(i * 100)));
-  }, []);
-
-  const companies = [
-    'techsist',
-    'jouleslabs',
-    'bengal-software',
-    'the-korean-mall',
-    'payvill',
-    'metrocem',
-    'adstation',
-    'zyntrix',
-  ];
+  }, [prefersReducedMotion]);
 
   return (
-    <StyledCompaniesSection>
+    <StyledCompaniesSection ref={revealContainer}>
       <div className="title-container">
         <p className="title-text">Companies I've worked with</p>
       </div>
       <div className="marquee-container">
-        <Marquee autoFill="true" pauseOnHover="true" gradient="true" gradientColor="#0a192f">
-          {companies.map((company, index) => (
+        <Marquee autoFill={true} pauseOnHover={true} gradient={true} gradientColor="#0a192f">
+          {companiesData.map((company, index) => (
             <div key={index} className="wrapper">
-              {imageSelector(company)}
+              <Image
+                className="img"
+                src={company.src}
+                height={64}
+                width={120}
+                alt={company.alt}
+                style={{ objectFit: 'contain' }}
+              />
             </div>
           ))}
         </Marquee>

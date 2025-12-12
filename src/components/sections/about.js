@@ -1,7 +1,9 @@
+'use client';
+
 import { srConfig } from '@config';
 import { usePrefersReducedMotion } from '@hooks';
 import sr from '@utils/sr';
-import { StaticImage } from 'gatsby-plugin-image';
+import Image from 'next/image';
 import React, { useEffect, useRef } from 'react';
 import styled from 'styled-components';
 import Skills from './skills';
@@ -127,7 +129,7 @@ const About = () => {
     }
 
     sr.reveal(revealContainer.current, srConfig());
-  }, []);
+  }, [prefersReducedMotion]);
 
   const skills = [
     'JavaScript',
@@ -171,7 +173,7 @@ const About = () => {
 
             <p>
               My expertise is not limited to specific tools or technologies; I can learn and adapt
-              to any. Here are a few technologies I’ve been working with recently:
+              to any. Here are a few technologies I've been working with recently:
             </p>
           </div>
 
@@ -182,12 +184,12 @@ const About = () => {
 
         <StyledPic>
           <div className="wrapper">
-            <StaticImage
+            <Image
               className="img"
-              src="../../images/me.png"
+              src="/images/me.png"
               width={500}
+              height={500}
               quality={95}
-              formats={['AUTO', 'WEBP', 'AVIF']}
               alt="Headshot"
             />
           </div>

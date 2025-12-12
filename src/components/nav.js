@@ -1,13 +1,14 @@
+'use client';
+
 import { Menu } from '@components';
 import { navLinks } from '@config';
 import { usePrefersReducedMotion, useScrollDirection } from '@hooks';
 import { loaderDelay } from '@utils';
-import { Link } from 'gatsby';
+import Link from 'next/link';
 import PropTypes from 'prop-types';
 import React, { useEffect, useState } from 'react';
 import { CSSTransition, TransitionGroup } from 'react-transition-group';
 import styled, { css } from 'styled-components';
-import logo from '../images/mn-logo.png';
 
 const StyledHeader = styled.header`
   ${({ theme }) => theme.mixins.flexBetween};
@@ -33,8 +34,8 @@ const StyledHeader = styled.header`
 
   @media (prefers-reduced-motion: no-preference) {
     ${props =>
-    props.scrollDirection === 'up' &&
-      !props.scrolledToTop &&
+    props.$scrollDirection === 'up' &&
+      !props.$scrolledToTop &&
       css`
         height: var(--nav-scroll-height);
         transform: translateY(0px);
@@ -43,8 +44,8 @@ const StyledHeader = styled.header`
       `};
 
     ${props =>
-    props.scrollDirection === 'down' &&
-      !props.scrolledToTop &&
+    props.$scrollDirection === 'down' &&
+      !props.$scrolledToTop &&
       css`
         height: var(--nav-scroll-height);
         transform: translateY(calc(var(--nav-scroll-height) * -1));
@@ -181,7 +182,7 @@ const Nav = ({ isHome }) => {
       clearTimeout(timeout);
       window.removeEventListener('scroll', handleScroll);
     };
-  }, []);
+  }, [prefersReducedMotion]);
 
   const timeout = isHome ? loaderDelay : 0;
   const fadeClass = isHome ? 'fade' : '';
@@ -191,12 +192,12 @@ const Nav = ({ isHome }) => {
     <div className="logo" tabIndex="-1">
       {isHome ? (
         <a href="/" aria-label="home">
-          <img src={logo} alt="Mustaque Nadim Logo" />
+          <img src="/images/mn-logo.png" alt="Mustaque Nadim Logo" />
           <div className="sliding-line"></div>
         </a>
       ) : (
-        <Link to="/" aria-label="home">
-          <img src={logo} alt="Mustaque Nadim Logo" />
+        <Link href="/" aria-label="home">
+          <img src="/images/mn-logo.png" alt="Mustaque Nadim Logo" />
           <div className="sliding-line"></div>
         </Link>
       )}
@@ -214,7 +215,7 @@ const Nav = ({ isHome }) => {
   );
 
   return (
-    <StyledHeader scrollDirection={scrollDirection} scrolledToTop={scrolledToTop}>
+    <StyledHeader $scrollDirection={scrollDirection} $scrolledToTop={scrolledToTop}>
       <StyledNav>
         {prefersReducedMotion ? (
           <>
@@ -225,7 +226,7 @@ const Nav = ({ isHome }) => {
                 {navLinks &&
                   navLinks.map(({ url, name }, i) => (
                     <li key={i}>
-                      <Link to={url}>{name}</Link>
+                      <Link href={url}>{name}</Link>
                     </li>
                   ))}
               </ol>
@@ -252,22 +253,12 @@ const Nav = ({ isHome }) => {
                     navLinks.map(({ url, name }, i) => (
                       <CSSTransition key={i} classNames={fadeDownClass} timeout={timeout}>
                         <li key={i} style={{ transitionDelay: `${isHome ? i * 100 : 0}ms` }}>
-                          <Link to={url}>{name}</Link>
+                          <Link href={url}>{name}</Link>
                         </li>
                       </CSSTransition>
                     ))}
                 </TransitionGroup>
               </ol>
-
-              {/* <TransitionGroup component={null}>
-                {isMounted && (
-                  <CSSTransition classNames={fadeDownClass} timeout={timeout}>
-                    <div style={{ transitionDelay: `${isHome ? navLinks.length * 100 : 0}ms` }}>
-                      {ResumeLink}
-                    </div>
-                  </CSSTransition>
-                )}
-              </TransitionGroup> */}
             </StyledLinks>
 
             <TransitionGroup component={null}>

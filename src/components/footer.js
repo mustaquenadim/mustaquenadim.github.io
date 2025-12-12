@@ -1,3 +1,5 @@
+'use client';
+
 import { Icon } from '@components/icons';
 import { socialMedia } from '@config';
 import PropTypes from 'prop-types';
@@ -104,7 +106,7 @@ const Footer = () => {
         </ul>
       </StyledSocialLinks>
 
-      <StyledCredit tabindex="-1">
+      <StyledCredit tabIndex="-1">
         <a href="https://github.com/bchiang7/v4">
           <div>Designed &amp; Built by Brittany Chiang</div>
 
