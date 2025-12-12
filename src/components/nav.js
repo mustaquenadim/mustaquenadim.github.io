@@ -66,6 +66,7 @@ const StyledNav = styled.nav`
     ${({ theme }) => theme.mixins.flexCenter};
     border-radius: 6px;
     overflow: hidden;
+    flex-shrink: 0;
 
     .sliding-line {
       position: absolute;
@@ -129,13 +130,13 @@ const StyledLinks = styled.div`
     list-style: none;
 
     li {
-      margin: 0 5px;
+      margin: 0 2px;
       position: relative;
       counter-increment: item 1;
       font-size: var(--fz-xs);
 
       a {
-        padding: 10px;
+        padding: 8px;
 
         &:before {
           content: '0' counter(item) '.';
