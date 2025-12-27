@@ -1,0 +1,5 @@
+{
+    "componentChunkName": "component---src-pages-archive-js",
+    "path": "/archive/",
+    "result": {"data":{"allMarkdownRemark":{"edges":[{"node":{"frontmatter":{"date":"01-01-2000","title":"Demo Project","tech":["HTML","CSS","JavaScript"],"github":"https://github.com/mustaquenadim/demo","external":"","ios":"","android":"","company":""},"html":""}}]}},"pageContext":{}},
+    "staticQueryHashes": ["1994492073","2009693873","2031412112","3825832676"]}

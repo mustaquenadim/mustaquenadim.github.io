@@ -3,6 +3,7 @@ import path from 'path';
 import matter from 'gray-matter';
 import { remark } from 'remark';
 import html from 'remark-html';
+import gfm from 'remark-gfm';
 
 const contentDirectory = path.join(process.cwd(), 'content');
 
@@ -32,7 +33,7 @@ export function getPostBySlug(slug) {
 }
 
 export async function getPostHtml(content) {
-  const result = await remark().use(html).process(content);
+  const result = await remark().use(gfm).use(html).process(content);
   return result.toString();
 }
 

@@ -4,6 +4,9 @@ const nextConfig = {
     styledComponents: true,
   },
   images: {
+    // Required for `output: 'export'` (GitHub Pages) since Next's Image
+    // Optimization API needs a server runtime.
+    unoptimized: true,
     remotePatterns: [
       {
         protocol: 'https',

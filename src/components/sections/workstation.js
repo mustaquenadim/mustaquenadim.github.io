@@ -97,6 +97,8 @@ const StyledPic = styled.div`
       mix-blend-mode: multiply;
       filter: grayscale(100%) contrast(1);
       transition: var(--transition);
+      width: 100%;
+      height: auto;
     }
 
     &:before,

@@ -1,0 +1,5 @@
+{
+    "componentChunkName": "component---src-templates-tag-js",
+    "path": "/pensieve/tags/ai/",
+    "result": {"data":{"allMarkdownRemark":{"totalCount":1,"edges":[{"node":{"frontmatter":{"title":"How to use ChatGPT Plus GPT-4 Model for free","description":"ChatGPT-4 is completely free in other sites","date":"2024-05-25T00:00:00.000Z","slug":"/pensieve/how-to-use-gpt-4-model-for-free","tags":["AI","Tools","Free"]}}}]}},"pageContext":{"tag":"AI"}},
+    "staticQueryHashes": ["1994492073","2009693873","2031412112","3825832676"]}
